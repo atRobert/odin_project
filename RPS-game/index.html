@@ -60,18 +60,23 @@
             userPlay = userPlay.toLowerCase()
             computerChoice = computerPlay()
             if (computerChoice == userPlay){
-                $('#whatHappened').text("It's a tie!")
+                $('#whatHappened').text("It's a tie!");
+                $('#whatHappened').css({"color":"black"});
             } else if (userPlay == 'rock' && computerChoice == 'scissors') {
-                $('#whatHappened').text('Your rock beat their scissors!')
+                $('#whatHappened').text('Your rock beat their scissors!');
+                $('#whatHappened').css({"color":"green"});
                 player_score++
             } else if (userPlay == 'paper' && computerChoice == 'rock') {
-                $('#whatHappened').text('Your paper beat their scissors!')
+                $('#whatHappened').text('Your paper beat their scissors!');
+                $('#whatHappened').css("color","green");
                 player_score++
             } else if (userPlay == 'scissors' && computerChoice == 'paper') {
                 $('#whatHappened').text('Your scissors beat their paper!')
+                $('#whatHappened').css("color","green")
                 player_score++
             } else {
                 $('#whatHappened').text('Their ' + computerChoice + ' beat your ' + userPlay)
+                $('#whatHappened').css("color","red")
                 computer_score++
             }
         }
