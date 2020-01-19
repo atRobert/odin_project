@@ -1,0 +1,70 @@
+#container{
+    display: block;
+    width: 272px;
+    margin: auto;
+    margin-top: 10%;
+    text-align:center;
+}
+
+#container img{
+    margin: auto;
+    margin-bottom: 40px;
+}
+
+
+
+.search_buttons{
+    margin: auto;
+    margin-top: 10px;
+}
+
+.text_input{
+    width:272px;
+}
+
+.nav{
+    width: 100%;
+    position: absolute;
+    top:0px;
+}
+
+ul{
+    list-style-type: none;
+}
+
+
+
+.first_ul{
+    float:left;
+}
+
+li{
+    float:left;
+    margin-right: 10px;
+}
+
+.second_ul{
+    float:right;
+}
+
+button{
+    margin-right:10px;
+    margin-left:10px;
+}
+
+.footer{
+    width:100%;
+    position:absolute;
+    bottom:0px;
+    background:lightgrey;
+    margin:0px;
+}
+
+body{
+    margin:0px;
+}
+
+a{
+    text-decoration:none;
+    color: grey;
+}
