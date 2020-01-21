@@ -1,0 +1,43 @@
+
+
+.board{
+    height: 550px;
+    width: 550px;
+    margin:auto;
+    
+  }
+  
+  .grid-container {
+    display: grid;
+    float: left;
+    background-color: rgb(185, 220, 248);
+    padding: 0px;
+  }
+  
+  .grid-container > div {
+    background-color: rgba(255, 255, 255, 0.8);
+    text-align: center;
+  
+  }
+
+.button-container{
+    float:left;
+    text-align:center;
+}
+
+.btn{
+    margin-top:10px;
+    width: 100px;
+}
+
+.btn-random{
+    transition: 1000ms ease;
+}
+
+.heading{
+    text-align: center;
+}
+
+
+
+
