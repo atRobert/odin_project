@@ -36,13 +36,28 @@
     text-align: center;
 }
 
+
+#redButton{
+  color:red;
+  background-color: rgb(201, 201, 201);
+}
+
+#greenButton{
+  color: green;
+  background-color: rgb(201, 201, 201);
+}
+
+#blackButton{
+  color: black;
+  background-color: rgb(201, 201, 201);
+}
+
 #choiceButton{
   display:none;
 }
 
 #buttonLabel{
   background:black;
+  border: 1px solid black;
   color:white;
 }
-
-
