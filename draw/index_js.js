@@ -1,14 +1,20 @@
 const board = document.querySelector('.board');
-
 const col = document.createElement('div');
 
 let selectColor = 'black'
+let redButton = document.querySelector('#redButton')
+let greenButton = document.querySelector('#greenButton')
+let blackButton = document.querySelector('#blackButton')
+let randomButton = document.querySelector('#randomButton')
+let choiceButton = document.querySelector('#choiceButton')
+let choiceLabel = document.querySelector('#buttonLabel')
+let theColor = choiceButton.value;
 
-let redButton = document.querySelector('#red')
-let greenButton = document.querySelector('#green')
-let blackButton = document.querySelector('#black')
-let randomButton = document.querySelector('#random')
-
+choiceButton.addEventListener('input', function(){
+  selectColor = choiceButton.value;
+  choiceLabel.style.backgroundColor = selectColor;
+  choiceLabel.style.border = selectColor;
+})
 
 function getRandomColor() {
     var letters = '0123456789ABCDEF';
@@ -22,7 +28,6 @@ function getRandomColor() {
 randomButton.addEventListener('click', function(){
     selectColor = getRandomColor()
 })
-
 redButton.addEventListener('click', function(){
 	selectColor = 'red';
 });
@@ -33,28 +38,28 @@ blackButton.addEventListener('click', function(){
 	selectColor = 'black';
 });
 
+
+
 setInterval(function () {
     let intervalColor = getRandomColor()
-    btnRandom.style.background = intervalColor;
-    btnRandom.style.border = intervalColor;
+    randomButton.style.background = intervalColor;
+    randomButton.style.border = intervalColor;
     if (!colors[currentIndex]) {
         currentIndex = 0;
     } else {
         currentIndex++;
     }
- }, 1000);
+ }, 300);
 
 
 let div_count = 0;
-let boardSize = prompt('How big do you want the pad? (Max 100)',16);
+let boardSize = prompt('What resolution would you like? (Max 100)',50);
 if (boardSize > 100){
     boardSize = 100;
 }
 let padSize = (500 / boardSize)/2
 
-let btnRandom = document.querySelector('#random');
-let colors = ['red', 'green', 'blue', 'yellow', 'pink', 'purple'];
-let currentIndex = 0;
+
 
 
 
