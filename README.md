@@ -6,6 +6,6 @@
 
 - [Let's Draw!](https://htmlpreview.github.io/?https://github.com/atRobert/odin_project/blob/master/draw/index.html#/bored)
 
-  - Minor issues with Random Select with this htmlPreview
+  - Minor issues with _Random Select_ and _Reset_ with this htmlPreview
 
 - [Calculator](https://htmlpreview.github.io/?https://github.com/atRobert/odin_project/blob/master/calculator/calc.html#/bored)
