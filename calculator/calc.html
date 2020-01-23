@@ -1,0 +1,47 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link rel="stylesheet" href="calc.css">
+    <title>Calculator</title>
+</head>
+<body>
+    <div id='calculator'>
+        <div id='display'></div>
+        <div id='row_one'>
+            <button class='btn clear' onClick = 'clearDisplay()'>AC</button>
+            <button class='btn posneg' onClick = 'signSwap()'>+/-</button>
+            <button class='btn percent' onClick = 'toPercent()'>%</button>
+            <button class='btn divide' onClick ='compute("divide")'>/</button>
+        </div>
+        <div id='row_two'>
+            <button class='btn seven num' onClick ='getNumber(this.innerHTML)'>7</button>
+            <button class='btn eight num' onClick ='getNumber(this.innerHTML)'>8</button>
+            <button class='btn nine num' onClick ='getNumber(this.innerHTML)'>9</button>
+            <button class='btn multiply' onClick ='compute("multiply")'>X</button>
+        </div>
+        <div id='row_three'>
+            <button class='btn four num' onClick ='getNumber(this.innerHTML)'>4</button>
+            <button class='btn five num' onClick ='getNumber(this.innerHTML)'>5</button>
+            <button class='btn six num' onClick ='getNumber(this.innerHTML)'>6</button>
+            <button class='btn minus' onClick ='compute("subtract")'>-</button>
+        </div>
+        <div id='row_four'>
+            <button class='btn one num' onClick ='getNumber(this.innerHTML)'>1</button>
+            <button class='btn two num' onClick ='getNumber(this.innerHTML)'>2</button>
+            <button class='btn three num' onClick ='getNumber(this.innerHTML)'>3</button>
+            <button class='btn add' onClick ='compute("add")'>+</button>
+        </div>
+        <div id='row_five'>
+            <button class='btn-2 zero num' onClick ='getNumber(this.innerHTML)'>0</button>
+            <button class='btn decimal' onClick = 'toDecimal()'>.</button>
+            <button class='btn equal' onClick ='equals()'>=</button>
+        </div>
+    </div>
+
+
+    <script src='calc.js'></script>
+</body>
+</html>
