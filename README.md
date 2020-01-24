@@ -10,4 +10,4 @@
 
 - [Calculator](https://htmlpreview.github.io/?https://github.com/atRobert/odin_project/blob/master/calculator/calc.html#/bored)
 
-- [Pomodoro timer](https://htmlpreview.github.io/?https://github.com/atRobert/odin_project/blob/master/promodoro-timer/timer.html#/bored)
+- [Pomodoro timer](https://htmlpreview.github.io/?https://github.com/atRobert/odin_project/blob/master/pomodoro-timer/timer.html#/bored)
