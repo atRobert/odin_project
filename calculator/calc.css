@@ -1,3 +1,8 @@
+body{
+    font-family: 'ZCOOL QingKe HuangYou', cursive;
+    text-align: center;
+}
+
 #calculator{
     text-align: center;
     width:250px;
@@ -6,6 +11,7 @@
     height: 375px;
     padding-top: 10px;
     border-radius: 5px;
+    border:1px solid black;
 }
 
 #display{
