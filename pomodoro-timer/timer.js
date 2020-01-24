@@ -4,7 +4,7 @@ let secondsDisplay = document.querySelector('#seconds')
 let status = document.querySelector('#status')
 let minutes
 let seconds
-let startTime = 10
+let startTime = 1500
 let isPaused = true
 let currentTimer = 'work'
 
