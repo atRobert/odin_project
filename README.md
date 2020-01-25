@@ -10,4 +10,6 @@
 
 - [Calculator](https://htmlpreview.github.io/?https://github.com/atRobert/odin_project/blob/master/calculator/calc.html#/bored)
 
-- [Pomodoro timer](https://htmlpreview.github.io/?https://github.com/atRobert/odin_project/blob/master/pomodoro-timer/timer.html#/bored)
+- [Pomodoro Timer](https://htmlpreview.github.io/?https://github.com/atRobert/odin_project/blob/master/pomodoro-timer/timer.html#/bored)
+  
+  - HTML Preview messes up background and FontAwesome text..
