@@ -3,11 +3,10 @@
     --color-two: #546bab;
     --color-three: #87889c;
     --color-four: #bea9dec5;
+    --color-five: #582384eb;
   }
 
-html{
-    transform:scale(200%)
-}
+
 
 body{
     text-align: center;
@@ -59,7 +58,18 @@ button:focus{
     outline: none;
 }
 
-742
+#quote-box{
+    color: var(--color-five);
+    font-family: 'Courgette', cursive;
+    background:#fbfbfb75;
+    width: 50%;
+    margin: auto;
+    margin-top: auto;
+    margin-top: 50px;
+    padding: 10px;
+    border-radius: 10px;
+
+}
 
 :focus {outline:none;}
 ::-moz-focus-inner {border:0;}
