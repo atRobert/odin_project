@@ -1,5 +1,4 @@
 
-
 let containers = document.getElementById('container')
 let minutesDisplay = document.querySelector('#minutes')
 let secondsDisplay = document.querySelector('#seconds')

@@ -2,19 +2,15 @@
     --main-color: #131862;
     --color-two: #546bab;
     --color-three: #87889c;
-    --color-four: #bea9de;
+    --color-four: #bea9dec5;
   }
 
-
-html { 
-    background:url('nightbackground.jpg') no-repeat center center fixed; 
-    -webkit-background-size: cover;
-    -moz-background-size: cover;
-    -o-background-size: cover;
-    background-size: cover;
-}
 body{
     text-align: center;
+    background: url(nightbackground.jpg);
+    background-repeat: no-repeat;
+    background-size: cover;
+    background-attachment: fixed;
 }
 #container{
     width: 350px;
