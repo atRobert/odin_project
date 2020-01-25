@@ -5,6 +5,10 @@
     --color-four: #bea9dec5;
   }
 
+html{
+    transform:scale(200%)
+}
+
 body{
     text-align: center;
     background: url(nightbackground.jpg);
