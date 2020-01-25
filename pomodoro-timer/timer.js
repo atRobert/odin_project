@@ -1,4 +1,6 @@
 
+
+let containers = document.getElementById('container')
 let minutesDisplay = document.querySelector('#minutes')
 let secondsDisplay = document.querySelector('#seconds')
 let status = document.querySelector('#status')
@@ -7,17 +9,38 @@ let seconds
 let startTime = 1500
 let isPaused = true
 let currentTimer = 'work'
+let fiveSecondFlash = false
+let currentFlash = 'red'
 
 
 setInterval(function(){
     isPaused ? {} : runClock();  
 }, 1000)
 
+setInterval(function(){
+    if (fiveSecondFlash){
+        if (currentFlash == 'red'){
+            containers.style.borderColor='#131862'
+            currentFlash = 'normal'
+        } else {
+            containers.style.borderColor='red'
+            currentFlash = 'red'
+        }
+    }
+}, 500)
+
 function runClock(){
     startTime = --startTime
     minutesDisplay.textContent = getMinutes();
     secondsDisplay.textContent = getSeconds();
-    checkSwap()
+    checkSwap();
+    startTime <= 5? fiveSecondFlash = true : noFlash();
+}
+
+function noFlash(){
+    fiveSecondFlash = false
+    containers.style.borderColor='#131862'
+    currentFlash = 'normal'
 }
 
 function checkSwap(){
@@ -51,6 +74,11 @@ function getMinutes(){
 
 function resetTime(){
     pause()
+    currentTimer == 'work' ? resetWork() : resetBreak()
+}
+
+function resetWork(){
+    pause()
     status.textContent = 'Working Time!'
     currentTimer = 'work'
     startTime = 1500
@@ -74,4 +102,10 @@ function pause(){
 function play(){
     isPaused = false
 }
+
+
+
+
+
+
 

@@ -1,0 +1,64 @@
+:root {
+    --main-color: #131862;
+    --color-two: #546bab;
+    --color-three: #87889c;
+    --color-four: #bea9de;
+  }
+
+
+body{
+    text-align: center;
+    background: white;
+    background-image: url('nightbackground.jpg');
+    background-size: 100%;                      /* <------ */
+    background-repeat:   no-repeat;
+    background-position: center center; 
+}
+#container{
+    width: 350px;
+    height: 350px;
+    margin: auto;
+    margin-top: 50px;
+    background: var(--color-two);
+    border-radius: 50%;
+    border: var(--main-color) 2px solid;
+    color: var(--color-four)
+}
+
+#setType{
+    margin-top: 20px;
+}
+
+#status{
+    padding-top: 70px;
+    font-family: 'Montserrat', sans-serif;
+}
+
+#display{
+    font-family: 'Montserrat', sans-serif;
+    font-size:40px;
+}
+
+button{
+    border: 0px;
+    background: var(--main-color);
+    color: var(--color-four);
+    border-radius: 5px;
+    font-size: 15px;
+    transition: .25s ease;
+}
+
+button:hover{
+    background: var(--color-three);
+    color: var(--color-two)
+}
+
+button:focus{
+    outline: none;
+}
+
+742
+
+:focus {outline:none;}
+::-moz-focus-inner {border:0;}
+
