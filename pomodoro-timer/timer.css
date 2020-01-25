@@ -6,13 +6,15 @@
   }
 
 
+html { 
+    background:url('nightbackground.jpg') no-repeat center center fixed; 
+    -webkit-background-size: cover;
+    -moz-background-size: cover;
+    -o-background-size: cover;
+    background-size: cover;
+}
 body{
     text-align: center;
-    background: white;
-    background-image: url('nightbackground.jpg');
-    background-size: 100%;                      /* <------ */
-    background-repeat:   no-repeat;
-    background-position: center center; 
 }
 #container{
     width: 350px;

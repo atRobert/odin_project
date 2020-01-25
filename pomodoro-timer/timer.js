@@ -27,7 +27,7 @@ setInterval(function(){
             currentFlash = 'red'
         }
     }
-}, 500)
+}, 300)
 
 function runClock(){
     startTime = --startTime
