@@ -1,6 +1,11 @@
 let myLibrary = []
 let bookShelf = document.getElementById('bookShelf')
 
+let harryPotter = new Book('Harry Potter','JK Rowling', 500)
+myLibrary.push(harryPotter)
+let dictionary = new Book('Dictionary','Merriam Webster',1000)
+myLibrary.push(dictionary)
+
 function Book(title, author, pageNumber, read){
     this.title = title
     this.author = author
@@ -49,41 +54,71 @@ function render(){
 
 function renderShelf(currentBook){
     let shelf = document.createElement('div');
+    
     shelf.classList.add('shelf')
     shelf.classList.add(currentBook.id)
-    shelf.textContent = currentBook.title
     return shelf
+}
+
+function renderBookText(currentBook){
+    let bookText = document.createElement('span')
+    if (currentBook.author != ''){
+        bookText.textContent = currentBook.title + ', by ' + currentBook.author
+    } else {
+        bookText.textContent = currentBook.title
+    }
+    return bookText
 }
 
 function renderRemove(){
     let removeShelfButton = document.createElement('BUTTON')
+    removeShelfButton.classList.add('removeButton')
     removeShelfButton.setAttribute('onClick','removeShelf(this)')
-    removeShelfButton.textContent = 'Remove'
+    removeShelfButton.innerHTML = '<i class="far fa-times-circle"></i>'
     return removeShelfButton
 }
 
 function renderRead(){
     let readBookButton = document.createElement('BUTTON')
+    readBookButton.classList.add('markRead')
     readBookButton.setAttribute('onClick', 'readBookStatus(this)')
-    readBookButton.textContent = 'Read!'
+    readBookButton.innerHTML = '<i class="fas fa-book-open"></i>'
     return readBookButton
 }
 
 function renderNew(currentBook){
     shelf = renderShelf(currentBook)
+    bookText = renderBookText(currentBook)
     removeShelfButton = renderRemove()
     readBookButton = renderRead()
 
     bookShelf.appendChild(shelf)
+    shelf.appendChild(bookText)
     shelf.appendChild(removeShelfButton)  
     shelf.appendChild(readBookButton)
 }
 
+function getFormData(){
+    title = document.getElementById('title').value
+    if (title == ''){
+        alert('Please enter a title')
+    } else{ 
+        author = document.getElementById('author').value
+        pageNumber = document.getElementById('pages').value
+        document.getElementById('bookForm').reset()
+        return [title, author, pageNumber]
+    }
+}
+
+    
+
+
 function newBook(){
     let nextBook = new Book('')
-    nextBook.title = prompt('What is the name of the book?')
-    nextBook.author = prompt('Who wrote the book?')
-    nextBook.pageNumber = prompt('How many pages are in the book?')
+    bookValues = getFormData()
+    nextBook.title = bookValues[0]
+    nextBook.author = bookValues[1]
+    nextBook.pageNumber = bookValues[2]
     nextBook.read = false
     let newIDandTitle = uniqueID(nextBook, 0)
     nextBook.id = newIDandTitle[0]
@@ -111,15 +146,15 @@ function readBookStatus(element){
 function readTheBook(thisBook, element){
     thisBook.read = true
     console.log(thisBook.read)
-    element.parentNode.style.color = 'green'
-    element.textContent = 'Not Read'
+    element.parentNode.style.border = 'green 1px solid'
+    element.innerHTML = '<i class="fas fa-book"></i>'
 }
 
 function bookNotRead(thisBook, element){
     thisBook.read = false
-    console.log(element)
-    element.parentNode.style.color = 'black'
-    element.textContent = 'Read'
+    console.log(element.parentNode)
+    element.parentNode.style.border = 'black 1px solid'
+    element.innerHTML = '<i class="fas fa-book-open"></i>'
 }
 
 render()

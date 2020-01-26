@@ -1,0 +1,66 @@
+body{
+    font-family: 'Quicksand', sans-serif;
+    background-image: url(background.jpg);
+    background-size:cover;
+    background-repeat: no-repeat;
+}
+
+#bookFormDiv{
+    width: 400px;
+    text-align:center;
+    background: rgba(177, 177, 177, 0.534);
+    border-radius:0px 10px 0px 10px;
+    margin:auto;
+    padding:10px;
+    border: 1px white solid;
+}
+
+#bookForm{
+    width:200px;
+    margin:auto;
+
+}
+#bookForm input{
+    display: block;
+    margin-top:10px;
+    width:200px;
+}
+
+#getData{
+    margin-top: 5px;
+}
+
+#container{
+    height: 280px;
+}
+
+.removeButton, .markRead{
+    background:none;
+    border: none;
+}
+
+
+.removeButton:hover, .markRead:hover{
+    color:rgb(199, 199, 199);
+}
+
+.shelf{
+    width:700px;
+    height:60px;
+    padding-left: 20px;
+    background: rgba(185, 185, 185, 0.45);
+    border-radius:0px 10px 0px 10px; 
+    line-height: 60px;
+    border:1px solid white;
+    margin:auto;
+    margin-top:10px;
+    overflow: hidden;
+}
+.shelf, .shelf button{
+    font-size:20px;
+}
+
+.shelf button{
+    float:right;
+}
+

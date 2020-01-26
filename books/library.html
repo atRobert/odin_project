@@ -4,12 +4,26 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <link href="https://fonts.googleapis.com/css?family=Quicksand&display=swap" rel="stylesheet">
+
+    <script src="https://kit.fontawesome.com/e1b1731a15.js" crossorigin="anonymous"></script>   
     <title>Document</title>
-    
+    <link rel="stylesheet" href="library.css">
 </head>
 <body>
-    <button id='addBook' onClick='newBook()'>Add Book</button>
-    <div id='bookShelf'></div>
-    <script src='library.js'></script>
+    <div id='container'>
+        <div id='bookFormDiv'>
+            <h1>Add a Book!</h1>
+            <form id='bookForm' action="">
+                <input type="text" id='title'name='title' placeholder="Title">
+                <input type="text" id='author' name='author' placeholder="Author">
+                <input type="text" id='pages' name='pages' placeholder="Pages">
+            </form>
+            <button id='getData' onClick='newBook()'><i class="fas fa-plus-circle"></i></button>
+        </div>
+    </div>
+        <div id='bookShelf'></div>
+        <script src='library.js'></script>
+    
 </body>
 </html>
