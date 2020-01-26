@@ -2,7 +2,7 @@
 
 ## HTML Previews can be found here:
 
-- [Rock Paper Scissors Game](https://atrobert.github.io/odin_project/index.html)
+- [Rock Paper Scissors Game](https://atrobert.github.io/odin_project/RPS-game/index.html)
 
 - [Let's Draw!](https://atrobert.github.io/odin_project//draw/index.html)
 
