@@ -25,7 +25,7 @@ function randomNumber(){
 
 function uniqueID(nextBook, tries){
     let title = nextBook.title
-    let unique_id = String(title + randomNumber()).replace(' ','')
+    let unique_id = String(title + randomNumber()).split(' ').join('')
     if (tries > 14){
         nextBook.title = prompt('Too many of this book exist. Try different title.')
         find_id = uniqueID(nextBook, 0)
@@ -100,11 +100,14 @@ function renderNew(currentBook){
 
 function getFormData(){
     title = document.getElementById('title').value
+    pageNumber = document.getElementById('pages').value
     if (title == ''){
         alert('Please enter a title')
-    } else{ 
-        author = document.getElementById('author').value
-        pageNumber = document.getElementById('pages').value
+    } else if (isNaN(pageNumber) || pageNumber.trim() == '') { 
+        alert('Page number required!')
+    } else {
+
+        author = document.getElementById('author').value 
         document.getElementById('bookForm').reset()
         return [title, author, pageNumber]
     }
