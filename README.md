@@ -15,3 +15,5 @@
   - HTML Preview messes up background and FontAwesome text..
   
 - [Books](https://htmlpreview.github.io/?https://github.com/atRobert/odin_project/blob/master/books/library.html#/bored)
+
+  - HTML Preview doesn't allo for books with more than two spaces.
