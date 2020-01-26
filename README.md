@@ -16,4 +16,4 @@
   
 - [Books](https://htmlpreview.github.io/?https://github.com/atRobert/odin_project/blob/master/books/library.html#/bored)
 
-  - HTML Preview doesn't allo for books with more than two spaces.
+  - HTML Preview doesn't show fontawesome text..
