@@ -21,7 +21,7 @@ function randomNumber(){
 function uniqueID(nextBook, tries){
     let title = nextBook.title
     let unique_id = String(title + randomNumber()).replace(' ','')
-    if (tries > 9){
+    if (tries > 14){
         nextBook.title = prompt('Too many of this book exist. Try different title.')
         find_id = uniqueID(nextBook, 0)
         return find_id
