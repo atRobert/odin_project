@@ -40,8 +40,16 @@ body{
 }
 
 
-.removeButton:hover, .markRead:hover{
-    color:rgb(199, 199, 199);
+.removeButton:hover{
+    color: rgb(221, 98, 98);
+}
+
+.fa-book:hover{
+    color: rgb(221, 98, 98);
+}
+
+.fa-book-open:hover{
+    color: #50bf50;
 }
 
 .shelf{

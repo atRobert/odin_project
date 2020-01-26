@@ -1,9 +1,14 @@
 let myLibrary = []
 let bookShelf = document.getElementById('bookShelf')
+let bookFormDiv = document.getElementById('bookFormDiv')
 
-let harryPotter = new Book('Harry Potter','JK Rowling', 500)
+const allBooksRead = (currentBook) => currentBook.read == true;
+
+let harryPotter = new Book('Harry Potter','JK Rowling', 500, false)
+harryPotter.id = 'harrypotter3'
 myLibrary.push(harryPotter)
-let dictionary = new Book('Dictionary','Merriam Webster',1000)
+let dictionary = new Book('Dictionary','Merriam Webster',1000, false)
+dictionary.id = 'dctionary4'
 myLibrary.push(dictionary)
 
 function Book(title, author, pageNumber, read){
@@ -149,15 +154,33 @@ function readBookStatus(element){
 function readTheBook(thisBook, element){
     thisBook.read = true
     console.log(thisBook.read)
-    element.parentNode.style.border = 'green 1px solid'
+    
+    element.parentNode.style.border = '#50bf50 1px solid'
+    element.parentNode.style.color = '#50bf50'
     element.innerHTML = '<i class="fas fa-book"></i>'
 }
 
 function bookNotRead(thisBook, element){
     thisBook.read = false
     console.log(element.parentNode)
-    element.parentNode.style.border = 'black 1px solid'
+    
+    element.parentNode.style.border = 'white 1px solid'
+    element.parentNode.style.color = 'black'
     element.innerHTML = '<i class="fas fa-book-open"></i>'
 }
 
+function randomColor(){
+    return '#' + Math.floor(Math.random()*16777215).toString(16);
+}
+
 render()
+
+let celebrate = setInterval(function(){
+    if (myLibrary.every(allBooksRead)){
+        bookFormDiv.style.borderColor = randomColor()
+        bookFormDiv.style.color = randomColor()
+    } else {
+        bookFormDiv.style.borderColor = 'white'
+        bookFormDiv.style.color = 'black'
+    }
+}, 100)
