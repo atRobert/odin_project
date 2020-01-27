@@ -50,8 +50,8 @@ function checkWin(game){
 function horizontalWin(board, mark){
     function checkHorizontal(row){
         let allEqual = row.every( move => move === mark)
-        let anyUndefined = row.some( move => move != undefined)
-        return allEqual && anyUndefined == true ? true : false
+        let anyUndefined = row.some( move => move === undefined)
+        return allEqual && !anyUndefined == true ? true : false
     }
 
     let result = false
@@ -65,10 +65,9 @@ function verticalWin(board, mark){
     let result = false 
     for (let col = 0; col < board.length; col++){
         let vertical = board.map(element => element[col])
-        let anyUndefined = vertical.some( move => move != undefined)
-        vertical = vertical.every(mark => mark === mark)
-        
-        vertical && anyUndefined == true ? result = true : {}
+        let anyUndefined = vertical.some( move => move === undefined)
+        vertical = vertical.every(move => move === mark)
+        vertical && !anyUndefined == true ? result = true : {}
     }
     return result
 }
