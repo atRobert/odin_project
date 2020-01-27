@@ -12,3 +12,4 @@
   
 - [Books](https://atrobert.github.io/odin_project//books/library.html)
 
+- [tictactoe](https://atrobert.github.io/odin_project//tictactoe/tictactoe.html)
