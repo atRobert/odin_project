@@ -106,21 +106,55 @@ function rowColWin(rowCol, boardSize){
     return result
 }
 
+function buildBoard(boardSize){
+    let gameBoard = document.getElementById('gameBoard')
+    for (let colNum = 0; colNum < boardSize; colNum++){
+        let column = document.createElement('div')
+        column.classList.add('col')
+        gameBoard.appendChild(column)
+        for (let rowNum=0; rowNum < boardSize; rowNum++ ){
+            let row = document.createElement('div')
+            row.classList.add('row')
+            row.classList.add('_' + rowNum + '_' + colNum )
+            row.addEventListener('click',function(){
+                console.log(this)
+                let rowCol = this.classList[1]
+                rowCol = rowCol.split('_')
+                rowCol.shift()
+                playGame(game,rowCol[0],rowCol[1], this)
+
+            })
+            column.appendChild(row)
+        }
+    }   
+}
+
+function playGame(game, row, col, e){
+    if (!gameWon){
+        game.currentPlayer == game.playerOne ? game.currentPlayer = game.playerTwo : game.currentPlayer = game.playerOne
+        playerChoice(game, row, col)
+        gameWon = checkWin(game.currentPlayer, boardSize, game.diagWinCondition)
+        console.table(game.board)
+        e.textContent = game.currentPlayer.marker
+        if (gameWon){
+            let display = document.getElementById('display')
+            display.textContent = game.currentPlayer.name + ' wins!'
+            console.log(game.currentPlayer.name + ' wins!')
+            console.table(game.board)
+        }
+
+    } else{
+       console.log('game is over. Sorry') 
+    }
+}
+
 
 const playerOne = prompt('Player 1, enter your name.')
 const playerTwo = prompt('Player 2, enter your name.')
 const boardSize = prompt('How big do you want the board?',3)
 const game = new TttGame(playerOne,playerTwo,boardSize)
 let gameWon = false
-while (!gameWon){
-    game.currentPlayer == game.playerOne ? game.currentPlayer = game.playerTwo : game.currentPlayer = game.playerOne
-    console.table(game.board)
-    let currentPlayerMove = prompt(game.currentPlayer.name + ' choose your row and col.(Space Between)')
-    let row = currentPlayerMove.split(' ')[0]
-    let col = currentPlayerMove.split(' ')[1]
-    playerChoice(game, row, col)
-    gameWon = checkWin(game.currentPlayer, boardSize, game.diagWinCondition)
+buildBoard(boardSize)
 
-}
-console.log(game.currentPlayer.name + ' wins!')
-console.table(game.board)
+
+

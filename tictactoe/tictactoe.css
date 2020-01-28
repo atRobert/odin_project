@@ -1,0 +1,25 @@
+.row{
+    height: 25px;
+    width:25px;
+    border:1px solid black;
+    display: grid;
+    float: left;
+}
+
+.col{
+    height: 25px;
+    width:25px;
+    display:grid;
+    float:left;
+    font-family: 'Montserrat', sans-serif;
+
+}
+
+body{
+    text-align:center;
+}
+
+#display{
+    font-family: 'Titillium Web', sans-serif;
+}
+
