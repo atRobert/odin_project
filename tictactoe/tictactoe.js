@@ -8,6 +8,8 @@ function TttGame(p1Name, p2Name, size=3){
 function Player(name, marker){
     this.name = name
     this.marker = marker
+    this.columnMoves = []
+    this.rowMoves = []
 }
 
 function generateBoard(size){
@@ -72,4 +74,15 @@ function verticalWin(board, mark){
     return result
 }
 
+
+function rowColWin(player){
+    moveCount = player.columnMoves.reduce(function(obj, item){
+        if (!obj[item]){
+            obj[item]=0
+        }
+        obj[item]++;
+        return obj;
+
+    },{})
+}
 const game = new TttGame('rob','mike',3)
