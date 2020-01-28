@@ -24,10 +24,14 @@ function playerChoice(game, row, col){
     let validMove = checkMoveIsValid(game.board, row, col)
     if (validMove){
         board = placeMark(game, row, col)
+        game.currentPlayer.rowMoves.push(row)
+        game.currentPlayer.columnMoves.push(col)
         return board
     } else {
         newChoice = prompt('Spot Taken Try again (row) (col)').split(' ')
         board = playerChoice(game, newChoice[0], newChoice[1])
+        game.currentPlayer.rowMoves.push(row)
+        game.currentPlayer.columnMoves.push(col)
         return board
     }
 }
@@ -43,40 +47,17 @@ function placeMark(game, row, col){
     return game.board
 }
 
-function checkWin(game){
-    verticalWin(game.board, game.currentPlayer.marker)
-    horizontalWin(game.board, game.currentPlayer.marker)
-    diaganolWin(game.board, game.currentPlayer.marker)
-}
-
-function horizontalWin(board, mark){
-    function checkHorizontal(row){
-        let allEqual = row.every( move => move === mark)
-        let anyUndefined = row.some( move => move === undefined)
-        return allEqual && !anyUndefined == true ? true : false
-    }
-
-    let result = false
-    for (let row = 0; row < board.length; row++){
-        checkHorizontal(board[row]) ? result = true : {}
-    }
-    return result
-}
-
-function verticalWin(board, mark){
-    let result = false 
-    for (let col = 0; col < board.length; col++){
-        let vertical = board.map(element => element[col])
-        let anyUndefined = vertical.some( move => move === undefined)
-        vertical = vertical.every(move => move === mark)
-        vertical && !anyUndefined == true ? result = true : {}
-    }
-    return result
+function checkWin(currentPlayer, boardSize){
+    let colWin = rowColWin(currentPlayer.columnMoves, boardSize)
+    let rolWin = rowColWin(currentPlayer.rowMoves, boardSize)
+    // diaganolWin(game.board, game.currentPlayer.marker)
+    return colWin || rolWin
 }
 
 
-function rowColWin(player){
-    moveCount = player.columnMoves.reduce(function(obj, item){
+function rowColWin(rowCol, boardSize){
+    result = false
+    moveCount = rowCol.reduce(function(obj, item){
         if (!obj[item]){
             obj[item]=0
         }
@@ -84,5 +65,12 @@ function rowColWin(player){
         return obj;
 
     },{})
+    for (let key in moveCount){
+        let value = moveCount[key];
+        if (value >= boardSize){
+          result = true
+        }
+    }
+    return result
 }
 const game = new TttGame('rob','mike',3)
