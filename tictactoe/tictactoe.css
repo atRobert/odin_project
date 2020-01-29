@@ -21,5 +21,14 @@ body{
 
 #display{
     font-family: 'Titillium Web', sans-serif;
+    width:400px;
+    margin:auto;
+    margin-bottom: 50px;
+    font-size: 45px;
+}
+
+#gameBoard{
+    width:400px;
+    margin:auto;
 }
 

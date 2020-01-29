@@ -48,11 +48,8 @@ function playerChoice(game, row, col){
         game.currentPlayer.genMoves.push(String([row,col]))
         return board
     } else {
-        newChoice = prompt('Spot Taken Try again (row) (col)').split(' ')
-        board = playerChoice(game, newChoice[0], newChoice[1])
-        game.currentPlayer.rowMoves.push(row)
-        game.currentPlayer.columnMoves.push(col)
-        return board
+        newChoice = alert('Spot Taken Try again!')
+        turnCount--
     }
 }
 
@@ -108,14 +105,26 @@ function rowColWin(rowCol, boardSize){
 
 function buildBoard(boardSize){
     let gameBoard = document.getElementById('gameBoard')
+    let paddingSize = Math.floor(400 / boardSize) + 'px'
+    let boxCount = 1
     for (let colNum = 0; colNum < boardSize; colNum++){
         let column = document.createElement('div')
         column.classList.add('col')
+        column.style.cssText = `height:${paddingSize};width:${paddingSize};line-height:${paddingSize};`
         gameBoard.appendChild(column)
         for (let rowNum=0; rowNum < boardSize; rowNum++ ){
             let row = document.createElement('div')
             row.classList.add('row')
             row.classList.add('_' + rowNum + '_' + colNum )
+            row.classList.add('box'+boxCount)
+            row.style.cssText = `height:${paddingSize};width:${paddingSize};line-height:${paddingSize};font-size:${paddingSize};`
+
+            boxCount == 1 ? row.style.borderTopLeftRadius = '12px' : {}
+            boxCount == boardSize ? row.style.borderBottomLeftRadius = '12px' : {}
+            boxCount == boardSize**2 ? row.style.borderBottomRightRadius = '12px' : {}
+            boxCount == boardSize**2 - boardSize + 1 ? row.style.borderTopRightRadius = '12px' : {}
+            boxCount++
+
             row.addEventListener('click',function(){
                 console.log(this)
                 let rowCol = this.classList[1]
@@ -129,29 +138,46 @@ function buildBoard(boardSize){
     }   
 }
 
-function playGame(game, row, col, e){
-    if (!gameWon){
-        game.currentPlayer == game.playerOne ? game.currentPlayer = game.playerTwo : game.currentPlayer = game.playerOne
-        playerChoice(game, row, col)
-        gameWon = checkWin(game.currentPlayer, boardSize, game.diagWinCondition)
-        console.table(game.board)
-        e.textContent = game.currentPlayer.marker
-        if (gameWon){
-            let display = document.getElementById('display')
-            display.textContent = game.currentPlayer.name + ' wins!'
-            console.log(game.currentPlayer.name + ' wins!')
-            console.table(game.board)
-        }
 
-    } else{
-       console.log('game is over. Sorry') 
-    }
+function tieGame(boardSize){
+    return (turnCount > boardSize**2)
 }
 
 
-const playerOne = prompt('Player 1, enter your name.')
-const playerTwo = prompt('Player 2, enter your name.')
-const boardSize = prompt('How big do you want the board?',3)
+function playGame(game, row, col, e){
+    let display = document.getElementById('display')
+    if (turnCount > boardSize**2){
+        display.textContent = "It's a tie!"
+    } else if (!gameWon){
+  
+        
+        game.currentPlayer == game.playerOne ? game.currentPlayer = game.playerTwo : game.currentPlayer = game.playerOne
+        playerChoice(game, row, col)      
+        gameWon = checkWin(game.currentPlayer, boardSize, game.diagWinCondition)
+        e.textContent = game.currentPlayer.marker
+        turnCount++
+        turnCount > boardSize**2 ? display.textContent = "It's a tie!" : {}
+        if (gameWon){         
+            display.textContent = game.currentPlayer.name + ' wins!'
+        }
+    } else{
+       alert('GAME OVER') 
+    }
+}
+
+function promptBoardSize(){
+    let boardSize
+    while (isNaN(boardSize)){
+        boardSize = prompt('How big do you want the board?',3)
+    }
+    return boardSize
+}
+
+
+const playerOne = prompt('Player 1, enter your name.', 'Player One (x)')
+const playerTwo = prompt('Player 2, enter your name.', 'Player Two (o)')
+const boardSize = promptBoardSize()
+let turnCount = 1
 const game = new TttGame(playerOne,playerTwo,boardSize)
 let gameWon = false
 buildBoard(boardSize)
