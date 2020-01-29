@@ -85,21 +85,15 @@ function diaganolWin(diagWinCondition, genMoves){
 
 
 function rowColWin(rowCol, boardSize){
-    result = false
+    let result = false
     moveCount = rowCol.reduce(function(obj, item){
         if (!obj[item]){
             obj[item]=0
         }
         obj[item]++;
+        obj[item] == boardSize ? result = true : {}
         return obj;
-
     },{})
-    for (let key in moveCount){
-        let value = moveCount[key];
-        if (value >= boardSize){
-          result = true
-        }
-    }
     return result
 }
 
@@ -136,11 +130,6 @@ function buildBoard(boardSize){
             column.appendChild(row)
         }
     }   
-}
-
-
-function tieGame(boardSize){
-    return (turnCount > boardSize**2)
 }
 
 

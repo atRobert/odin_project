@@ -17,6 +17,7 @@
 
 body{
     text-align:center;
+    background-color:#D9F1F4E3;
 }
 
 #display{
@@ -29,6 +30,16 @@ body{
 
 #gameBoard{
     width:400px;
+    height:400px;
     margin:auto;
 }
 
+#gameBoardShadow{
+    width:400px;
+    height:400px;
+    padding:50px;
+    background: #36C9C6;
+    margin:auto;
+    border-radius:12px;
+    box-shadow:4px 4px 4px #3E505B;
+}
