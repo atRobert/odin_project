@@ -163,13 +163,38 @@ function promptBoardSize(){
 }
 
 
-const playerOne = prompt('Player 1, enter your name.', 'Player One (x)')
-const playerTwo = prompt('Player 2, enter your name.', 'Player Two (o)')
-const boardSize = promptBoardSize()
-let turnCount = 1
-const game = new TttGame(playerOne,playerTwo,boardSize)
-let gameWon = false
-buildBoard(boardSize)
+let playerNameSubmit = document.getElementById("playerNameSubmit")
+playerNameSubmit.addEventListener('click',function(event){
+    event.preventDefault()
+    let playerInfo = document.getElementById("playerInfo")
+    const playerOne = document.getElementById("playerOneName").value || "Player One (X)"
+    const playerTwo = document.getElementById("playerTwoName").value || "Player Two (O)"
+    boardSize = document.getElementById("getBoardSize").value
+    // document.getElementById('gameBoard').removeChild(playerInfo)
+    playerInfo.style.display = 'none'
+    turnCount = 1
+    game = new TttGame(playerOne,playerTwo,boardSize)
+    gameWon = false
+    buildBoard(boardSize)
+})
+
+let resetGame = document.getElementById("resetButton")
+resetGame.addEventListener('click',function(even){
+    event.preventDefault()
+    let gameBoardShadow = document.getElementById("gameBoardShadow")
+    let gameBoard = document.getElementById("gameBoard")
+    let playerInfo = document.getElementById("playerInfo")
+    let display = document.getElementById("display")
+    display.textContent = "TIC TAC TOE"
+    gameBoardShadow.removeChild(gameBoard)
+    gameBoard = document.createElement('div')
+    gameBoard.setAttribute('id','gameBoard')
+    gameBoardShadow.appendChild(gameBoard)
+    game = null
+    playerInfo.style.display = ''
+})
+
+
 
 
 

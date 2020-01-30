@@ -34,6 +34,21 @@ body{
     margin:auto;
 }
 
+#gameBoardForm form input{
+    display: block;
+    margin: auto;
+    margin-bottom: auto;
+    margin-bottom: 15px;
+    border-radius: 5px;
+    border: 1px solid black;
+    font-size: 20px;
+}
+
+
+#playerNameSubmit:hover{
+    background-color: #D9F1F4E3;
+}
+
 #gameBoardShadow{
     width:400px;
     height:400px;
@@ -42,4 +57,20 @@ body{
     margin:auto;
     border-radius:12px;
     box-shadow:4px 4px 4px #3E505B;
+    border: 1px solid black;
+}
+
+#playerInfo{
+    background: #D4DCFF;
+    padding: 30px 10px 10px;
+    border-radius: 5px;
+    border: black 1px solid;
+}
+ 
+#resetButton{
+    background: #ea7b7b;
+    margin-top: 50px;
+    border: 1px black solid;
+    font-size: 30px;
+    border-radius: 5px;
 }

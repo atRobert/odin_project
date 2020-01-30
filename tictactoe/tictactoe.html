@@ -11,7 +11,23 @@
 <body>
     <div id='display'>TIC TAC TOE</div>
     <div id='gameBoardShadow'>
-        <div id='gameBoard'></div>
+        <div id='gameBoardForm'>
+            <form id="playerInfo" action="">
+                <label for="playerNameSubmit">Player One Name</label>
+                <input id ="playerOneName" type="text" placeholder="Player 1 Name">
+                <label for="playerNameSubmit">Player Two Name:</label>
+                <input id ="playerTwoName" type="text" placeholder="Player 1 Name">
+                <label for="playerNameSubmit">Choose your board size:</label>
+                <input id ="getBoardSize"  type="text" value="3">
+                <input id ='playerNameSubmit' type="submit" value='Play!' name="playerNameSubmit">
+            </form>
+        </div>
+        <div id='gameBoard'>
+            
+        </div>
+    </div>
+    <div>
+        <button id='resetButton'>Reset</button>
     </div>
     
     <script src='tictactoe.js'></script>
