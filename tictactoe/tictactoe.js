@@ -50,13 +50,12 @@ function playerChoice(game, row, col){
     } else {
         newChoice = alert('Spot Taken Try again!')
         turnCount--
+        return false
     }
 }
 
 function checkMoveIsValid(board, row, col){
     let result 
-    console.log(row)
-    console.log(col)
     board[row][col] === undefined ? result = true : result = false
     return result
 }
@@ -75,8 +74,6 @@ function checkWin(currentPlayer, boardSize, diagWinCondition){
 
 function diaganolWin(diagWinCondition, genMoves){
     let result = false
-    console.log(diagWinCondition)
-    console.log(genMoves)
     checker = (arr, target) => target.every(v => arr.includes(v));
     checker(genMoves, diagWinCondition[0]) ? result = true : {}
     checker(genMoves, diagWinCondition[1]) ? result = true : {}
@@ -120,7 +117,6 @@ function buildBoard(boardSize){
             boxCount++
 
             row.addEventListener('click',function(){
-                console.log(this)
                 let rowCol = this.classList[1]
                 rowCol = rowCol.split('_')
                 rowCol.shift()
@@ -140,11 +136,14 @@ function playGame(game, row, col, e){
     } else if (!gameWon){
   
         
-        game.currentPlayer == game.playerOne ? game.currentPlayer = game.playerTwo : game.currentPlayer = game.playerOne
-        playerChoice(game, row, col)      
-        gameWon = checkWin(game.currentPlayer, boardSize, game.diagWinCondition)
-        e.textContent = game.currentPlayer.marker
-        turnCount++
+        playerSwap(game)
+        if (playerChoice(game, row, col)){     
+            gameWon = checkWin(game.currentPlayer, boardSize, game.diagWinCondition)
+            e.textContent = game.currentPlayer.marker
+            turnCount++
+        } else {
+            playerSwap(game)
+        }
         turnCount > boardSize**2 ? display.textContent = "It's a tie!" : {}
         if (gameWon){         
             display.textContent = game.currentPlayer.name + ' wins!'
@@ -152,6 +151,10 @@ function playGame(game, row, col, e){
     } else{
        alert('GAME OVER') 
     }
+}
+
+function playerSwap(game){
+    game.currentPlayer == game.playerOne ? game.currentPlayer = game.playerTwo : game.currentPlayer = game.playerOne
 }
 
 function promptBoardSize(){
