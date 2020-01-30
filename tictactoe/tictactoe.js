@@ -170,7 +170,7 @@ playerNameSubmit.addEventListener('click',function(event){
     const playerOne = document.getElementById("playerOneName").value || "Player One (X)"
     const playerTwo = document.getElementById("playerTwoName").value || "Player Two (O)"
     boardSize = document.getElementById("getBoardSize").value
-    // document.getElementById('gameBoard').removeChild(playerInfo)
+    boardSize > 20 ? boardSize = 20 : {}
     playerInfo.style.display = 'none'
     turnCount = 1
     game = new TttGame(playerOne,playerTwo,boardSize)
@@ -180,7 +180,6 @@ playerNameSubmit.addEventListener('click',function(event){
 
 let resetGame = document.getElementById("resetButton")
 resetGame.addEventListener('click',function(even){
-    event.preventDefault()
     let gameBoardShadow = document.getElementById("gameBoardShadow")
     let gameBoard = document.getElementById("gameBoard")
     let playerInfo = document.getElementById("playerInfo")
