@@ -1,0 +1,32 @@
+
+.active{
+    background-color : #583404 !important;
+    color :  #fee3a5 !important;
+}
+
+
+ul{
+    list-style-type: none;
+    margin: 0;
+    padding: 0;
+    overflow: hidden;
+    background-color: black
+}
+.navBarLine a{
+    background-color : black;
+    color :  white;
+}
+
+.navBarLine a:hover{
+    background-color : #583404;
+    color :  #fee3a5;
+}
+
+
+.navBarLink{
+    display: block; 
+    text-align: center; 
+    padding: 14px 16px; 
+    text-decoration: none;
+}
+
