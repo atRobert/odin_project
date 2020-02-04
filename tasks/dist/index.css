@@ -1,3 +1,12 @@
+body{
+    transform: scale(0.75);
+}
+
+body{
+    font-family: 'Raleway', sans-serif;
+
+}
+
 #main{
     width: 80%;
     height: 700px;
@@ -32,9 +41,20 @@
 .title-tab-span{
     position:absolute;
     bottom:5px;
-    left: 8px;
+    left: 23px;
     overflow:hidden;
 }
+
+.title-tab .fa-check{
+    position: absolute;
+    top:0px;
+    left:0px;
+    border-left:0px;
+    border-top:0px;
+    border-radius:0px;
+    border-bottom-right-radius: 5px;
+}
+
 
 .active{
     border-bottom:none;
@@ -55,10 +75,20 @@
 .fa-plus-circle{
     float:left;
     line-height: 40px;
-    margin-left:20px;
+    background-color: transparent;
+    font-size: 20px;
+    border:0px;
+}
+
+.fa-plus-circle:hover{
+    color:green
 }
 
 .title-tab:hover .fa-times-circle{
+    color:black;
+}
+
+.title-tab .fa-times-circle:hover{
     color:red;
 }
 
@@ -96,8 +126,16 @@
     border-radius: 50%;
     
 }
-.task:hover .fa-check{
+.fa-check:hover{
     color:grey;
+}
+
+.taskComplete{
+    color:green;
+}
+
+.taskComplete:hover{
+    color:red;
 }
 
 .checkbox-div{
@@ -116,6 +154,14 @@
 .task{
     margin-top:10px;
     position:relative;
+    border:1px transparent solid;
+    padding:3px;
+    border-radius: 5px;
+}
+
+.task:hover{
+    border:1px black solid;
+    border-radius: 5px;
 }
 #page-mask {
     position: fixed;
@@ -126,3 +172,18 @@
     background-color: rgba(0,0,0,0.6);
     display:none;
   }
+
+#task-note-border{
+    border: 1px black solid;
+    border-radius: 5px;
+    padding:3px;
+    height:300px
+}
+.note{
+    display:none;
+}
+
+.active-note{
+    display: block;
+}
+

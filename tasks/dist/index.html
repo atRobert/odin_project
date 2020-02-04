@@ -3,21 +3,24 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link href="https://fonts.googleapis.com/css?family=Raleway&display=swap" rel="stylesheet">
     <script src="https://kit.fontawesome.com/e1b1731a15.js" crossorigin="anonymous"></script>  
     <link rel="stylesheet" href="index.css">
     <link rel="stylesheet" href="title-form.css">
+
     <meta http-equiv="X-UA-Compatible" content="ie=edge">
+
     <title>Document</title>
 </head>
 <body>
     <div id='main'>
         <div id='tab-content'>
-            <div class='title-tab'><span class='title-tab-span'>Test Tab</span><i class="far fa-times-circle"></i></div>
-            <div class='title-tab  active'><span class='title-tab-span'>Test Tab</span><i class="far fa-times-circle"></i></div>
-            <div class='title-tab'><span class='title-tab-span'>Test</span><i class="far fa-times-circle"></i></div>
-            <div class='title-tab'><span class='title-tab-span'>sdjklfhadfgkljhsdfgkljhsdfgkljdhfg</span><i class="far fa-times-circle"></i></div>
-            <div class='title-tab'><span class='title-tab-span'>Test Tab</span></div>
-            <i class="fas fa-plus-circle"></i>
+            <div class='title-tab active'><div class='checkbox-div'><i class="fas fa-check"></i></div><span class='title-tab-span'>Test Tab</span><i class="far fa-times-circle"></i></div>
+            <div class='title-tab'><div class='checkbox-div'><i class="fas fa-check"></i></div><span class='title-tab-span'>Test Tab</span><i class="far fa-times-circle"></i></div>
+            <div class='title-tab'><div class='checkbox-div'><i class="fas fa-check"></i></div><span class='title-tab-span'>Test</span><i class="far fa-times-circle"></i></div>
+            <div class='title-tab'><div class='checkbox-div'><i class="fas fa-check"></i></div><span class='title-tab-span'>sdjklfhadfgkljhsdfgkljhsdfgkljdhfg</span><i class="far fa-times-circle"></i></div>
+            <div class='title-tab'><div class='checkbox-div'><i class="fas fa-check"></i></div><span class='title-tab-span'>Test Tab</span></div>
+            <button class="fas fa-plus-circle"></button>
         </div>
         <div id='body-content'>
             <div id='title-body'><h1>This is the title</h1></div>
@@ -25,13 +28,20 @@
             </div>
             <div id='task-body'>
                 <div id='task-list'>
-                    <div class='task'><div class='checkbox-div'><i class="fas fa-check"></i></div><div class='text-div'>This is the text</div></div>
-                    <div class='task'><div class='checkbox-div'><i class="fas fa-check"></i></div><div class='text-div'>This is the text</div></div>
-                    <div class='task'><div class='checkbox-div'><i class="fas fa-check"></i></div><div class='text-div'>This is eqkjwehqwkejhqwekljhqwekljhqwekljhqwekljqhwe jwekhqwelkjhqwekjh jkhqwekjhqwe kljh jkhwekjhw jkhthe text</div> </div>
-                    <div class='task'><div class='checkbox-div'><i class="fas fa-check"></i></div><div class='text-div'>This is the text</div></div>
+                    <h3>Tasks:</h3>
+                    <div class='task' taskID = '1'><div class='checkbox-div'><i class="fas fa-check"></i></div><div class='text-div'>This is the text</div></div>
+                    <div class='task' taskID = '2'><div class='checkbox-div'><i class="fas fa-check"></i></div><div class='text-div'>This is the text</div></div>
+                    <div class='task' taskID = '3'><div class='checkbox-div'><i class="fas fa-check"></i></div><div class='text-div'>This is eqkjwehqwkejhqwekljhqwekljhqwekljhqwekljqhwe jwekhqwelkjhqwekjh jkhqwekjhqwe kljh jkhwekjhw jkhthe text</div> </div>
+                    <div class='task' taskID = '4'><div class='checkbox-div'><i class="fas fa-check"></i></div><div class='text-div'>This is the text</div></div>
                 </div>
                 <div id='task-notes'>
-                    Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.
+                    <h3>Notes:</h3>
+                    <div id='task-note-border'>
+                        <div class='note noteID1'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
+                        <div class='note noteID2'>LOLOLOLOLOLOL</div>
+                        <div class='note noteID3'>Test 3</div>
+                        <div class='note noteID4'>Test 4</div>
+                    </div>
                 </div>
             </div>
         </div>
