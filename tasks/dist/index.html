@@ -15,12 +15,14 @@
 <body>
     <div id='main'>
         <div id='tab-content'>
+            <div id='tab-holder'>
             <div class='title-tab active'><div class='checkbox-div'><i class="fas fa-check"></i></div><span class='title-tab-span'>Test Tab</span><i class="far fa-times-circle"></i></div>
             <div class='title-tab'><div class='checkbox-div'><i class="fas fa-check"></i></div><span class='title-tab-span'>Test Tab</span><i class="far fa-times-circle"></i></div>
             <div class='title-tab'><div class='checkbox-div'><i class="fas fa-check"></i></div><span class='title-tab-span'>Test</span><i class="far fa-times-circle"></i></div>
             <div class='title-tab'><div class='checkbox-div'><i class="fas fa-check"></i></div><span class='title-tab-span'>sdjklfhadfgkljhsdfgkljhsdfgkljdhfg</span><i class="far fa-times-circle"></i></div>
             <div class='title-tab'><div class='checkbox-div'><i class="fas fa-check"></i></div><span class='title-tab-span'>Test Tab</span></div>
-            <button class="fas fa-plus-circle"></button>
+            </div>
+            <button class="fas fa-plus-circle add-title"></button>
         </div>
         <div id='body-content'>
             <div id='title-body'><h1>This is the title</h1></div>
@@ -28,11 +30,12 @@
             </div>
             <div id='task-body'>
                 <div id='task-list'>
-                    <h3>Tasks:</h3>
-                    <div class='task' taskID = '1'><div class='checkbox-div'><i class="fas fa-check"></i></div><div class='text-div'>This is the text</div></div>
-                    <div class='task' taskID = '2'><div class='checkbox-div'><i class="fas fa-check"></i></div><div class='text-div'>This is the text</div></div>
-                    <div class='task' taskID = '3'><div class='checkbox-div'><i class="fas fa-check"></i></div><div class='text-div'>This is eqkjwehqwkejhqwekljhqwekljhqwekljhqwekljqhwe jwekhqwelkjhqwekjh jkhqwekjhqwe kljh jkhwekjhw jkhthe text</div> </div>
-                    <div class='task' taskID = '4'><div class='checkbox-div'><i class="fas fa-check"></i></div><div class='text-div'>This is the text</div></div>
+                    <h3>Tasks:<button  class="fas fa-plus-circle add-task"></button></h3>
+                    <div class='task' taskID = '1'><div class='checkbox-div'><i class="fas fa-check"></i></div><div class='text-div'>This is the text</div><i class="far fa-times-circle"></i></div>
+                    <div class='task' taskID = '2'><div class='checkbox-div'><i class="fas fa-check"></i></div><div class='text-div'>This is the text</div><i class="far fa-times-circle"></i></div>
+                    <div class='task' taskID = '3'><div class='checkbox-div'><i class="fas fa-check"></i></div><div class='text-div'>This is eqkjwehqwkejhqwekljhqwekljhqwekljhqwekljqhwe jwekhqwelkjhqwekjh jkhqwekjhqwe kljh jkhwekjhw jkhthe text</div><i class="far fa-times-circle"></i></div>
+                    <div class='task' taskID = '4'><div class='checkbox-div'><i class="fas fa-check"></i></div><div class='text-div'>This is the text</div><i class="far fa-times-circle"></i></div>
+                    
                 </div>
                 <div id='task-notes'>
                     <h3>Notes:</h3>
@@ -40,7 +43,7 @@
                         <div class='note noteID1'>Lorem Ipsum is simply dummy text of the printing and typesetting industry. Lorem Ipsum has been the industry's standard dummy text ever since the 1500s, when an unknown printer took a galley of type and scrambled it to make a type specimen book. It has survived not only five centuries, but also the leap into electronic typesetting, remaining essentially unchanged. It was popularised in the 1960s with the release of Letraset sheets containing Lorem Ipsum passages, and more recently with desktop publishing software like Aldus PageMaker including versions of Lorem Ipsum.</div>
                         <div class='note noteID2'>LOLOLOLOLOLOL</div>
                         <div class='note noteID3'>Test 3</div>
-                        <div class='note noteID4'>Test 4</div>
+                        <div class='note noteID4'>Test 4</div>   
                     </div>
                 </div>
             </div>
@@ -49,16 +52,20 @@
     <div id='page-mask'></div>
     <div id='add-title'>
         <h2>Add Project</h2>
-        <input type="text" placeholder="Title">
-        <textarea name="" id="" cols="60" rows="10" placeholder="Description"></textarea>
+        <form action="">
+            <input type="text" placeholder="Title">
+            <textarea name="" id="" cols="60" rows="10" placeholder="Description"></textarea>
+        </form>
         <div class='button-container'>
             <i class="far fa-check-square"></i><i class="far fa-window-close"></i>
         </div>
     </div>
     <div id='add-task' style='display:none;'>
         <h2>Add Task</h2>
-        <input type="text" placeholder="Task">
-        <textarea name="" id="" cols="60" rows="10" placeholder="Notes"></textarea>
+        <form action="">
+            <input type="text" placeholder="Task">
+            <textarea name="" id="" cols="60" rows="10" placeholder="Notes"></textarea>
+        </form>
         <div class='button-container'>
             <i class="far fa-check-square"></i><i class="far fa-window-close"></i>
         </div>

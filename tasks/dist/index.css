@@ -1,6 +1,4 @@
-body{
-    transform: scale(0.75);
-}
+
 
 body{
     font-family: 'Raleway', sans-serif;
@@ -72,7 +70,8 @@ body{
     color:transparent;
 }
 
-.fa-plus-circle{
+#tab-content .fa-plus-circle{
+    color: green;
     float:left;
     line-height: 40px;
     background-color: transparent;
@@ -80,8 +79,12 @@ body{
     border:0px;
 }
 
+#tab-content .fa-plus-circle:hover{
+    color:rgb(76, 216, 76)
+}
+
 .fa-plus-circle:hover{
-    color:green
+    color:rgb(76, 216, 76)
 }
 
 .title-tab:hover .fa-times-circle{
@@ -111,6 +114,13 @@ body{
     margin-top:40px;
     display: flex;
     justify-content: space-around;   
+}
+
+.fa-plus-circle{
+    color: green;
+    background-color: transparent;
+    font-size: 20px;
+    border:0px;
 }
 
 
@@ -187,3 +197,18 @@ body{
     display: block;
 }
 
+.fa-check-square:hover{
+    color:green
+}
+
+.fa-window-close:hover{
+    color:red
+}
+
+.task:hover .fa-times-circle{
+    color:black;
+}
+
+.task .fa-times-circle:hover{
+    color:red;
+}
