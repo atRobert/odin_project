@@ -133,6 +133,9 @@ function addTitleTab(formTitle, formText){
     let xIcon = document.createElement('i')
     xIcon.classList.add('far')
     xIcon.classList.add('fa-times-circle')
+    xIcon.addEventListener('click',function(e){
+        removeE(this)
+    })
     tabContent.appendChild(titleTab)
     titleTab.appendChild(checkboxDiv)
     titleTab.appendChild(titleTabSpan)
@@ -155,6 +158,9 @@ function addTask(formTitle, formText){
     let xIcon = document.createElement('i')
     xIcon.classList.add('far')
     xIcon.classList.add('fa-times-circle')
+    xIcon.addEventListener('click',function(e){
+        removeE(this)
+    })
     taskList.appendChild(taskDiv)
     taskDiv.appendChild(checkDiv)
     taskDiv.appendChild(textDiv)
@@ -191,6 +197,12 @@ function hideMask(){
 
 function showMask(){
     document.getElementById('page-mask').style.display = 'block'
+}
+
+function removeE(e){
+    let tgt = e
+    console.log(tgt)
+    tgt.parentNode.parentNode.removeChild(tgt.parentNode)
 }
 
 
