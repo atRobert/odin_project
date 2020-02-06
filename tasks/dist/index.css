@@ -34,6 +34,7 @@ body{
     float:left;
     height:39px;
     text-align:left;
+    overflow:hidden;
 }
 
 .title-tab-span{
@@ -41,6 +42,7 @@ body{
     bottom:5px;
     left: 23px;
     overflow:hidden;
+    width:70%
 }
 
 .title-tab .fa-check{
@@ -167,6 +169,15 @@ body{
     border:1px transparent solid;
     padding:3px;
     border-radius: 5px;
+}
+
+hr {
+    border: none;
+    height: 1px;
+    /* Set the hr color */
+    color: rgba(161, 151, 151, 0.507); /* old IE */
+    background-color: rgba(161, 151, 151, 0.507); /* Modern Browsers */
+    width: 90%;
 }
 
 .task:hover{

@@ -2,17 +2,42 @@ function clickableTabs(){
     let titleTab = document.getElementsByClassName('title-tab')
     for (let i = 0; i < titleTab.length; i++){
         titleTab[i].addEventListener('click',function(e){
-            addingClickableTabs(this)
+            makeTabClickable(this)
+            
         })
     }
 }
 
-function addingClickableTabs(element){
+function makeTabClickable(element){
     let titleTab = document.getElementsByClassName('title-tab')
     for (let x = 0; x < titleTab.length; x++){
         titleTab[x].classList.remove('active')
     }
-    element.classList.add('active')   
+    element.classList.add('active')
+    clearBoard()
+    generatePage(element)
+}
+
+
+function completableTitles(){
+    let tasks = document.getElementsByClassName('title-tab')
+    for (let i = 0; i < tasks.length; i++){
+        tasks[i].childNodes[0].addEventListener('click',function(e){
+            makeTitlesCompletable(this)
+        })
+    }
+}
+
+function makeTitlesCompletable(element){
+    let taskCheck = element.childNodes[0]
+            let taskParent = element.parentNode
+            if (taskCheck.classList.length  == 3){
+                taskCheck.classList.remove('taskComplete')
+                taskParent.childNodes[1].style['color'] = 'black'
+            } else {
+                taskCheck.classList.add('taskComplete')
+                taskParent.childNodes[1].style['color'] = 'green'
+            }
 }
 
 function clickableTasks(){
@@ -32,23 +57,6 @@ function clickableTasks(){
 
 function completableTasks(){
     let tasks = document.getElementsByClassName('task')
-    for (let i = 0; i < tasks.length; i++){
-        tasks[i].childNodes[0].addEventListener('click',function(e){
-            let taskCheck = this.childNodes[0]
-            let taskParent = this.parentNode
-            if (taskCheck.classList.length  == 3){
-                taskCheck.classList.remove('taskComplete')
-                taskParent.childNodes[1].style['color'] = 'black'
-            } else {
-                taskCheck.classList.add('taskComplete')
-                taskParent.childNodes[1].style['color'] = 'green'
-            }
-        })
-    }
-}
-
-function completableTitles(){
-    let tasks = document.getElementsByClassName('title-tab')
     for (let i = 0; i < tasks.length; i++){
         tasks[i].childNodes[0].addEventListener('click',function(e){
             let taskCheck = this.childNodes[0]
@@ -111,21 +119,30 @@ function windowCloseForm(){
 
 function determineForm(formTitle,formText,formType){
     if (formType == 'add-task'){
-        addTask(formTitle, formText)
+        addTask(formTitle, formText, formType)
     } else {
-        addTitleTab(formTitle, formText)
+        addTitleTab(formTitle, formText, formType)
     }
 }
 
-function addTitleTab(formTitle, formText){
+function addTitleTab(formTitle, formText, formType){
+    let newTitleTab = {
+        title : formTitle,
+        text : formText
+    }
+    window.localStorage.setItem(formTitle, JSON.stringify(newTitleTab))
     let tabContent = document.getElementById('tab-holder')
     let titleTab = document.createElement('div')
     titleTab.classList.add('title-tab')
     titleTab.addEventListener('click',function(e){
-        addingClickableTabs(this)
+        makeTabClickable(this)
     })
+    
     let checkboxDiv = document.createElement('div')
     checkboxDiv.classList.add('checkbox-div')
+    checkboxDiv.addEventListener('click',function(e){
+        makeTitlesCompletable(this)
+    })
     checkboxDiv.innerHTML = '<i class="fas fa-check"></i>'
     let titleTabSpan = document.createElement('span')
     titleTabSpan.classList.add('title-tab-span')
@@ -134,7 +151,7 @@ function addTitleTab(formTitle, formText){
     xIcon.classList.add('far')
     xIcon.classList.add('fa-times-circle')
     xIcon.addEventListener('click',function(e){
-        removeE(this)
+        removeElement(this)
     })
     tabContent.appendChild(titleTab)
     titleTab.appendChild(checkboxDiv)
@@ -143,7 +160,12 @@ function addTitleTab(formTitle, formText){
 
 }
 
-function addTask(formTitle, formText){
+function addTask(formTitle, formText, formType){
+    let taskDict = {
+        title : formTitle,
+        text : formText
+    }
+    window.localStorage.setItem(formTitle,JSON.stringify(taskDict))
     let taskList = document.getElementById('task-list')
     let taskNoteBorder = document.getElementById('task-note-border')
     let taskDiv = document.createElement('div')
@@ -151,6 +173,9 @@ function addTask(formTitle, formText){
     taskDiv.setAttribute('taskID','5')
     let checkDiv = document.createElement('div')
     checkDiv.classList.add('checkbox-div')
+    checkDiv.addEventListener('click',function(e){
+        makeTitlesCompletable(this)
+    })
     checkDiv.innerHTML = '<i class="fas fa-check"></i>'
     let textDiv = document.createElement('div')
     textDiv.classList.add('text-div')
@@ -159,7 +184,7 @@ function addTask(formTitle, formText){
     xIcon.classList.add('far')
     xIcon.classList.add('fa-times-circle')
     xIcon.addEventListener('click',function(e){
-        removeE(this)
+        removeElement(this)
     })
     taskList.appendChild(taskDiv)
     taskDiv.appendChild(checkDiv)
@@ -199,17 +224,73 @@ function showMask(){
     document.getElementById('page-mask').style.display = 'block'
 }
 
-function removeE(e){
-    let tgt = e
-    console.log(tgt)
-    tgt.parentNode.parentNode.removeChild(tgt.parentNode)
+function removeElement(e){
+    e.parentNode.parentNode.removeChild(e.parentNode)
+}
+
+function makeRemovableTitltesAndTasks(){
+    let xIcon = document.getElementsByClassName('fa-times-circle')
+    for (let i = 0; i < xIcon.length; i++){
+        xIcon[i].addEventListener('click',function(e){
+            removeElement(this)
+        })
+    }
+}
+
+function clearBoard(){
+    clearTitle()
+    clearDescription()
+    clearNotes('task-border')
+    clearNotes('task-note-border')
+}
+
+function clearTitle(){
+    let titleBody = document.getElementById('title-body')
+    titleBody.childNodes[0].textContent = ''
+}
+
+function clearDescription(){
+    let titleDescription = document.getElementById('description-body')
+    titleDescription.childNodes[0].textContent = ''
 }
 
 
-clickableTabs()
-clickableTasks()
-completableTasks()
-completableTitles()
-addTaskButton()
-windowCloseForm()
-addTitleButton()
+function clearNotes(idName){
+    let noteList = document.getElementById(idName)
+    while (noteList.firstChild) {
+        noteList.removeChild(noteList.firstChild);
+    }
+}
+
+function generatePage(element){
+    generateTitle(element)
+    generateDescription(element)
+}
+
+function generateTitle(element){
+    let elementTitle = element.textContent
+    let elementInfo = window.localStorage.getItem(elementTitle)
+    let elementInfoParse = JSON.parse(elementInfo)
+    document.getElementById('title-body').firstChild.textContent = elementInfoParse['title']
+}
+
+function generateDescription(element){
+    let elementTitle = element.textContent
+    let elementInfo = window.localStorage.getItem(elementTitle)
+    let elementInfoParse = JSON.parse(elementInfo)
+    document.getElementById('description-body').firstChild.textContent = elementInfoParse['text']
+}
+
+function initiatePage(){
+    clickableTabs()
+    clickableTasks()
+    completableTasks()
+    completableTitles()
+    addTaskButton()
+    windowCloseForm()
+    addTitleButton()
+    makeRemovableTitltesAndTasks()
+}
+
+
+initiatePage()
