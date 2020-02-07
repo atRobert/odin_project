@@ -179,9 +179,8 @@ function addTask(formTitle, formText, formType){
     let currentProjectJSON = JSON.parse(currentProjectString)
     currentProjectJSON['tasks'][formTitle] = taskDict
     window.localStorage.setItem(currentProject, JSON.stringify(currentProjectJSON))
-
-
-    buildTask(taskDict.formTitle, taskDict.formText, taskDict.id)
+    console.log(taskDict.title)
+    buildTask(taskDict.title, taskDict.text, taskDict.id)
 
 }
 
@@ -322,7 +321,42 @@ function loadTabs(){
 
 }
 
+function addWelcomeTab(){
+    if (window.localStorage.length == 0) {
+        let welcome = {
+            title : 'Welcome!',
+            text : `Each project you create will have it's own tab! You can add projects by clicking the green plus at the top! Each project can
+                            have its own tasks to be added below. Each tasks can have notes to give you a more specific look. Done with a task? Check it off! Don't need a task? Click it off.
+                            You can do the same thing with projects. If you've complete it, check it off. Don't need it anymore? Remove it. What are you waiting for? Start managing!`,
+            complete: false,
+            tasks : {
+                'Add a project' : {
+                    title : 'Add a project',
+                    text : 'To add a project, click the green plus at the top of display!',
+                    complete : false,
+                    id : 'jskdhtfaCXWE'
+
+                },
+                'Add a task' : {
+                    title : 'Add a task.',
+                    text : 'To add a task, click the green plus in the task section to the left!',
+                    complete : false,
+                    id : 'seljkhrkjhDFSDF'
+                }
+                }
+            }
+        
+        window.localStorage.setItem('Welcome!',JSON.stringify(welcome))
+        
+        } else {
+            console.log('not first time')
+        }
+    } 
+
+
 function initiatePage(){
+    document.getElementById('tab-holder').removeChild(document.getElementById('tab-holder').childNodes[1])
+    addWelcomeTab()
     clickableTabs()
     clickableTasks()
     completableTasks()
@@ -332,6 +366,9 @@ function initiatePage(){
     addTitleButton()
     makeRemovableTitltesAndTasks()
     loadTabs()
+    let firstTab = document.getElementsByClassName('title-tab')[0]
+    firstTab.classList.add('active')
+    generatePage(firstTab.childNodes[1])
 }
 
 

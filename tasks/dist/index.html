@@ -13,34 +13,28 @@
     <title>Project Manager</title>
 </head>
 <body>
+    <button onClick = {window.localStorage.clear()}>Clear All</button>
     <div id='main'>
         <div id='tab-content'>
             <div id='tab-holder'>
-                <div class='title-tab active'><div class='checkbox-div'><i class="fas fa-check"></i></div><span class='title-tab-span'>Welcome!</span><i class="far fa-times-circle"></i></div>
+                <div class='title-tab active'><div class='checkbox-div'><i class="fas fa-check"></i></div><span class='title-tab-span'></span><i class="far fa-times-circle"></i></div>
             </div>
             <button class="fas fa-plus-circle add-title"></button>
         </div>
         <div id='body-content'>
-            <div id='title-body'><h1>Welcome!</h1></div>
+            <div id='title-body'><h1></h1></div>
             <hr>
-            <div id='description-body'><h3>Each project you create will have it's own tab! You can add projects by clicking the green plus at the top! Each project can
-                have its own tasks to be added below. Each tasks can have notes to give you a more specific look. Done with a task? Check it off! Don't need a task? Click it off.
-                You can do the same thing with projects. If you've complete it, check it off. Don't need it anymore? Remove it. What are you waiting for? Start managing!
-            </h3>
+            <div id='description-body'><h3></h3>
             </div>
             <div id='task-body'>
                 <div id='task-list'>
                     <h3>Tasks:<button  class="fas fa-plus-circle add-task"></button></h3>
                     <div id ='task-border'>
-                        <div class='task' taskID = '1'><div class='checkbox-div'><i class="fas fa-check"></i></div><div class='text-div'>Add a project.</div><i class="far fa-times-circle"></i></div>
-                        <div class='task' taskID = '2'><div class='checkbox-div'><i class="fas fa-check"></i></div><div class='text-div'>Add a task.</div><i class="far fa-times-circle"></i></div>
                     </div>
                 </div>
                 <div id='task-notes'>
                     <h3>Notes:</h3>
                     <div id='task-note-border'>
-                        <div class='note noteID1'>To add a project, click the green plus at the top of display!</div>
-                        <div class='note noteID2'>To add a task, click the green plus in the task section to the left!</div>   
                     </div>
                 </div>
             </div>
