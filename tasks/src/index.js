@@ -128,9 +128,14 @@ function determineForm(formTitle,formText,formType){
 function addTitleTab(formTitle, formText, formType){
     let newTitleTab = {
         title : formTitle,
-        text : formText
+        text : formText,
+        complete: false,
     }
     window.localStorage.setItem(formTitle, JSON.stringify(newTitleTab))
+    buildTitleTab(formTitle)
+}
+
+function buildTitleTab(formTitle){
     let tabContent = document.getElementById('tab-holder')
     let titleTab = document.createElement('div')
     titleTab.classList.add('title-tab')
@@ -157,13 +162,13 @@ function addTitleTab(formTitle, formText, formType){
     titleTab.appendChild(checkboxDiv)
     titleTab.appendChild(titleTabSpan)
     titleTab.appendChild(xIcon)
-
 }
 
 function addTask(formTitle, formText, formType){
     let taskDict = {
         title : formTitle,
-        text : formText
+        text : formText,
+        complete: false
     }
     window.localStorage.setItem(formTitle,JSON.stringify(taskDict))
     let taskList = document.getElementById('task-list')
@@ -281,6 +286,14 @@ function generateDescription(element){
     document.getElementById('description-body').firstChild.textContent = elementInfoParse['text']
 }
 
+function loadTabs(){
+    let projects = Object.entries(window.localStorage)
+    for (let i = 0; i < projects.length ; i++){
+        projects[i] === undefined ? {} : buildTitleTab(projects[i][0])
+    }
+
+}
+
 function initiatePage(){
     clickableTabs()
     clickableTasks()
@@ -290,6 +303,7 @@ function initiatePage(){
     windowCloseForm()
     addTitleButton()
     makeRemovableTitltesAndTasks()
+    loadTabs()
 }
 
 
