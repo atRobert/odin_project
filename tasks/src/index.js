@@ -91,8 +91,7 @@ function addTitleButton(){
 function windowCloseForm(){
     let windowCloseButtons = document.getElementsByClassName('fa-window-close')
     let windowCheckButtons = document.getElementsByClassName('fa-check-square')
-    let windowMask = document.getElementById('page-mask')
-    console.log(windowCloseButtons)
+    let windowMask = document.getElementById('page-mask')  
     for (let i = 0; i < windowCloseButtons.length; i++){
         windowCloseButtons[i].addEventListener('click',function(e){
             hideForm(this)
@@ -103,7 +102,6 @@ function windowCloseForm(){
             let formTitle = this.parentNode.parentNode.childNodes[3].childNodes[1].value
             let formText = this.parentNode.parentNode.childNodes[3].childNodes[3].value
             let formType = this.parentNode.parentNode.getAttribute('id')
-            console.log(formType)
             determineForm(formTitle,formText,formType)
             hideForm(this)
         })
@@ -130,6 +128,7 @@ function addTitleTab(formTitle, formText, formType){
         title : formTitle,
         text : formText,
         complete: false,
+        tasks : {}
     }
     window.localStorage.setItem(formTitle, JSON.stringify(newTitleTab))
     buildTitleTab(formTitle)
@@ -164,18 +163,34 @@ function buildTitleTab(formTitle){
     titleTab.appendChild(xIcon)
 }
 
+function uniqueId(){
+    return '_' + Math.random().toString(36).substr(2, 9);
+}
+
 function addTask(formTitle, formText, formType){
     let taskDict = {
         title : formTitle,
         text : formText,
-        complete: false
+        complete: false,
+        id : uniqueId()
     }
-    window.localStorage.setItem(formTitle,JSON.stringify(taskDict))
-    let taskList = document.getElementById('task-list')
+    let currentProject = document.getElementsByClassName('active')[0].childNodes[1].textContent
+    let currentProjectString= window.localStorage.getItem(currentProject)
+    let currentProjectJSON = JSON.parse(currentProjectString)
+    currentProjectJSON['tasks'][formTitle] = taskDict
+    window.localStorage.setItem(currentProject, JSON.stringify(currentProjectJSON))
+
+
+    buildTask(taskDict.formTitle, taskDict.formText, taskDict.id)
+
+}
+
+function buildTask(formTitle, formText, noteID){
+    let taskList = document.getElementById('task-border')
     let taskNoteBorder = document.getElementById('task-note-border')
     let taskDiv = document.createElement('div')
     taskDiv.classList.add('task')
-    taskDiv.setAttribute('taskID','5')
+    taskDiv.setAttribute('taskID',noteID)
     let checkDiv = document.createElement('div')
     checkDiv.classList.add('checkbox-div')
     checkDiv.addEventListener('click',function(e){
@@ -196,29 +211,26 @@ function addTask(formTitle, formText, formType){
     taskDiv.appendChild(textDiv)
     taskDiv.appendChild(xIcon)
     taskDiv.addEventListener('mouseover',function(e){
-        let notes = document.getElementsByClassName('note')
-        let taskID = this.getAttribute('taskID')
-        let noteID = document.getElementsByClassName('noteID' + taskID)[0]
+        let notes = document.getElementsByClassName('note') 
+        let taskID = document.getElementsByClassName('noteID' + noteID)[0]
         for (let x = 0; x < notes.length; x++){
             notes[x].classList.remove('active-note')
         }
-        noteID.classList.add('active-note')
+        taskID.classList.add('active-note')
     })
     let note = document.createElement('div')
     note.classList.add('note')
-    note.classList.add('noteID'+'5')
+    note.classList.add('noteID'+noteID)
     note.textContent = formText
     
     taskNoteBorder.appendChild(note)
-
 }
+
 
 function hideForm(element){
     hideMask()
     element.parentNode.parentNode.childNodes[3].reset()
-    element.parentNode.parentNode.style.display = 'none'
-    console.log(document.getElementById('add-title').childNodes)
-    
+    element.parentNode.parentNode.style.display = 'none' 
 }
 
 function hideMask(){
@@ -230,7 +242,10 @@ function showMask(){
 }
 
 function removeElement(e){
+    let title = e.parentNode.childNodes[1].textContent
+    e.parentNode.classList[0] == 'title-tab' ? window.localStorage.removeItem(title) : {}
     e.parentNode.parentNode.removeChild(e.parentNode)
+    
 }
 
 function makeRemovableTitltesAndTasks(){
@@ -270,6 +285,7 @@ function clearNotes(idName){
 function generatePage(element){
     generateTitle(element)
     generateDescription(element)
+    generateTasks(element)
 }
 
 function generateTitle(element){
@@ -284,6 +300,18 @@ function generateDescription(element){
     let elementInfo = window.localStorage.getItem(elementTitle)
     let elementInfoParse = JSON.parse(elementInfo)
     document.getElementById('description-body').firstChild.textContent = elementInfoParse['text']
+}
+
+function generateTasks(element){
+    let elementTitle = element.textContent
+    let elementInfo = window.localStorage.getItem(elementTitle)
+    let elementInfoParse = JSON.parse(elementInfo)
+    
+    let elementTasks = elementInfoParse['tasks']
+    for (let task in elementTasks){
+        buildTask(elementTasks[task].title,elementTasks[task].text,elementTasks[task].id)
+        
+    }
 }
 
 function loadTabs(){
