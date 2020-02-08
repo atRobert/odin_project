@@ -1,5 +1,4 @@
 
-
 body{
     font-family: 'Raleway', sans-serif;
 
@@ -28,7 +27,7 @@ body{
 .title-tab{
     border:black 1px solid;
     border-radius:5px 5px 0px 0px;
-    background:#eee;
+    background:rgb(186, 197, 201);
     width: 11%;
     position:relative;
     float:left;
@@ -60,6 +59,7 @@ body{
     border-bottom:none;
     border-left:1px solid black;
     height: 40px;
+    background: #eee;
 }
 
 .fa-times-circle{

@@ -6,7 +6,8 @@
     position: absolute;
     margin:auto;
     top:20%;
-    right: 50%;
+    left: 0;
+    right: 0;
     translate: 50%;
     background: #eee;
     text-align:center;

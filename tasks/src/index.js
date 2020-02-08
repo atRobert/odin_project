@@ -29,15 +29,20 @@ function completableTitles(){
 }
 
 function makeTitlesCompletable(element){
+    let currentTab = element.parentNode.childNodes[1].textContent
+    let currentProject = JSON.parse(window.localStorage.getItem(currentTab))
     let taskCheck = element.childNodes[0]
-            let taskParent = element.parentNode
-            if (taskCheck.classList.length  == 3){
-                taskCheck.classList.remove('taskComplete')
-                taskParent.childNodes[1].style['color'] = 'black'
-            } else {
-                taskCheck.classList.add('taskComplete')
-                taskParent.childNodes[1].style['color'] = 'green'
-            }
+    let taskParent = element.parentNode
+    if (taskCheck.classList.length  == 3){
+        taskCheck.classList.remove('taskComplete')
+        taskParent.childNodes[1].style['color'] = 'black'
+        currentProject.complete = false
+    } else {
+        taskCheck.classList.add('taskComplete')
+        taskParent.childNodes[1].style['color'] = 'green'
+        currentProject.complete = true
+    }
+    window.localStorage.setItem(currentProject.title, JSON.stringify(currentProject))
 }
 
 function makeTasksCompletable(element){
@@ -166,6 +171,8 @@ function buildTitleTab(formTitle){
         makeTitlesCompletable(this)
     })
     checkboxDiv.innerHTML = '<i class="fas fa-check"></i>'
+
+    
     let titleTabSpan = document.createElement('span')
     titleTabSpan.classList.add('title-tab-span')
     titleTabSpan.textContent = formTitle
@@ -179,6 +186,14 @@ function buildTitleTab(formTitle){
     titleTab.appendChild(checkboxDiv)
     titleTab.appendChild(titleTabSpan)
     titleTab.appendChild(xIcon)
+
+    
+    let currentTitle = window.localStorage.getItem(formTitle)
+    let currentProject = JSON.parse(currentTitle)
+    if (currentProject.complete) {
+        titleTab.style['color'] = 'green'
+        checkboxDiv.firstChild.classList.add('taskComplete')
+    }
 }
 
 function uniqueId(){
@@ -217,11 +232,11 @@ function buildTask(formTitle, formText, noteID){
     let checkDiv = document.createElement('div')
     checkDiv.classList.add('checkbox-div')
     checkDiv.addEventListener('click',function(e){
-        console.log('hello')
+        
         makeTasksCompletable(this)
     })
     checkDiv.innerHTML = '<i class="fas fa-check"></i>'
-    console.log(formTitle)
+    
     let currentProject = getCurrentProject()
     let taskComplete = currentProject.tasks[formTitle].complete
     if (taskComplete) {
