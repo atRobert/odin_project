@@ -40,6 +40,23 @@ function makeTitlesCompletable(element){
             }
 }
 
+function makeTasksCompletable(element){
+    let taskCheck = element.childNodes[0]
+    let currentProject = getCurrentProject()
+    let taskParent = element.parentNode
+    let taskName = taskParent.childNodes[1].textContent
+    if (taskCheck.classList.length  == 3){
+        taskCheck.classList.remove('taskComplete')
+        taskParent.childNodes[1].style['color'] = 'black'
+        currentProject.tasks[taskName].complete = false
+    } else {
+        taskCheck.classList.add('taskComplete')
+        taskParent.childNodes[1].style['color'] = 'green'
+        currentProject.tasks[taskName].complete = true
+    }
+    window.localStorage.setItem(currentProject.title, JSON.stringify(currentProject))
+}
+
 function clickableTasks(){
     let tasks = document.getElementsByClassName('task')
     let notes = document.getElementsByClassName('note')
@@ -61,6 +78,7 @@ function completableTasks(){
         tasks[i].childNodes[0].addEventListener('click',function(e){
             let taskCheck = this.childNodes[0]
             let taskParent = this.parentNode
+            
             if (taskCheck.classList.length  == 3){
                 taskCheck.classList.remove('taskComplete')
                 taskParent.childNodes[1].style['color'] = 'black'
@@ -183,6 +201,11 @@ function addTask(formTitle, formText, formType){
     buildTask(taskDict.title, taskDict.text, taskDict.id)
 
 }
+function getCurrentProject(){
+    let currentProject = document.getElementsByClassName('active')[0]
+    currentProject = currentProject.childNodes[1].textContent
+    return JSON.parse(window.localStorage.getItem(currentProject))
+}
 
 function buildTask(formTitle, formText, noteID){
     let taskList = document.getElementById('task-border')
@@ -190,12 +213,21 @@ function buildTask(formTitle, formText, noteID){
     let taskDiv = document.createElement('div')
     taskDiv.classList.add('task')
     taskDiv.setAttribute('taskID',noteID)
+    
     let checkDiv = document.createElement('div')
     checkDiv.classList.add('checkbox-div')
     checkDiv.addEventListener('click',function(e){
-        makeTitlesCompletable(this)
+        console.log('hello')
+        makeTasksCompletable(this)
     })
     checkDiv.innerHTML = '<i class="fas fa-check"></i>'
+    console.log(formTitle)
+    let currentProject = getCurrentProject()
+    let taskComplete = currentProject.tasks[formTitle].complete
+    if (taskComplete) {
+        taskDiv.style['color'] = 'green'
+        checkDiv.firstChild.classList.add('taskComplete')
+    }
     let textDiv = document.createElement('div')
     textDiv.classList.add('text-div')
     textDiv.textContent = formTitle
@@ -217,6 +249,7 @@ function buildTask(formTitle, formText, noteID){
         }
         taskID.classList.add('active-note')
     })
+    
     let note = document.createElement('div')
     note.classList.add('note')
     note.classList.add('noteID'+noteID)
@@ -338,7 +371,7 @@ function addWelcomeTab(){
 
                 },
                 'Add a task' : {
-                    title : 'Add a task.',
+                    title : 'Add a task',
                     text : 'To add a task, click the green plus in the task section to the left!',
                     complete : false,
                     id : 'seljkhrkjhDFSDF'
