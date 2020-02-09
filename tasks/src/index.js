@@ -3,13 +3,13 @@ function clickableTabs(){
     for (let i = 0; i < titleTab.length; i++){
         titleTab[i].addEventListener('click',function(e){
             makeTabClickable(this)
-            
         })
     }
 }
 
 function makeTabClickable(element){
     let titleTab = document.getElementsByClassName('title-tab')
+    
     for (let x = 0; x < titleTab.length; x++){
         titleTab[x].classList.remove('active')
     }
@@ -125,7 +125,11 @@ function windowCloseForm(){
             let formTitle = this.parentNode.parentNode.childNodes[3].childNodes[1].value
             let formText = this.parentNode.parentNode.childNodes[3].childNodes[3].value
             let formType = this.parentNode.parentNode.getAttribute('id')
-            determineForm(formTitle,formText,formType)
+            let formPriority
+            if (formType == 'add-task'){
+                formPriority = this.parentNode.parentNode.childNodes[3].childNodes[7].value || "!"
+            }
+            determineForm(formTitle,formText,formType, formPriority)
             hideForm(this)
         })
     }
@@ -138,9 +142,9 @@ function windowCloseForm(){
     })
 }
 
-function determineForm(formTitle,formText,formType){
+function determineForm(formTitle,formText,formType, formPriority){
     if (formType == 'add-task'){
-        addTask(formTitle, formText, formType)
+        addTask(formTitle, formText, formType, formPriority)
     } else {
         addTitleTab(formTitle, formText, formType)
     }
@@ -180,7 +184,7 @@ function buildTitleTab(formTitle){
     xIcon.classList.add('far')
     xIcon.classList.add('fa-times-circle')
     xIcon.addEventListener('click',function(e){
-        removeElement(this)
+            removeElement(this)  
     })
     tabContent.appendChild(titleTab)
     titleTab.appendChild(checkboxDiv)
@@ -200,20 +204,21 @@ function uniqueId(){
     return '_' + Math.random().toString(36).substr(2, 9);
 }
 
-function addTask(formTitle, formText, formType){
+function addTask(formTitle, formText, formType, formPriority){
     let taskDict = {
         title : formTitle,
         text : formText,
         complete: false,
-        id : uniqueId()
+        id : uniqueId(),
+        priority: formPriority
     }
     let currentProject = document.getElementsByClassName('active')[0].childNodes[1].textContent
     let currentProjectString= window.localStorage.getItem(currentProject)
     let currentProjectJSON = JSON.parse(currentProjectString)
     currentProjectJSON['tasks'][formTitle] = taskDict
     window.localStorage.setItem(currentProject, JSON.stringify(currentProjectJSON))
-    console.log(taskDict.title)
-    buildTask(taskDict.title, taskDict.text, taskDict.id)
+    
+    buildTask(taskDict.title, taskDict.text, taskDict.id, taskDict.priority)
 
 }
 function getCurrentProject(){
@@ -222,7 +227,7 @@ function getCurrentProject(){
     return JSON.parse(window.localStorage.getItem(currentProject))
 }
 
-function buildTask(formTitle, formText, noteID){
+function buildTask(formTitle, formText, noteID, priority){
     let taskList = document.getElementById('task-border')
     let taskNoteBorder = document.getElementById('task-note-border')
     let taskDiv = document.createElement('div')
@@ -252,10 +257,14 @@ function buildTask(formTitle, formText, noteID){
     xIcon.addEventListener('click',function(e){
         removeElement(this)
     })
+    let taskPriority = document.createElement('div')
+    taskPriority.classList.add('priority')
+    taskPriority.textContent = priority
     taskList.appendChild(taskDiv)
     taskDiv.appendChild(checkDiv)
     taskDiv.appendChild(textDiv)
     taskDiv.appendChild(xIcon)
+    taskDiv.appendChild(taskPriority)
     taskDiv.addEventListener('mouseover',function(e){
         let notes = document.getElementsByClassName('note') 
         let taskID = document.getElementsByClassName('noteID' + noteID)[0]
@@ -269,7 +278,6 @@ function buildTask(formTitle, formText, noteID){
     note.classList.add('note')
     note.classList.add('noteID'+noteID)
     note.textContent = formText
-    
     taskNoteBorder.appendChild(note)
 }
 
@@ -289,17 +297,14 @@ function showMask(){
 }
 
 function removeElement(e){
-    console.log(e.parentNode.childNodes[1].textContent)
     let title = e.parentNode.childNodes[1].textContent
     e.parentNode.classList[0] == 'title-tab' ? window.localStorage.removeItem(title) : {}
     e.parentNode.classList[0] == 'task' ? removeTask(title): {}
     e.parentNode.parentNode.removeChild(e.parentNode)
-    
 }
 
 function removeTask(task){
     let currentProject = getCurrentProject()
-    console.log(currentProject)
     delete currentProject.tasks[task]
     window.localStorage.setItem(currentProject.title, JSON.stringify(currentProject))
 }
@@ -365,7 +370,7 @@ function generateTasks(element){
     
     let elementTasks = elementInfoParse['tasks']
     for (let task in elementTasks){
-        buildTask(elementTasks[task].title,elementTasks[task].text,elementTasks[task].id)
+        buildTask(elementTasks[task].title,elementTasks[task].text,elementTasks[task].id, elementTasks[task].priority)
         
     }
 }
@@ -391,6 +396,7 @@ function addWelcomeTab(){
                     title : 'Add a project',
                     text : 'To add a project, click the green plus at the top of display!',
                     complete : false,
+                    priority: "!",
                     id : 'jskdhtfaCXWE'
 
                 },
@@ -398,7 +404,26 @@ function addWelcomeTab(){
                     title : 'Add a task',
                     text : 'To add a task, click the green plus in the task section to the left!',
                     complete : false,
+                    priority: "!",
                     id : 'seljkhrkjhDFSDF'
+                },
+                'Complete a task' : {
+                    title : 'Complete a task',
+                    text : `To mark a task completed, click the circle to the left of it! 
+                                The same can be done with projects, by clicking in the top left
+                                corner of their tab!`,
+                    complete : false,
+                    priority: "!",
+                    id : 'seljkhrkdfdfjhDFSDF'
+                },
+                'Clearing all projects' : {
+                    title : 'Clearing all projects',
+                    text : `If at any point you'd like to clear all your projects, click the "clear all" 
+                                button in the top left corner of the page. But be careful, your projects 
+                                and progress will be permanently removed!`,
+                    complete : false,
+                    priority: "!",
+                    id : 'dfklhjdfjhfe'
                 }
                 }
             }
@@ -406,7 +431,7 @@ function addWelcomeTab(){
         window.localStorage.setItem('Welcome!',JSON.stringify(welcome))
         
         } else {
-            console.log('not first time')
+            console.log('Welcome Back!')
         }
     } 
 

@@ -28,6 +28,7 @@ body{
     border:black 1px solid;
     border-radius:5px 5px 0px 0px;
     background:rgb(186, 197, 201);
+    transition: .6s ease;
     width: 11%;
     position:relative;
     float:left;
@@ -89,6 +90,9 @@ body{
     color:rgb(76, 216, 76)
 }
 
+.title-tab:hover{
+    background: #eee
+}
 .title-tab:hover .fa-times-circle{
     color:black;
 }
@@ -123,6 +127,12 @@ body{
     background-color: transparent;
     font-size: 20px;
     border:0px;
+}
+
+.priority{
+    position: absolute;
+    left: -14px;
+    top: 0px;
 }
 
 
@@ -171,6 +181,7 @@ body{
     border-radius: 5px;
     transition: .5s ease;
     margin-top:5px;
+    
 }
 
 hr {
@@ -197,7 +208,7 @@ hr {
   }
 
 #task-note-border{
-    border: 1px black solid;
+    background-color:rgb(255, 255, 255);
     border-radius: 5px;
     padding:3px;
     height:300px

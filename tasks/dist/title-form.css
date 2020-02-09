@@ -1,5 +1,5 @@
 #add-title, #add-task{
-    height:350px;
+    height:400px;
     width:600px;
     border-radius:5px;
     border:1px solid black;
@@ -62,4 +62,9 @@ input{
   
   .task {  
     animation: 1s ease-out 0s 1 slideInFromLeft, 1s ease-in fadeIn;
+  }
+
+  #task-priority{
+      margin-top:10px;
+      font-size: 20px;
   }

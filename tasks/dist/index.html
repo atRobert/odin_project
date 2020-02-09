@@ -28,7 +28,7 @@
             </div>
             <div id='task-body'>
                 <div id='task-list'>
-                    <h3>Tasks:<button  class="fas fa-plus-circle add-task"></button></h3>
+                    <h3><button  class="fas fa-plus-circle add-task"></button>Tasks:</h3>
                     <div id ='task-border'>
                     </div>
                 </div>
@@ -56,6 +56,12 @@
         <form action="">
             <input type="text" placeholder="Task">
             <textarea name="" id="" cols="60" rows="10" placeholder="Notes"></textarea>
+            <label for="">Priority:</label>
+            <select name="" id="task-priority">
+                <option value="!">!</option>
+                <option value="!!">! !</option>
+                <option value="!!!">! ! !</option>
+            </select>
         </form>
         <div class='button-container'>
             <i class="far fa-check-square"></i><i class="far fa-window-close"></i>
