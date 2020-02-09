@@ -13,7 +13,7 @@
     <title>Project Manager</title>
 </head>
 <body>
-    <button onClick = {window.localStorage.clear()}>Clear All</button>
+    <button id='resetButton'>Clear All</button>
     <div id='main'>
         <div id='tab-content'>
             <div id='tab-holder'>
@@ -61,6 +61,13 @@
             <i class="far fa-check-square"></i><i class="far fa-window-close"></i>
         </div>
     </div>
+    <div id='clear-projects' style='display:none;'>
+        <h2>Clear all projects and tasks?</h2>
+        <div class='button-container'>
+            <button>Yes I'm sure.</button><i class="far fa-window-close"></i>
+        </div>
+    </div>
+   
 
     <script src='main.js'></script>
 </body>

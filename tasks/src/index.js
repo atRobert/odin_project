@@ -289,10 +289,19 @@ function showMask(){
 }
 
 function removeElement(e){
+    console.log(e.parentNode.childNodes[1].textContent)
     let title = e.parentNode.childNodes[1].textContent
     e.parentNode.classList[0] == 'title-tab' ? window.localStorage.removeItem(title) : {}
+    e.parentNode.classList[0] == 'task' ? removeTask(title): {}
     e.parentNode.parentNode.removeChild(e.parentNode)
     
+}
+
+function removeTask(task){
+    let currentProject = getCurrentProject()
+    console.log(currentProject)
+    delete currentProject.tasks[task]
+    window.localStorage.setItem(currentProject.title, JSON.stringify(currentProject))
 }
 
 function makeRemovableTitltesAndTasks(){
@@ -401,9 +410,15 @@ function addWelcomeTab(){
         }
     } 
 
+function resetProjects(){
+    if (confirm('Are you sure you want to clear all projects?')){
+        window.localStorage.clear()
+        location.reload()
+    }
+}
 
 function initiatePage(){
-    document.getElementById('tab-holder').removeChild(document.getElementById('tab-holder').childNodes[1])
+    document.getElementById('tab-holder').removeChild(document.getElementById('tab-holder').childNodes[1])  
     addWelcomeTab()
     clickableTabs()
     clickableTasks()
@@ -417,6 +432,8 @@ function initiatePage(){
     let firstTab = document.getElementsByClassName('title-tab')[0]
     firstTab.classList.add('active')
     generatePage(firstTab.childNodes[1])
+    document.getElementById('resetButton').addEventListener('click',resetProjects)
+
 }
 
 

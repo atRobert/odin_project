@@ -169,6 +169,8 @@ body{
     border:1px transparent solid;
     padding:3px;
     border-radius: 5px;
+    transition: .5s ease;
+    margin-top:5px;
 }
 
 hr {
@@ -181,7 +183,7 @@ hr {
 }
 
 .task:hover{
-    border:1px black solid;
+    background-color: rgb(223, 223, 223);
     border-radius: 5px;
 }
 #page-mask {
