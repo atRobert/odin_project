@@ -1,31 +1,16 @@
-function clickableTabs(){
-    let titleTab = document.getElementsByClassName('title-tab')
-    for (let i = 0; i < titleTab.length; i++){
-        titleTab[i].addEventListener('click',function(e){
-            makeTabClickable(this)
-        })
-    }
-}
+import {addWelcomeTab, makeExistingBoardFunctional} from './pageStart.js'
+import {clearBoard} from './clearBoard.js'
 
-function makeTabClickable(element){
+
+
+function makeProjectCompletable(element){
     let titleTab = document.getElementsByClassName('title-tab')
-    
     for (let x = 0; x < titleTab.length; x++){
         titleTab[x].classList.remove('active')
     }
     element.classList.add('active')
     clearBoard()
     generatePage(element)
-}
-
-
-function completableTitles(){
-    let tasks = document.getElementsByClassName('title-tab')
-    for (let i = 0; i < tasks.length; i++){
-        tasks[i].childNodes[0].addEventListener('click',function(e){
-            makeTitlesCompletable(this)
-        })
-    }
 }
 
 function makeTitlesCompletable(element){
@@ -45,6 +30,15 @@ function makeTitlesCompletable(element){
     window.localStorage.setItem(currentProject.title, JSON.stringify(currentProject))
 }
 
+function makeTasksHoverable(noteID){
+    let notes = document.getElementsByClassName('note') 
+    let taskID = document.getElementsByClassName('noteID' + noteID)[0]
+    for (let x = 0; x < notes.length; x++){
+        notes[x].classList.remove('active-note')
+    }
+    taskID.classList.add('active-note')
+}
+
 function makeTasksCompletable(element){
     let taskCheck = element.childNodes[0]
     let currentProject = getCurrentProject()
@@ -62,38 +56,9 @@ function makeTasksCompletable(element){
     window.localStorage.setItem(currentProject.title, JSON.stringify(currentProject))
 }
 
-function clickableTasks(){
-    let tasks = document.getElementsByClassName('task')
-    let notes = document.getElementsByClassName('note')
-    for (let i = 0; i < tasks.length; i++){
-        tasks[i].addEventListener('mouseover',function(e){
-            let taskID = this.getAttribute('taskID')
-            let noteID = document.getElementsByClassName('noteID' + taskID)[0]
-            for (let x = 0; x < notes.length; x++){
-                notes[x].classList.remove('active-note')
-            }
-            noteID.classList.add('active-note')
-        })
-    }
-}
 
-function completableTasks(){
-    let tasks = document.getElementsByClassName('task')
-    for (let i = 0; i < tasks.length; i++){
-        tasks[i].childNodes[0].addEventListener('click',function(e){
-            let taskCheck = this.childNodes[0]
-            let taskParent = this.parentNode
-            
-            if (taskCheck.classList.length  == 3){
-                taskCheck.classList.remove('taskComplete')
-                taskParent.childNodes[1].style['color'] = 'black'
-            } else {
-                taskCheck.classList.add('taskComplete')
-                taskParent.childNodes[1].style['color'] = 'green'
-            }
-        })
-    }
-}
+
+
 
 function addTaskButton(){
     let addTask = document.getElementsByClassName('add-task')[0]
@@ -106,15 +71,16 @@ function addTaskButton(){
 function addTitleButton(){
     let addTask = document.getElementsByClassName('add-title')[0]
     addTask.addEventListener('click', function(e){
-        if (window.localStorage.length < 7){
-            console.log(window.localStorage.length)
+        if (window.localStorage.length < 8){
             showMask()
             document.getElementById('add-title').style.display = 'block'
+        } else {
+            alert('You have too many active projects already!')
         }
     })
 }
 
-function windowCloseForm(){
+function closeFormWindow(){
     let windowCloseButtons = document.getElementsByClassName('fa-window-close')
     let windowCheckButtons = document.getElementsByClassName('fa-check-square')
     let windowMask = document.getElementById('page-mask')  
@@ -169,7 +135,7 @@ function buildTitleTab(formTitle){
     let titleTab = document.createElement('div')
     titleTab.classList.add('title-tab')
     titleTab.addEventListener('click',function(e){
-        makeTabClickable(this)
+        makeProjectCompletable(this)
     })
     
     let checkboxDiv = document.createElement('div')
@@ -187,14 +153,12 @@ function buildTitleTab(formTitle){
     xIcon.classList.add('far')
     xIcon.classList.add('fa-times-circle')
     xIcon.addEventListener('click',function(e){
-            removeElement(this)  
+            removeTitle(this)  
     })
     tabContent.appendChild(titleTab)
     titleTab.appendChild(checkboxDiv)
     titleTab.appendChild(titleTabSpan)
     titleTab.appendChild(xIcon)
-
-    
     let currentTitle = window.localStorage.getItem(formTitle)
     let currentProject = JSON.parse(currentTitle)
     if (currentProject.complete) {
@@ -224,6 +188,7 @@ function addTask(formTitle, formText, formType, formPriority){
     buildTask(taskDict.title, taskDict.text, taskDict.id, taskDict.priority)
 
 }
+
 function getCurrentProject(){
     let currentProject = document.getElementsByClassName('active')[0]
     currentProject = currentProject.childNodes[1].textContent
@@ -258,7 +223,7 @@ function buildTask(formTitle, formText, noteID, priority){
     xIcon.classList.add('far')
     xIcon.classList.add('fa-times-circle')
     xIcon.addEventListener('click',function(e){
-        removeElement(this)
+        removeTask(this)
     })
     let taskPriority = document.createElement('div')
     taskPriority.classList.add('priority')
@@ -269,14 +234,8 @@ function buildTask(formTitle, formText, noteID, priority){
     taskDiv.appendChild(xIcon)
     taskDiv.appendChild(taskPriority)
     taskDiv.addEventListener('mouseover',function(e){
-        let notes = document.getElementsByClassName('note') 
-        let taskID = document.getElementsByClassName('noteID' + noteID)[0]
-        for (let x = 0; x < notes.length; x++){
-            notes[x].classList.remove('active-note')
-        }
-        taskID.classList.add('active-note')
+        makeTasksHoverable(noteID)
     })
-    
     let note = document.createElement('div')
     note.classList.add('note')
     note.classList.add('noteID'+noteID)
@@ -299,52 +258,34 @@ function showMask(){
     document.getElementById('page-mask').style.display = 'block'
 }
 
-function removeElement(e){
+function removeTitle(e){
     let title = e.parentNode.childNodes[1].textContent
-    e.parentNode.classList[0] == 'title-tab' ? window.localStorage.removeItem(title) : {}
-    e.parentNode.classList[0] == 'task' ? removeTask(title): {}
+    window.localStorage.removeItem(title)
+    e.parentNode.parentNode.removeChild(e.parentNode)
+    
+}
+
+function removeTask(e){
+    let title = e.parentNode.childNodes[1].textContent
+    let currentProject = getCurrentProject()
+    delete currentProject.tasks[title]
+    window.localStorage.setItem(currentProject.title, JSON.stringify(currentProject))
     e.parentNode.parentNode.removeChild(e.parentNode)
 }
 
-function removeTask(task){
-    let currentProject = getCurrentProject()
-    delete currentProject.tasks[task]
-    window.localStorage.setItem(currentProject.title, JSON.stringify(currentProject))
-}
 
 function makeRemovableTitltesAndTasks(){
     let xIcon = document.getElementsByClassName('fa-times-circle')
     for (let i = 0; i < xIcon.length; i++){
         xIcon[i].addEventListener('click',function(e){
-            removeElement(this)
+            let title = this.parentNode.childNodes[1].textContent
+            this.parentNode.classList[0] == 'title-tab' ? removeTitle(title) : {}
+            this.parentNode.classList[0] == 'task' ? removeTask(title): {}
         })
     }
 }
 
-function clearBoard(){
-    clearTitle()
-    clearDescription()
-    clearNotes('task-border')
-    clearNotes('task-note-border')
-}
 
-function clearTitle(){
-    let titleBody = document.getElementById('title-body')
-    titleBody.childNodes[0].textContent = ''
-}
-
-function clearDescription(){
-    let titleDescription = document.getElementById('description-body')
-    titleDescription.childNodes[0].textContent = ''
-}
-
-
-function clearNotes(idName){
-    let noteList = document.getElementById(idName)
-    while (noteList.firstChild) {
-        noteList.removeChild(noteList.firstChild);
-    }
-}
 
 function generatePage(element){
     generateTitle(element)
@@ -387,58 +328,6 @@ function loadTabs(){
 
 }
 
-function addWelcomeTab(){
-    if (window.localStorage.length == 0) {
-        let welcome = {
-            title : 'Welcome!',
-            text : `Each project you create will have it's own tab! You can add projects by clicking the green plus at the top! Each project can
-                            have its own tasks to be added below. Each tasks can have notes to give you a more specific look. Done with a task? Check it off! Don't need a task? Click it off.
-                            You can do the same thing with projects. If you've complete it, check it off. Don't need it anymore? Remove it. What are you waiting for? Start managing!`,
-            complete: false,
-            tasks : {
-                'Add a project' : {
-                    title : 'Add a project',
-                    text : 'To add a project, click the green plus at the top of display!',
-                    complete : false,
-                    priority: "!",
-                    id : 'jskdhtfaCXWE'
-
-                },
-                'Add a task' : {
-                    title : 'Add a task',
-                    text : 'To add a task, click the green plus in the task section to the left!',
-                    complete : false,
-                    priority: "!",
-                    id : 'seljkhrkjhDFSDF'
-                },
-                'Complete a task' : {
-                    title : 'Complete a task',
-                    text : `To mark a task completed, click the circle to the left of it! 
-                                The same can be done with projects, by clicking in the top left
-                                corner of their tab!`,
-                    complete : false,
-                    priority: "!",
-                    id : 'seljkhrkdfdfjhDFSDF'
-                },
-                'Clearing all projects' : {
-                    title : 'Clearing all projects',
-                    text : `If at any point you'd like to clear all your projects, click the "clear all" 
-                                button in the top left corner of the page. But be careful, your projects 
-                                and progress will be permanently removed!`,
-                    complete : false,
-                    priority: "!",
-                    id : 'dfklhjdfjhfe'
-                }
-                }
-            }
-        
-        window.localStorage.setItem('Welcome!',JSON.stringify(welcome))
-        
-        } else {
-            console.log('Welcome Back!')
-        }
-    } 
-
 function resetProjects(){
     if (confirm('Are you sure you want to clear all projects?')){
         window.localStorage.clear()
@@ -449,13 +338,10 @@ function resetProjects(){
 function initiatePage(){
     document.getElementById('tab-holder').removeChild(document.getElementById('tab-holder').childNodes[1])  
     addWelcomeTab()
-    clickableTabs()
-    clickableTasks()
-    completableTasks()
-    completableTitles()
+    makeExistingBoardFunctional()
     addTaskButton()
-    windowCloseForm()
     addTitleButton()
+    closeFormWindow()
     makeRemovableTitltesAndTasks()
     loadTabs()
     let firstTab = document.getElementsByClassName('title-tab')[0]
