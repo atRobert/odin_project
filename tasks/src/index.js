@@ -376,5 +376,4 @@ function initiatePage(){
     document.getElementById('resetButton').addEventListener('click',resetProjects)
 }
 
-
 initiatePage()
