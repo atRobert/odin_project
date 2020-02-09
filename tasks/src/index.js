@@ -13,6 +13,8 @@ function makeProjectCompletable(element){
     if (checkTitleExists(element)){
         clearBoard()
         generatePage(element)
+    } else {
+        makeFirstTabActive()
     }
 }
 
@@ -166,7 +168,8 @@ function buildTitleTab(formTitle){
     xIcon.addEventListener('click',function(e){
             removeTitle(this)
             clearBoard()
-            buildFirstTab()        
+            buildFirstTab()    
+              
     })
     tabContent.appendChild(titleTab)
     titleTab.appendChild(checkboxDiv)
@@ -353,6 +356,12 @@ function buildFirstTab(){
     firstTab.classList.add('active')
     generatePage(firstTab.childNodes[1])  
 }
+
+function makeFirstTabActive(){
+    let firstTab = document.getElementsByClassName('title-tab')[0]
+    firstTab.classList.add('active')
+}
+
 
 function initiatePage(){
     document.getElementById('tab-holder').removeChild(document.getElementById('tab-holder').childNodes[1])  
