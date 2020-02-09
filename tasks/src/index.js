@@ -106,8 +106,11 @@ function addTaskButton(){
 function addTitleButton(){
     let addTask = document.getElementsByClassName('add-title')[0]
     addTask.addEventListener('click', function(e){
-        showMask()
-        document.getElementById('add-title').style.display = 'block'
+        if (window.localStorage.length < 7){
+            console.log(window.localStorage.length)
+            showMask()
+            document.getElementById('add-title').style.display = 'block'
+        }
     })
 }
 
@@ -369,6 +372,7 @@ function generateTasks(element){
     let elementInfoParse = JSON.parse(elementInfo)
     
     let elementTasks = elementInfoParse['tasks']
+     
     for (let task in elementTasks){
         buildTask(elementTasks[task].title,elementTasks[task].text,elementTasks[task].id, elementTasks[task].priority)
         
