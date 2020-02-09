@@ -4,11 +4,13 @@
   "description": "Task Manager to do list",
   "main": "index.js",
   "scripts": {
+    "deploy":"gh-pages -d build",
     "test": "echo \"Error: no test specified\" && exit 1"
   },
   "author": "robert b",
   "license": "ISC",
   "devDependencies": {
+    "gh-pages": "^2.2.0",
     "webpack": "^4.41.5",
     "webpack-cli": "^3.3.10"
   }

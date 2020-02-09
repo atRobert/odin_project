@@ -207,6 +207,7 @@ hr {
     top: 0;
     background-color: rgba(0,0,0,0.6);
     display:none;
+    transition: 1s ease;
   }
 
 #task-note-border{
@@ -245,6 +246,10 @@ hr {
     border-radius: 3px;
     font-family: 'Raleway', sans-serif;
     padding: 4px;
+    position: fixed;
+    top: 5px;
+    left: 5px;
+
 }
 
 #resetButton:hover{

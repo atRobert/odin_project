@@ -9,8 +9,19 @@ function makeProjectCompletable(element){
         titleTab[x].classList.remove('active')
     }
     element.classList.add('active')
-    clearBoard()
-    generatePage(element)
+    console.log(checkTitleExists(element))
+    if (checkTitleExists(element)){
+        clearBoard()
+        generatePage(element)
+    }
+}
+
+function checkTitleExists(element){
+    let titleName = element.childNodes[1].textContent
+    if (window.localStorage.getItem(titleName)){
+        return true
+    }
+    return false
 }
 
 function makeTitlesCompletable(element){
@@ -119,7 +130,7 @@ function determineForm(formTitle,formText,formType, formPriority){
     }
 }
 
-function addTitleTab(formTitle, formText, formType){
+function addTitleTab(formTitle, formText){
     let newTitleTab = {
         title : formTitle,
         text : formText,
@@ -153,7 +164,9 @@ function buildTitleTab(formTitle){
     xIcon.classList.add('far')
     xIcon.classList.add('fa-times-circle')
     xIcon.addEventListener('click',function(e){
-            removeTitle(this)  
+            removeTitle(this)
+            clearBoard()
+            buildFirstTab()        
     })
     tabContent.appendChild(titleTab)
     titleTab.appendChild(checkboxDiv)
@@ -335,6 +348,12 @@ function resetProjects(){
     }
 }
 
+function buildFirstTab(){
+    let firstTab = document.getElementsByClassName('title-tab')[0]
+    firstTab.classList.add('active')
+    generatePage(firstTab.childNodes[1])  
+}
+
 function initiatePage(){
     document.getElementById('tab-holder').removeChild(document.getElementById('tab-holder').childNodes[1])  
     addWelcomeTab()
@@ -344,11 +363,8 @@ function initiatePage(){
     closeFormWindow()
     makeRemovableTitltesAndTasks()
     loadTabs()
-    let firstTab = document.getElementsByClassName('title-tab')[0]
-    firstTab.classList.add('active')
-    generatePage(firstTab.childNodes[1])
+    buildFirstTab()
     document.getElementById('resetButton').addEventListener('click',resetProjects)
-
 }
 
 
