@@ -17,7 +17,7 @@ function loadAbout(){
                         in 1989, we have been proudly serving not
                         just the burger you want. But the burger 
                         you NEED. Our meats are never frozen, always
-                        fresh, and ready for to put a smile on your face.`
+                        fresh, and ready to put a smile on your face.`
 
     div.appendChild(h2)
     
