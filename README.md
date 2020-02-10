@@ -14,4 +14,6 @@
 
 - [tictactoe](https://atrobert.github.io/odin_project/tictactoe/tictactoe.html)
 
+- [BigBurger Restaurant](https://atrobert.github.io/odin_project/restaurant/dist/index.html)
+
 - [ToDoManager](https://atrobert.github.io/odin_project/tasks/dist/index.html)
