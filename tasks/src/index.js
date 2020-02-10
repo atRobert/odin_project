@@ -1,7 +1,6 @@
 import {addWelcomeTab, makeExistingBoardFunctional} from './pageStart.js'
-import {clearBoard} from './clearBoard.js'
-
-
+import {clearBoard, makeFirstTabActive} from './clearBoard.js'
+import {removeTask, removeTitle, makeRemovableTitltesAndTasks, getCurrentProject} from './removableItems.js'
 
 function makeProjectCompletable(element){
     let titleTab = document.getElementsByClassName('title-tab')
@@ -205,11 +204,7 @@ function addTask(formTitle, formText, formType, formPriority){
 
 }
 
-function getCurrentProject(){
-    let currentProject = document.getElementsByClassName('active')[0]
-    currentProject = currentProject.childNodes[1].textContent
-    return JSON.parse(window.localStorage.getItem(currentProject))
-}
+
 
 function buildTask(formTitle, formText, noteID, priority){
     let taskList = document.getElementById('task-border')
@@ -259,50 +254,6 @@ function buildTask(formTitle, formText, noteID, priority){
     taskNoteBorder.appendChild(note)
 }
 
-
-function hideForm(element){
-    hideMask()
-    element.parentNode.parentNode.childNodes[3].reset()
-    element.parentNode.parentNode.style.display = 'none' 
-}
-
-function hideMask(){
-    document.getElementById('page-mask').style.display = 'none'
-}
-
-function showMask(){
-    document.getElementById('page-mask').style.display = 'block'
-}
-
-function removeTitle(e){
-    let title = e.parentNode.childNodes[1].textContent
-    window.localStorage.removeItem(title)
-    e.parentNode.parentNode.removeChild(e.parentNode)
-    
-}
-
-function removeTask(e){
-    let title = e.parentNode.childNodes[1].textContent
-    let currentProject = getCurrentProject()
-    delete currentProject.tasks[title]
-    window.localStorage.setItem(currentProject.title, JSON.stringify(currentProject))
-    e.parentNode.parentNode.removeChild(e.parentNode)
-}
-
-
-function makeRemovableTitltesAndTasks(){
-    let xIcon = document.getElementsByClassName('fa-times-circle')
-    for (let i = 0; i < xIcon.length; i++){
-        xIcon[i].addEventListener('click',function(e){
-            let title = this.parentNode.childNodes[1].textContent
-            this.parentNode.classList[0] == 'title-tab' ? removeTitle(title) : {}
-            this.parentNode.classList[0] == 'task' ? removeTask(title): {}
-        })
-    }
-}
-
-
-
 function generatePage(element){
     generateTitle(element)
     generateDescription(element)
@@ -328,12 +279,26 @@ function generateTasks(element){
     let elementInfo = window.localStorage.getItem(elementTitle)
     let elementInfoParse = JSON.parse(elementInfo)
     
-    let elementTasks = elementInfoParse['tasks']
-     
+    let elementTasks = elementInfoParse['tasks']  
     for (let task in elementTasks){
         buildTask(elementTasks[task].title,elementTasks[task].text,elementTasks[task].id, elementTasks[task].priority)
         
     }
+}
+
+
+function hideForm(element){
+    hideMask()
+    element.parentNode.parentNode.childNodes[3].reset()
+    element.parentNode.parentNode.style.display = 'none' 
+}
+
+function hideMask(){
+    document.getElementById('page-mask').style.display = 'none'
+}
+
+function showMask(){
+    document.getElementById('page-mask').style.display = 'block'
 }
 
 function loadTabs(){
@@ -356,12 +321,6 @@ function buildFirstTab(){
     firstTab.classList.add('active')
     generatePage(firstTab.childNodes[1])  
 }
-
-function makeFirstTabActive(){
-    let firstTab = document.getElementsByClassName('title-tab')[0]
-    firstTab.classList.add('active')
-}
-
 
 function initiatePage(){
     document.getElementById('tab-holder').removeChild(document.getElementById('tab-holder').childNodes[1])  

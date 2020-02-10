@@ -23,4 +23,9 @@ function clearNotes(idName){
     }
 }
 
-export {clearBoard}
+function makeFirstTabActive(){
+    let firstTab = document.getElementsByClassName('title-tab')[0]
+    firstTab.classList.add('active')
+}
+
+export {clearBoard, makeFirstTabActive}
