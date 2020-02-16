@@ -1,0 +1,39 @@
+
+body{
+  margin:0px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 100;
+}
+
+#root{
+  top:0px;
+}
+
+.headerFrame{
+  width: 100%;
+  text-align: center;
+  height: 5vh;
+  background:rgb(221, 221, 221);
+  margin:0px;
+}
+
+.headerFrame h1{
+  margin:0px
+}
+
+.windowFrame{
+  height: 100%;
+}
+
+.projectListFrame{
+  display: inline-block;
+  width:15%;
+   
+}
+
+.projectDetailFrame{
+  display: inline-block;
+  width:85%;
+  
+}
+
