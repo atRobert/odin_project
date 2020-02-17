@@ -44,54 +44,20 @@ body{
   border-top-left-radius: 10px;
   height:95vh;
   background:white;
+  border:1px black solid;
 }
 
-.project-item{
-  display: block;
-  width:100%;
-  padding-top:20px;
-  padding-bottom:20px;
-  transition: .25s ease;
-  background-color: rgb(219, 219, 219);
-  text-align: center;
-  border-radius:10px 0px 0px 10px;
-  float:right;
+
+
+hr{
+  width: 80%;
+  margin-left:0;
+  border:0;
+  border-top: 1px solid rgb(0, 225, 255);
 }
 
-.project-item:hover{
-  background:rgb(129, 129, 129);
-}
-
-.active-project{
-  background:white;
-  
-  width:95%;
-}
-
-.active-project:hover{
-  background:white;
-
-}
-
-.add-project{
-  display: block;
-  width: 50%;
-  padding-top:10px;
-  padding-bottom:10px;
-  transition: .25s ease;
-  background:rgb(0, 225, 255);
-  color: black;
-  border:1px solid black;
-  text-align:center;
-  border-radius:10px;
-  margin:auto;
-  margin-bottom:10px;
-}
-
-.add-project:hover{
-  background: black;
-  color: rgb(0, 225, 255);
-  border: 1px solid rgb(0, 225, 255);
+.project-title{
+  margin-left:5%;
 }
 
 
