@@ -28,6 +28,7 @@ body{
 .projectListFrame{
   display: inline-block;
   width:15%;
+  border-right:1px solid black;
    
 }
 
@@ -36,4 +37,45 @@ body{
   width:85%;
   
 }
+
+.project-item{
+  display: block;
+  width:99%;
+  padding-top:20px;
+  padding-bottom:20px;
+  border: 1px solid black;
+  transition: .25s ease;
+  background-color: rgb(196, 196, 196);
+  text-align: center;
+  border-radius: 10px 0px 0px 10px;
+  margin-left:1%;
+}
+
+.project-item:hover{
+  background:white;
+}
+
+.active-project{
+  background:white;
+  border-right: 1px solid white;
+}
+
+.add-project{
+  display: block;
+  width: 50%;
+  padding-top:10px;
+  padding-bottom:10px;
+  background:rgb(153, 255, 153);
+  transition: .25s ease;
+  border:1px solid black;
+  text-align:center;
+  border-radius:10px;
+  margin:auto;
+  margin-top:5px;
+}
+
+.add-project:hover{
+  background: rgb(95, 158, 95)
+}
+
 
