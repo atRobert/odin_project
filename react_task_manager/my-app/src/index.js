@@ -39,6 +39,9 @@ class ProjectList extends React.Component {
   render() { 
     return (
       <div className="projectListFrame">
+        <CreateProject 
+          click = {this.addProjectHandler}
+          />
         {this.state.data.map((project, index) => (
           <ProjectListItem 
             project = {project.title}
@@ -51,9 +54,7 @@ class ProjectList extends React.Component {
             selectProject = {() => this.updateSlectedProject(project.title)}
             />
         ))}
-        <CreateProject 
-          click = {this.addProjectHandler}
-          />
+        
       </div>
     );
   }
@@ -92,7 +93,8 @@ class ProjectListItem extends React.Component {
 class ProjectDetail extends React.Component {
   render(){
     return (
-      <div className="projectDetailFrame">    
+      <div className="projectDetailFrame">   
+      g 
       </div>
     );
   }
