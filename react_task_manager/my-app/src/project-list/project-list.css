@@ -16,13 +16,15 @@
   }
   
   .active-project{
-    background:white;
+    background: black;
+    color: rgb(0, 225, 255);
+    border: 1px solid rgb(0, 225, 255);
     width:90%;
   
   }
   
   .active-project:hover{
-    background:white;
+    background:black;
     
   }
   
