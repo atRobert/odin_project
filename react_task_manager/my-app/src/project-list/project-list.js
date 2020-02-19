@@ -63,13 +63,21 @@ class ProjectList extends React.Component {
   class CreateProject extends React.Component{
     constructor(props){
       super(props)
-      this.state = {adding_project:true}
+      this.state = {adding_project:false}
       this.projectFormHandler = this.projectFormHandler.bind(this)
+      this.projectAddHandler = this.projectAddHandler.bind(this)
     }
 
     projectFormHandler(){
       const showForm = this.state.adding_project
       this.setState({adding_project:!showForm})
+    }
+
+    projectAddHandler(event){
+      const newProjectTitle = document.getElementById("new-project-title").value
+      const newProjectDescription = document.getElementById('new-project-description').value
+      this.projectFormHandler()
+      event.preventDefault()
     }
 
     render(){
@@ -82,11 +90,11 @@ class ProjectList extends React.Component {
               <form>
                 <ul>
                   <li><label>Project Title:</label></li>
-                  <li><input type="text"></input></li>
+                  <li><input type="text" id='new-project-title'></input></li>
                   <li><label>Project Description:</label></li>
-                  <li><textarea rows={8} ></textarea></li>
+                  <li><textarea rows={8} id='new-project-description'></textarea></li>
                   <li id="submit-btn-container">
-                    <input type="submit" value="Create"></input>
+                    <input type="submit" value="Create" onClick = {this.projectAddHandler}></input>
                     <input type="submit" value="Cancel" onClick = {this.projectFormHandler}></input>
                   </li>
                 </ul>
