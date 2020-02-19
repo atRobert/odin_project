@@ -1,9 +1,12 @@
 :root{
   --main-bg-color: rgb(221, 221, 221);
 }
+
+@import url('https://fonts.googleapis.com/css?family=Saira+Semi+Condensed&display=swap');
+
 body{
   margin:0px;
-  font-family: 'Raleway', sans-serif;
+  font-family: 'Saira Semi Condensed', sans-serif;
   font-weight: 100;
 }
 
@@ -14,7 +17,7 @@ body{
 .headerFrame{
   width: 100%;
   text-align: center;
-  height: 5vh;
+  height: 7vh;
   background:var(--main-bg-color);
   margin:0px;
 }
