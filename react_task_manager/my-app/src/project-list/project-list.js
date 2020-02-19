@@ -18,6 +18,7 @@ class ProjectList extends React.Component {
       projects.splice(index, 1)
       this.setState({data:projects});
     }
+
   
     render() { 
       return (
@@ -62,11 +63,46 @@ class ProjectList extends React.Component {
   class CreateProject extends React.Component{
     constructor(props){
       super(props)
-      this.state = null
+      this.state = {adding_project:true}
+      this.projectFormHandler = this.projectFormHandler.bind(this)
     }
+
+    projectFormHandler(){
+      const showForm = this.state.adding_project
+      this.setState({adding_project:!showForm})
+    }
+
     render(){
+      let addProject
+      if (this.state.adding_project){
+        addProject =  (
+          <div>
+            <div id="page-mask" onClick = {this.projectFormHandler}></div>
+            <div id="add-project-form">
+              <form>
+                <ul>
+                  <li><label>Project Title:</label></li>
+                  <li><input type="text"></input></li>
+                  <li><label>Project Description:</label></li>
+                  <li><textarea rows={8} ></textarea></li>
+                  <li id="submit-btn-container">
+                    <input type="submit" value="Create"></input>
+                    <input type="submit" value="Cancel" onClick = {this.projectFormHandler}></input>
+                  </li>
+                </ul>
+              </form>
+            </div>
+          </div>
+        )
+      }
+
       return(
-        <div className='add-project' onClick = {this.props.click}>Add Project</div>
+        <div>
+          {/* <div className='add-project' onClick = {this.props.click}>Add Project</div> */}
+          <div className='add-project' onClick = {this.projectFormHandler}>Add Project</div>
+          {addProject}
+        </div>
+        
       ) 
     }
   }

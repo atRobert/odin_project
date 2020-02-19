@@ -48,3 +48,69 @@
     color: rgb(0, 225, 255);
     border: 1px solid rgb(0, 225, 255);
   }
+
+  #page-mask {
+    background: rgba(0, 0, 0, 0.5);
+    position: fixed;
+    top: 0;
+    right: 0;
+    bottom: 0;
+    left: 0;
+  }
+
+  #add-project-form {
+    height: 400px;
+    width: 600px;
+    position:fixed;
+    left: 50%;
+    transform: translateX(-50%);
+    top: 10%;
+    background:black;
+    border-radius:5px;
+    color:white;
+  }
+
+form input[type=text], form textarea{
+  width: 85%;
+  
+  margin:auto;
+  margin:10px;
+  resize: none;
+  border:1px transparent;
+  border-radius:3px;
+  padding:10px;
+}
+
+form input[type=text]{
+  height:20px;
+}
+
+form ul{
+  list-style: none;
+  padding-left:40px;
+  padding-right:40px;
+}
+
+
+form input[type=submit]{
+  width: 60px;
+  height: 30px;
+  border: 1px transparent;
+  border-radius:3px;
+  margin:5px;
+  background: rgb(0, 225, 255);
+  color: black;
+  border: 1px solid black;
+  transition: .25s ease;
+}
+
+form input[type=submit]:hover{
+  background: black;
+  color: rgb(0, 225, 255);
+  border: 1px solid rgb(0, 225, 255);
+}
+
+#submit-btn-container{
+  display: flex;
+  justify-content: center;
+}

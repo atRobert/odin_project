@@ -35,9 +35,9 @@ class WindowFrame extends React.Component {
 
   addProjectHandler = () => {
     console.log('adding joe')
-    window.localStorage.setItem('joe','{"title":"joe","id":"j"}')
+    window.localStorage.setItem('joe','{"title":"joe","id":"j","description":"hello it worked"}')
     const projects = [...this.state.data]
-    projects.push({"title":"joe","id":"j"})
+    projects.push({"title":"joe","id":"j","description":"Hello, it worked!"})
     this.setState({data:projects})
   }
 
