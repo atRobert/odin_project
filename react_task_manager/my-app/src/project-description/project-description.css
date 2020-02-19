@@ -2,3 +2,61 @@
     margin-left:5%;
     margin-top:20px
   }
+
+
+.spacer-col{
+  width:40px;
+}
+
+.task-check-container{
+  height:20px;
+  width:20px;
+  border-radius:5px;
+  border:1px solid black;
+  display: inline-block;
+}
+
+.task-container{
+  margin-left:30px;
+  width:80%;
+  display: block;
+}
+
+.task-quick{
+  display:block;
+  position: relative;
+}
+
+.task-remove-container{
+  border-radius:50%;
+  display: inline-block;
+  border:1px solid black;
+  width: 15px;
+  height: 15px;
+  border-radius: 50%;
+  line-height: 15px;
+  text-align: center;
+}
+
+.task-title-container{
+  display: inline-block;
+  margin-left:10px;
+}
+
+.task-detail{
+  position: relative;
+  display:block;
+  margin-left: 30px;
+  transition:1s ease;
+  animation: fadeInAnimation ease 1s;
+}
+
+
+@keyframes fadeInAnimation { 
+  0% { 
+      opacity: 0; 
+  } 
+  100% { 
+      opacity: 1; 
+   } 
+  }

@@ -6,9 +6,65 @@ function getCurrentProject(projectTitle) {
   return currentProject;
 }
 
+class ProjectTasks extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {isHover:false}
+
+    this.mouseEnterHandler = this.mouseEnterHandler.bind(this)
+    this.mouseLeaveHandler = this.mouseLeaveHandler.bind(this)
+  }
+
+  mouseEnterHandler(){
+    this.setState({isHover:true})
+  }
+
+  mouseLeaveHandler(){
+    this.setState({isHover:false})
+  }
+
+  render(){
+
+    let hoveringTask 
+    if (this.state.isHover){
+      hoveringTask = (
+        <div className="task-detail">
+          this is some description for the task above.
+        </div>
+      )
+    }
+
+    return(
+      <div>
+          <div className="task-container"
+            onMouseEnter = {this.mouseEnterHandler}
+            onMouseLeave = {this.mouseLeaveHandler}>
+            <div className="task-quick">
+              <div className='task-check-container'>
+              </div>
+              <div className="task-title-container">
+                This is task description
+              </div>
+              <div className='task-remove-container'>
+                X
+              </div>
+            </div>
+          </div>
+          {hoveringTask}
+      </div>
+    )
+  }
+}
+
+
 class ProjectDescription extends React.Component {
   render() {
-    return <div className="project-description">{this.props.description}</div>;
+    return (
+      <div>
+        <h2 className="project-description">{this.props.description}</h2>
+        <ProjectTasks />
+      </div>
+    );
   }
 }
 

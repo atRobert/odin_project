@@ -20,7 +20,7 @@ var randomID = function() {
   );
 };
 
-class ProjectTasks extends React.Component {}
+
 
 class WindowFrame extends React.Component {
   constructor(props) {
