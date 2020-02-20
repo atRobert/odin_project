@@ -52,6 +52,14 @@ class WindowFrame extends React.Component {
     this.setState({ data: projects });
   };
 
+  addTaskToProjectHandler = (projectTitle, projectDetails) => {
+    const projects = [...this.state.data];
+    var index = projects.findIndex(project => project.title == projectTitle)
+    projects[index] = projectDetails
+    window.localStorage.setItem(projectTitle, JSON.stringify(projectDetails))
+  }
+
+
   render() {
     return (
       <div className="windowFrame">

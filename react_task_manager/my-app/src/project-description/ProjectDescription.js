@@ -6,7 +6,7 @@ function getCurrentProject(projectTitle) {
   return currentProject;
 }
 
-class ProjectTasks extends React.Component {
+class ProjectTask extends React.Component {
   constructor(props){
     super(props)
     this.state = {isHover:false}
@@ -35,10 +35,11 @@ class ProjectTasks extends React.Component {
     }
 
     return(
-      <div>
-          <div className="task-container"
-            onMouseEnter = {this.mouseEnterHandler}
-            onMouseLeave = {this.mouseLeaveHandler}>
+      <div className="task-container"
+        onMouseEnter = {this.mouseEnterHandler}
+        onMouseLeave = {this.mouseLeaveHandler}
+      >
+          <div>
             <div className="task-quick">
               <div className='task-check-container'>
               </div>
@@ -56,13 +57,29 @@ class ProjectTasks extends React.Component {
   }
 }
 
+class ProjectTaskList extends React.Component {
+  constructor(props){
+    super(props)
+    this.state = {isHover:false}
+  }
+
+  render(){
+    return(
+      <div>
+        <ProjectTask />
+        <ProjectTask />
+      </div>
+    )
+  }
+}
+
 
 class ProjectDescription extends React.Component {
   render() {
     return (
       <div>
         <h2 className="project-description">{this.props.description}</h2>
-        <ProjectTasks />
+        <ProjectTaskList />
       </div>
     );
   }
