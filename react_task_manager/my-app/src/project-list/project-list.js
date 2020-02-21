@@ -20,6 +20,7 @@ class ProjectList extends React.Component {
   };
 
   render() {
+    console.log(this.props.data)
     return (
       <div className="projectListFrame">
         <CreateProject click={this.props.addProjectHandler} />

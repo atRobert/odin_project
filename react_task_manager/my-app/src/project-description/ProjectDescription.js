@@ -6,10 +6,21 @@ function getCurrentProject(projectTitle) {
   return currentProject;
 }
 
+var randomID = function() {
+  return (
+    "_" +
+    Math.random()
+      .toString(36)
+      .substr(2, 9)
+  );
+};
+
 class ProjectTask extends React.Component {
   constructor(props){
     super(props)
-    this.state = {isHover:false}
+    this.state = {
+      isHover:false
+    }
 
     this.mouseEnterHandler = this.mouseEnterHandler.bind(this)
     this.mouseLeaveHandler = this.mouseLeaveHandler.bind(this)
@@ -24,12 +35,11 @@ class ProjectTask extends React.Component {
   }
 
   render(){
-
     let hoveringTask 
     if (this.state.isHover){
       hoveringTask = (
         <div className="task-detail">
-          this is some description for the task above.
+          {this.props.taskDescription}
         </div>
       )
     }
@@ -44,7 +54,7 @@ class ProjectTask extends React.Component {
               <div className='task-check-container'>
               </div>
               <div className="task-title-container">
-                This is task description
+                {this.props.taskTitle}
               </div>
               <div className='task-remove-container'>
                 X
@@ -60,14 +70,86 @@ class ProjectTask extends React.Component {
 class ProjectTaskList extends React.Component {
   constructor(props){
     super(props)
-    this.state = {isHover:false}
+    this.state = {tasks:this.props.tasks,
+                  adding_task:false}
+
+    this.taskFormHandler = this.taskFormHandler.bind(this);
+    this.addTaskHandler = this.addTaskHandler.bind(this);
+  }
+
+  addTaskHandler = (taskTitle, taskDescription) => {
+    const objMap = {
+      title: taskTitle,
+      description: taskDescription,
+      id: randomID()
+    };
+    const taskList = [...this.state.tasks];
+    taskList.push(objMap);
+    this.setState({ tasks: taskList });
+  };
+
+  taskFormHandler() {
+    const showForm = this.state.adding_task;
+    this.setState({ adding_task: !showForm });
   }
 
   render(){
+
+    let addTask;
+    if (this.state.adding_task) {
+      addTask = (
+        <div>
+          <div id="page-mask" onClick={this.taskFormHandler}></div>
+          <div id="add-project-form">
+            <form>
+              <ul>
+                <li>
+                  <label>Project Title:</label>
+                </li>
+                <li>
+                  <input type="text" id="new-project-title"></input>
+                </li>
+                <li>
+                  <label>Project Description:</label>
+                </li>
+                <li>
+                  <textarea rows={8} id="new-project-description"></textarea>
+                </li>
+                <li id="submit-btn-container">
+                  <input
+                    type="submit"
+                    value="Create"
+                    onClick={this.projectAddHandler}
+                  ></input>
+                  <input
+                    type="submit"
+                    value="Cancel"
+                    onClick={this.projectFormHandler}
+                  ></input>
+                </li>
+              </ul>
+            </form>
+          </div>
+        </div>
+      );
+    }
+
+
+    console.log(this.state.tasks)
     return(
       <div>
-        <ProjectTask />
-        <ProjectTask />
+        {this.state.tasks.map((task,index) =>(
+          <ProjectTask 
+            taskTitle = {task.title}
+            taskDescription = {task.description}
+            key = {task.id}
+          />
+        ))}
+        <div className="add-project" onClick={this.taskFormHandler}>
+          Add Task
+        </div>
+        {addTask}
+        
       </div>
     )
   }
@@ -75,11 +157,17 @@ class ProjectTaskList extends React.Component {
 
 
 class ProjectDescription extends React.Component {
+  constructor(props){
+    super(props)
+  }
   render() {
     return (
       <div>
         <h2 className="project-description">{this.props.description}</h2>
-        <ProjectTaskList />
+        <ProjectTaskList
+          selectedProjectDetail={this.props.selectedProjectDetail} 
+          tasks = {this.props.tasks}
+        />
       </div>
     );
   }
@@ -112,6 +200,9 @@ class ProjectDetail extends React.Component {
         <ProjectDescription
           description={
             getCurrentProject(this.props.selectedProject).description
+          }
+          tasks={
+            getCurrentProject(this.props.selectedProject).tasks
           }
         />
       </div>

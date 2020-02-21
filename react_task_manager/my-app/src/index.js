@@ -69,7 +69,9 @@ class WindowFrame extends React.Component {
           updateSelectedProjectHandler={this.updateSelectedProjectHandler}
           addProjectHandler={this.addProjectHandler}
         />
-        <ProjectDetail selectedProject={this.state.selectedProject} />
+        <ProjectDetail 
+          selectedProject={this.state.selectedProject}
+        />
       </div>
     );
   }
