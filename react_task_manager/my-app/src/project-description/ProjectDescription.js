@@ -70,8 +70,7 @@ class ProjectTask extends React.Component {
 class ProjectTaskList extends React.Component {
   constructor(props){
     super(props)
-    this.state = {tasks:this.props.tasks,
-                  adding_task:false}
+    this.state = {adding_task:false}
 
     this.taskFormHandler = this.taskFormHandler.bind(this);
     this.addTaskHandler = this.addTaskHandler.bind(this);
@@ -104,16 +103,26 @@ class ProjectTaskList extends React.Component {
             <form>
               <ul>
                 <li>
-                  <label>Project Title:</label>
+                  <label>Task Title:</label>
                 </li>
                 <li>
                   <input type="text" id="new-project-title"></input>
                 </li>
                 <li>
-                  <label>Project Description:</label>
+                  <label>Task Note:</label>
                 </li>
                 <li>
                   <textarea rows={8} id="new-project-description"></textarea>
+                </li>
+                <li>
+                  <label>Task Priority:</label>
+                </li>
+                <li>
+                  <select id="priority">
+                    <option value="Low">Low</option>
+                    <option value="Medium">Medium</option>
+                    <option value="High">High</option>
+                  </select>
                 </li>
                 <li id="submit-btn-container">
                   <input
@@ -133,23 +142,28 @@ class ProjectTaskList extends React.Component {
         </div>
       );
     }
+    
+    let projectTasks
+    if (this.props.tasks){
+      projectTasks = this.props.tasks.map((task,index) =>(
+        <ProjectTask 
+          taskTitle = {task.title}
+          taskDescription = {task.description}
+          key = {task.id}
+        />
+      ))
+    }
 
 
     console.log(this.state.tasks)
     return(
-      <div>
-        {this.state.tasks.map((task,index) =>(
-          <ProjectTask 
-            taskTitle = {task.title}
-            taskDescription = {task.description}
-            key = {task.id}
-          />
-        ))}
-        <div className="add-project" onClick={this.taskFormHandler}>
+      <div id='task-list-container'>
+        <h3>Tasks </h3>
+        <div className="add-task" onClick={this.taskFormHandler}>
           Add Task
         </div>
+        {projectTasks}
         {addTask}
-        
       </div>
     )
   }
