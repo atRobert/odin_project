@@ -23,7 +23,7 @@ class ProjectList extends React.Component {
     console.log(this.props.data)
     return (
       <div className="projectListFrame">
-        <CreateProject click={this.props.addProjectHandler} />
+        <CreateProject addNewProject={this.props.addProjectHandler} />
         {this.props.data.map((project, index) => (
           <ProjectListItem
             project={project.title}
@@ -82,7 +82,7 @@ class CreateProject extends React.Component {
       "new-project-description"
     ).value;
     this.projectFormHandler();
-    this.props.click(newProjectTitle, newProjectDescription);
+    this.props.addNewProject(newProjectTitle, newProjectDescription);
     event.preventDefault();
   }
 

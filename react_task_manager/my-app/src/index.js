@@ -34,6 +34,8 @@ class WindowFrame extends React.Component {
     this.updateSelectedProjectHandler = this.updateSelectedProjectHandler.bind(
       this
     );
+
+    this.addTaskToProjectHandler = this.addTaskToProjectHandler.bind(this);
   }
 
   updateSelectedProjectHandler(projectID) {
@@ -44,7 +46,8 @@ class WindowFrame extends React.Component {
     const objMap = {
       title: projectTitle,
       description: projectDescription,
-      id: randomID()
+      id: randomID(),
+      tasks: []
     };
     const projects = [...this.state.data];
     projects.push(objMap);
@@ -71,6 +74,7 @@ class WindowFrame extends React.Component {
         />
         <ProjectDetail 
           selectedProject={this.state.selectedProject}
+          addTaskToProjectHandler={this.addTaskToProjectHandler}
         />
       </div>
     );
