@@ -18,9 +18,9 @@ class ProjectList extends React.Component {
     projects.splice(index, 1);
     this.setState({ data: projects });
   };
+  
 
   render() {
-    console.log(this.props.data)
     return (
       <div className="projectListFrame">
         <CreateProject addNewProject={this.props.addProjectHandler} />
@@ -34,6 +34,7 @@ class ProjectList extends React.Component {
             selectedProject={this.props.selectedProject}
             click={() => this.deleteProjectHandler(index, project.title)}
             updateSelectedProject={this.props.updateSelectedProjectHandler}
+            updateSelectedTasksHandler={this.props.updateSelectedTasksHandler}
           />
         ))}
       </div>
@@ -47,6 +48,8 @@ class ProjectListItem extends React.Component {
     this.state = null;
   }
 
+
+
   render() {
     return (
       <div
@@ -55,7 +58,10 @@ class ProjectListItem extends React.Component {
             ? "project-item active-project"
             : "project-item"
         }
-        onClick={() => this.props.updateSelectedProject(this.props.project)}
+        onClick={() => {
+          this.props.updateSelectedProject(this.props.project)
+          this.props.updateSelectedTasksHandler(this.props.project)
+        }}
       >
         {this.props.project}
       </div>

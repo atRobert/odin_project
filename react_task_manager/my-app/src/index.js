@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import {
-  buildProjectInfo,
+  buildProjectInfo, getCurrentProject, saveCurrentProject,
 } from "./localStorageProjects.js";
 
 import "./project-description/project-description.css";
@@ -20,15 +20,13 @@ var randomID = function() {
   );
 };
 
-
-
 class WindowFrame extends React.Component {
   constructor(props) {
     super(props);
     this.state = {
       data: buildProjectInfo(),
       selectedProject: "robert",
-      selectedProjectInfo: null
+      selectedTasks: getCurrentProject("robert").tasks
     };
 
     this.updateSelectedProjectHandler = this.updateSelectedProjectHandler.bind(
@@ -36,12 +34,19 @@ class WindowFrame extends React.Component {
     );
 
     this.addTaskToProjectHandler = this.addTaskToProjectHandler.bind(this);
+
+    this.updateSelectedTasksHandler = this.updateSelectedTasksHandler.bind(this);
   }
 
   updateSelectedProjectHandler(projectID) {
     this.setState({ selectedProject: projectID });
   }
 
+  updateSelectedTasksHandler(projectID){
+    const currentTasks = getCurrentProject(projectID).tasks
+    this.setState({selectedTasks: currentTasks})
+  }
+  
   addProjectHandler = (projectTitle, projectDescription) => {
     const objMap = {
       title: projectTitle,
@@ -51,17 +56,17 @@ class WindowFrame extends React.Component {
     };
     const projects = [...this.state.data];
     projects.push(objMap);
-    window.localStorage.setItem(projectTitle, JSON.stringify(objMap));
+    saveCurrentProject(objMap)
     this.setState({ data: projects });
   };
 
   addTaskToProjectHandler = (projectTitle, projectDetails) => {
     const projects = [...this.state.data];
-    var index = projects.findIndex(project => project.title == projectTitle)
+    var index = projects.findIndex(project => project.title === projectTitle)
     projects[index] = projectDetails
-    window.localStorage.setItem(projectTitle, JSON.stringify(projectDetails))
+    saveCurrentProject(projectDetails)
+    
   }
-
 
   render() {
     return (
@@ -70,11 +75,14 @@ class WindowFrame extends React.Component {
           data={this.state.data}
           selectedProject={this.state.selectedProject}
           updateSelectedProjectHandler={this.updateSelectedProjectHandler}
+          updateSelectedTasksHandler={this.updateSelectedTasksHandler}
           addProjectHandler={this.addProjectHandler}
         />
         <ProjectDetail 
           selectedProject={this.state.selectedProject}
+          selectedTasks={this.state.selectedTasks}
           addTaskToProjectHandler={this.addTaskToProjectHandler}
+          updateSelectedTasksHandler={this.updateSelectedTasksHandler}
         />
       </div>
     );

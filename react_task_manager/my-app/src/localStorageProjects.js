@@ -36,4 +36,4 @@ function removeProject(project){
 
 
 
-export {getLocalStorage, getCurrentProject, getProjectList, buildProjectInfo, removeProject}
+export {getLocalStorage, getCurrentProject, saveCurrentProject, getProjectList, buildProjectInfo, removeProject}

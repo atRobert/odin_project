@@ -71,7 +71,8 @@ class ProjectTaskList extends React.Component {
   constructor(props){
     super(props)
     this.state = {adding_task:false,
-                  tasks: getCurrentProject(this.props.title).tasks
+                  current_project: this.props.title,
+                  tasks: this.props.selectedTasks
     }
     this.taskFormHandler = this.taskFormHandler.bind(this);
     this.addTaskHandler = this.addTaskHandler.bind(this);
@@ -91,13 +92,15 @@ class ProjectTaskList extends React.Component {
     };
 
     const taskList = [...getCurrentProject(this.props.title).tasks]
+    event.preventDefault();
     taskList.push(objMap)
     const projectDetails = getCurrentProject(this.props.title)
     projectDetails.tasks = taskList
     this.setState({tasks:taskList})
     this.props.addTaskToProjectHandler(this.props.title, projectDetails)
+    this.props.updateSelectedTasksHandler(this.props.title)
     this.taskFormHandler()
-    event.preventDefault();
+    
   };
 
   taskFormHandler() {
@@ -106,8 +109,6 @@ class ProjectTaskList extends React.Component {
   }
 
   render(){
-    console.log("tasks::")
-    console.log(this.state.tasks)
     let addTask;
     if (this.state.adding_task) {
       addTask = (
@@ -156,10 +157,11 @@ class ProjectTaskList extends React.Component {
         </div>
       );
     }
-    
+    console.log("task list:")
+    console.log(this.state.tasks)
     let projectTasks
-    if (this.props.tasks){
-      projectTasks = this.state.tasks.map((task,index) =>(
+    if (this.props.selectedTasks){
+      projectTasks = this.props.selectedTasks.map((task,index) =>(
         <ProjectTask 
           taskTitle = {task.title}
           taskDescription = {task.description}
@@ -168,8 +170,6 @@ class ProjectTaskList extends React.Component {
       ))
     }
 
-
-    console.log(this.state.tasks)
     return(
       <div id='task-list-container'>
         <h3>Tasks </h3>
@@ -187,6 +187,9 @@ class ProjectTaskList extends React.Component {
 class ProjectDescription extends React.Component {
   constructor(props){
     super(props)
+    this.state = {
+      current_project:this.props.title
+    }
   }
   render() {
     return (
@@ -194,9 +197,10 @@ class ProjectDescription extends React.Component {
         <h2 className="project-description">{this.props.description}</h2>
         <ProjectTaskList
           selectedProjectDetail={this.props.selectedProjectDetail} 
-          tasks = {this.props.tasks}
           addTaskToProjectHandler = {this.props.addTaskToProjectHandler}
           title = {this.props.title}
+          selectedTasks={this.props.selectedTasks}
+          updateSelectedTasksHandler={this.props.updateSelectedTasksHandler}
         />
       </div>
     );
@@ -217,11 +221,14 @@ class ProjectTitle extends React.Component {
 class ProjectDetail extends React.Component {
   constructor(props) {
     super(props);
-    this.state = null
+    this.state = {
+      current_project: getCurrentProject(this.props.selectedProject).title
+    }
   }
 
   render() {
-    console.log(getCurrentProject(this.props.selectedProject).title);
+    console.log("ProjectDetailTitle")
+    console.log(this.props.selectedTasks)
     return (
       <div className="projectDetailFrame">
         <ProjectTitle
@@ -231,9 +238,10 @@ class ProjectDetail extends React.Component {
           description={
             getCurrentProject(this.props.selectedProject).description
           }
-          tasks={ getCurrentProject(this.props.selectedProject).tasks }
           addTaskToProjectHandler = {this.props.addTaskToProjectHandler}
           title={getCurrentProject(this.props.selectedProject).title}
+          selectedTasks={this.props.selectedTasks}
+          updateSelectedTasksHandler={this.props.updateSelectedTasksHandler}
         />
       </div>
     );
