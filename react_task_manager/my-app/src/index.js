@@ -2,7 +2,7 @@ import React from "react";
 import ReactDOM from "react-dom";
 import "./index.css";
 import {
-  buildProjectInfo, getCurrentProject, saveCurrentProject,
+  buildProjectInfo, getCurrentProject, saveCurrentProject, initiateFirstProject
 } from "./localStorageProjects.js";
 
 import "./project-description/project-description.css";
@@ -25,15 +25,15 @@ class WindowFrame extends React.Component {
     super(props);
     this.state = {
       data: buildProjectInfo(),
-      selectedProject: "robert",
-      selectedTasks: getCurrentProject("robert").tasks
+      selectedProject: initiateFirstProject(),
+      selectedTasks: getCurrentProject(initiateFirstProject()).tasks
     };
 
     this.updateSelectedProjectHandler = this.updateSelectedProjectHandler.bind(
       this
     );
 
-    this.addTaskToProjectHandler = this.addTaskToProjectHandler.bind(this);
+    this.updateTasksInProjectHandler = this.addTaskToProjectHandler.bind(this);
 
     this.updateSelectedTasksHandler = this.updateSelectedTasksHandler.bind(this);
   }
@@ -67,6 +67,7 @@ class WindowFrame extends React.Component {
     saveCurrentProject(projectDetails)
     
   }
+
 
   render() {
     return (

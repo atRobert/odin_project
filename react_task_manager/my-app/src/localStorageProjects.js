@@ -9,6 +9,23 @@ function getCurrentProject(projectTitle){
     return currentProject
 }
 
+function getFirstProject(){
+    return window.localStorage.key(0)
+}
+
+function buildWelcomeProject(){
+    let  projectDetail = '{"title":"Welcome","id":"SddsfdFds","active":false, "description":"Welcome to my React Task Manager!","tasks":[{"title":"Add a project!","description":"Click the add project button to add a project!","id":"addProjectID"},{"title":"Add Task","description":"To add a task to your project, click add task.","id":"addTaskID"}]}'
+    window.localStorage.setItem('Welcome', projectDetail)
+    return getFirstProject()
+}
+
+function initiateFirstProject(){
+    if (window.localStorage.length > 0){
+        return getFirstProject()
+    }
+    return buildWelcomeProject()
+}
+
 function saveCurrentProject(project){
     let projectTitle = project.title
     let projectDetail = JSON.stringify(project)
@@ -36,4 +53,4 @@ function removeProject(project){
 
 
 
-export {getLocalStorage, getCurrentProject, saveCurrentProject, getProjectList, buildProjectInfo, removeProject}
+export {getLocalStorage, getCurrentProject, initiateFirstProject, saveCurrentProject, getProjectList, buildProjectInfo, removeProject}

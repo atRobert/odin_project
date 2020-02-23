@@ -25,6 +25,7 @@ class ProjectTask extends React.Component {
 
     this.mouseHoverTaskContainerHandler = this.mouseHoverTaskContainerHandler.bind(this)
     this.mouseHoverTaskCheckHandler = this.mouseHoverTaskCheckHandler.bind(this)
+    this.removeTaskFromProject = this.removeTaskFromProject.bind(this)
   }
 
   mouseHoverTaskContainerHandler(){
@@ -35,6 +36,16 @@ class ProjectTask extends React.Component {
   mouseHoverTaskCheckHandler(){
     const hovering = this.state.isHoveringComplete
     this.setState({isHoveringComplete: !hovering})
+  }
+
+  removeTaskFromProject(){
+    const projectDetails = getCurrentProject(this.props.projectTitle)
+    const currentProjectTasks = projectDetails.tasks
+    const index = currentProjectTasks.findIndex(task => task.title === this.props.taskTitle)
+    currentProjectTasks.splice(index,1)
+    projectDetails.tasks = currentProjectTasks
+    this.props.addTaskToProjectHandler(this.props.title, projectDetails)
+    this.props.updateSelectedTasksHandler(this.props.projectTitle)
   }
 
   render(){
@@ -71,7 +82,9 @@ class ProjectTask extends React.Component {
               <div className="task-title-container">
                 {this.props.taskTitle}
               </div>
-              <div className='task-remove-container'>
+              <div className='task-remove-container'
+                onClick = {this.removeTaskFromProject}
+              >
                 X
               </div>
             </div>
@@ -179,9 +192,12 @@ class ProjectTaskList extends React.Component {
     if (this.props.selectedTasks){
       projectTasks = this.props.selectedTasks.map((task,index) =>(
         <ProjectTask 
+          updateSelectedTasksHandler = {this.props.updateSelectedTasksHandler}
+          projectTitle = {this.props.title}
           taskTitle = {task.title}
           taskDescription = {task.description}
           taskComplete = {task.complete}
+          addTaskToProjectHandler = {this.props.addTaskToProjectHandler}
           key = {task.id}
         />
       ))
