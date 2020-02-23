@@ -117,7 +117,7 @@ class ProjectTask extends React.Component {
             >
               {taskComplete}
             </div>
-            <div className="task-title-container">{this.props.taskTitle}</div>
+            <div className="task-title-container">(Priority: {this.props.taskPriority}) {this.props.taskTitle}</div>
             <div
               className="task-remove-container"
               onClick={this.removeTaskFromProject}
@@ -231,6 +231,7 @@ class ProjectTaskList extends React.Component {
           updateSelectedTasksHandler={this.props.updateSelectedTasksHandler}
           projectTitle={this.props.title}
           taskTitle={task.title}
+          taskPriority={task.priority}
           taskDescription={task.description}
           taskComplete={task.complete}
           addTaskToProjectHandler={this.props.addTaskToProjectHandler}

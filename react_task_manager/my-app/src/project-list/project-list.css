@@ -19,7 +19,7 @@
     position:relative;
     top: 0px;
     left:0px;
-    z-index: 10001;
+    z-index: 900;
     border-radius:5px 0px 5px 0px;
     border: 1px rgb(0, 225, 255) solid;
     border-left:1px transparent;
@@ -86,6 +86,7 @@
     right: 0;
     bottom: 0;
     left: 0;
+    z-index: 900;
   }
 
   #add-project-form {
@@ -98,7 +99,7 @@
     background:black;
     border-radius:5px;
     color:white;
-    z-index: 1000;
+    z-index: 900;
   }
 
 form input[type=text], form textarea{

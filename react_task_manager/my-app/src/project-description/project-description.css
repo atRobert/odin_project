@@ -18,15 +18,15 @@
   border-radius:5px;
   border:1px solid black;
   display: inline-block;
-  transition: border 1s ease;
+  transition: border .2s ease;
 }
 
 .task-container{
-
   width:80%;
   display: block;
-  transition: 1s ease;
+  transition: .2s ease;
   margin-bottom:10px;
+  transition: color .2s ease;
 }
 
 .complete-task{
@@ -49,6 +49,7 @@
 
 .task-container:hover .task-check-container{
   border-radius: 5px 0px 5px 0px;
+  color: rgb(0, 225, 255);
   border: 1px solid rgb(0, 225, 255);
   border-left:none;
   border-top:none;
@@ -90,7 +91,7 @@
   position: relative;
   display:block;
   margin-left: 30px;
-  transition: scaleY 1s ease;
+  transition: scaleY .5s ease;
   animation: fadeInAnimation ease .5s;
   transform-origin: top;
 }
