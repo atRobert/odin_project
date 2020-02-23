@@ -1,5 +1,8 @@
 import React from "react";
 import { getCurrentProject } from "../localStorageProjects";
+import "../../node_modules/font-awesome/css/font-awesome.min.css";
+import { FontAwesomeIcon } from "@fortawesome/react-fontawesome";
+import { faTimes } from "@fortawesome/free-solid-svg-icons";
 
 function removeProject(project) {
   window.localStorage.removeItem(project);
@@ -19,7 +22,6 @@ class ProjectList extends React.Component {
     projects.splice(index, 1);
     this.setState({ data: projects });
   };
-  
 
   render() {
     return (
@@ -32,7 +34,7 @@ class ProjectList extends React.Component {
             complete={project.complete}
             tasks={project.tasks}
             key={project.id}
-            removeProjectHandler = {this.props.removeProjectHandler}
+            removeProjectHandler={this.props.removeProjectHandler}
             selectedProject={this.props.selectedProject}
             updateSelectedProject={this.props.updateSelectedProjectHandler}
             updateSelectedTasksHandler={this.props.updateSelectedTasksHandler}
@@ -46,44 +48,35 @@ class ProjectList extends React.Component {
 class ProjectListItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = null
+    this.state = null;
   }
 
-
-
   render() {
-
-    let projectStatus = "project-item"
-    if (this.props.selectedProject === this.props.project){
-      projectStatus +=" active-project"
-    } else if (getCurrentProject(this.props.project).complete){
-      projectStatus += " project-tab-complete"
+    let projectStatus = "project-item";
+    if (this.props.selectedProject === this.props.project) {
+      projectStatus += " active-project";
+    } else if (getCurrentProject(this.props.project).complete) {
+      projectStatus += " project-tab-complete";
     }
-  
-  
+
     return (
       <div>
-        
-
-        <div
-          className={
-            projectStatus
-          }
-        >
-        <div
-        className = 'remove-project-button'
-        onClick = {() => this.props.removeProjectHandler(this.props.project)}
-        >X</div>
-        <div
-        className='project-item-text'
-        onClick={() => {
-          this.props.updateSelectedProject(this.props.project)
-          this.props.updateSelectedTasksHandler(this.props.project)
-        }}
-        >
-          {this.props.project}
-        </div>
-        
+        <div className={projectStatus}>
+          <div
+            className="remove-project-button"
+            onClick={() => this.props.removeProjectHandler(this.props.project)}
+          >
+            <FontAwesomeIcon icon={faTimes} />
+          </div>
+          <div
+            className="project-item-text"
+            onClick={() => {
+              this.props.updateSelectedProject(this.props.project);
+              this.props.updateSelectedTasksHandler(this.props.project);
+            }}
+          >
+            {this.props.project}
+          </div>
         </div>
       </div>
     );

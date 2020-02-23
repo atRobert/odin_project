@@ -30,7 +30,13 @@
 }
 
 .complete-task{
-  background:green;
+  font-size: 15px;
+  text-align: center;
+  color:green
+}
+
+.complete-task:hover{
+  color:red;
 }
 
 .task-container:hover{
@@ -101,25 +107,42 @@
 
 
   .add-task{
-    display: block;
-    width: 10%;
-    padding-top:10px;
-    padding-bottom:10px;
+    display: inline-block;
+    width:40px;
+    height:20px;
+    
     transition: .25s ease;
-    background:rgb(0, 225, 255);
-    color: black;
-    border:1px solid black;
     text-align:center;
-    border-radius:10px;
-    margin:auto;
+    border-radius:50%;
+    margin:0px;
     margin-bottom:10px;
   }
-  
-  .add-task:hover{
-    background: black;
-    color: rgb(0, 225, 255);
-    border: 1px solid rgb(0, 225, 255);
+
+  .plusIcon{
+    color:black;
+    transition:.2s ease;
   }
+
+  .circleIcon{
+    color: rgb(0, 225, 255);
+    transition: .2s ease;
+    
+  }
+
+  .add-task:hover .circleIcon{
+    color:black;
+  }
+
+  .fa-layers{
+    text-align: center;
+    font-size:24px
+  }
+
+  .add-task:hover .plusIcon{
+    color: rgb(0, 225, 255)
+  }
+
+
 
   #page-mask {
     background: rgba(0, 0, 0, 0.5);
@@ -204,9 +227,8 @@ form input[type=submit]:hover{
 }
 
 .complete-project{
-  background:green;
+  font-size: 30px;
+  text-align: center;
+  color:green;
 }
 
-.project-tab-complete{
-  border: 1px green solid;
-}
