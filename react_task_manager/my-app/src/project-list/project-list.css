@@ -1,8 +1,6 @@
 .project-item{
     display: block;
     width:97%;
-    padding-top:20px;
-    padding-bottom:20px;
     transition: .25s ease;
     background-color: rgb(192, 192, 192);
     text-align: center;
@@ -15,7 +13,37 @@
     background:rgb(129, 129, 129);
   }
 
+
+  .remove-project-button{
+    width: 30px;
+    position:relative;
+    top: 0px;
+    left:0px;
+    z-index: 10001;
+    border-radius:5px 0px 5px 0px;
+    border: 1px rgb(0, 225, 255) solid;
+    border-left:1px transparent;
+    border-top:1px transparent;
+    background:rgb(31, 31, 31);
+    display: none;
+  }
+
+  .project-item-text{
+    padding:20px;
+  }
+
+  .active-project .project-item-text{
+    padding-top:0px;
+  }
   
+  .active-project .remove-project-button{
+    display: block
+  }
+
+  .active-project .remove-project-button:hover{
+    color:red
+  }
+
   .active-project{
     background: black;
     color: rgb(0, 225, 255);
@@ -70,6 +98,7 @@
     background:black;
     border-radius:5px;
     color:white;
+    z-index: 1000;
   }
 
 form input[type=text], form textarea{

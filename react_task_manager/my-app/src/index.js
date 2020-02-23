@@ -36,6 +36,8 @@ class WindowFrame extends React.Component {
     this.updateTasksInProjectHandler = this.addTaskToProjectHandler.bind(this);
 
     this.updateSelectedTasksHandler = this.updateSelectedTasksHandler.bind(this);
+    this.removeProjectHandler = this.removeProjectHandler.bind(this);
+  
   }
 
   updateSelectedProjectHandler(projectID) {
@@ -67,6 +69,18 @@ class WindowFrame extends React.Component {
     saveCurrentProject(projectDetails)
     
   }
+  
+  removeProjectHandler = (projectTitle) => {
+    const projects = [...this.state.data];
+    const index = projects.findIndex(project => project.title === projectTitle)
+    projects.splice(index,1)
+    console.log(initiateFirstProject())
+    window.localStorage.removeItem(projectTitle)
+    this.setState({
+      data:projects,
+      selectedProject: initiateFirstProject(),
+      selectedTasks: getCurrentProject(initiateFirstProject()).tasks})
+  }
 
 
   render() {
@@ -74,6 +88,7 @@ class WindowFrame extends React.Component {
       <div className="windowFrame">
         <ProjectList
           data={this.state.data}
+          removeProjectHandler = {this.removeProjectHandler}
           selectedProject={this.state.selectedProject}
           updateSelectedProjectHandler={this.updateSelectedProjectHandler}
           updateSelectedTasksHandler={this.updateSelectedTasksHandler}

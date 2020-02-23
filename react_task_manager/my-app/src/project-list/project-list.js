@@ -31,8 +31,8 @@ class ProjectList extends React.Component {
             complete={project.complete}
             tasks={project.tasks}
             key={project.id}
+            removeProjectHandler = {this.props.removeProjectHandler}
             selectedProject={this.props.selectedProject}
-            click={() => this.deleteProjectHandler(index, project.title)}
             updateSelectedProject={this.props.updateSelectedProjectHandler}
             updateSelectedTasksHandler={this.props.updateSelectedTasksHandler}
           />
@@ -45,25 +45,39 @@ class ProjectList extends React.Component {
 class ProjectListItem extends React.Component {
   constructor(props) {
     super(props);
-    this.state = null;
+    this.state = null
   }
 
 
 
   render() {
+    
     return (
-      <div
-        className={
-          this.props.selectedProject === this.props.project
-            ? "project-item active-project"
-            : "project-item"
-        }
+      <div>
+        
+
+        <div
+          className={
+            this.props.selectedProject === this.props.project
+              ? "project-item active-project"
+              : "project-item"
+          }
+        >
+        <div
+        className = 'remove-project-button'
+        onClick = {() => this.props.removeProjectHandler(this.props.project)}
+        >X</div>
+        <div
+        className='project-item-text'
         onClick={() => {
           this.props.updateSelectedProject(this.props.project)
           this.props.updateSelectedTasksHandler(this.props.project)
         }}
-      >
-        {this.props.project}
+        >
+          {this.props.project}
+        </div>
+        
+        </div>
       </div>
     );
   }
