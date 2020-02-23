@@ -19,19 +19,22 @@ class ProjectTask extends React.Component {
   constructor(props){
     super(props)
     this.state = {
-      isHover:false
+      isHover:false,
+      isHoveringComplete:false
     }
 
-    this.mouseEnterHandler = this.mouseEnterHandler.bind(this)
-    this.mouseLeaveHandler = this.mouseLeaveHandler.bind(this)
+    this.mouseHoverTaskContainerHandler = this.mouseHoverTaskContainerHandler.bind(this)
+    this.mouseHoverTaskCheckHandler = this.mouseHoverTaskCheckHandler.bind(this)
   }
 
-  mouseEnterHandler(){
-    this.setState({isHover:true})
+  mouseHoverTaskContainerHandler(){
+    const hovering = this.state.isHover
+    this.setState({isHover:!hovering})
   }
 
-  mouseLeaveHandler(){
-    this.setState({isHover:false})
+  mouseHoverTaskCheckHandler(){
+    const hovering = this.state.isHoveringComplete
+    this.setState({isHoveringComplete: !hovering})
   }
 
   render(){
@@ -46,12 +49,15 @@ class ProjectTask extends React.Component {
 
     return(
       <div className="task-container"
-        onMouseEnter = {this.mouseEnterHandler}
-        onMouseLeave = {this.mouseLeaveHandler}
+        onMouseEnter = {this.mouseHoverTaskContainerHandler}
+        onMouseLeave = {this.mouseHoverTaskContainerHandler}
       >
           <div>
             <div className="task-quick">
-              <div className='task-check-container'>
+              <div className='task-check-container'
+                onMouseEnter = {this.mouseHoverTaskCheckHandler}
+                onMouseLeave = {this.mouseHoverTaskCheckHandler}
+              >X
               </div>
               <div className="task-title-container">
                 {this.props.taskTitle}
@@ -88,7 +94,8 @@ class ProjectTaskList extends React.Component {
       title: taskTitle,
       description: taskDescription,
       priority: taskPriority,
-      id: randomID()
+      id: randomID(),
+      complete: false
     };
 
     const taskList = [...getCurrentProject(this.props.title).tasks]
@@ -165,6 +172,7 @@ class ProjectTaskList extends React.Component {
         <ProjectTask 
           taskTitle = {task.title}
           taskDescription = {task.description}
+          taskComplete = {task.complete}
           key = {task.id}
         />
       ))
