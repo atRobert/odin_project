@@ -47,6 +47,15 @@ class ProjectTask extends React.Component {
       )
     }
 
+    let taskComplete 
+    if (this.props.taskComplete){
+      taskComplete = (
+        <div>
+          X
+        </div>
+      )
+    }
+
     return(
       <div className="task-container"
         onMouseEnter = {this.mouseHoverTaskContainerHandler}
@@ -57,7 +66,7 @@ class ProjectTask extends React.Component {
               <div className='task-check-container'
                 onMouseEnter = {this.mouseHoverTaskCheckHandler}
                 onMouseLeave = {this.mouseHoverTaskCheckHandler}
-              >X
+              >{taskComplete}
               </div>
               <div className="task-title-container">
                 {this.props.taskTitle}
