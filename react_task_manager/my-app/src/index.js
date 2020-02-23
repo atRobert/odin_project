@@ -37,6 +37,7 @@ class WindowFrame extends React.Component {
 
     this.updateSelectedTasksHandler = this.updateSelectedTasksHandler.bind(this);
     this.removeProjectHandler = this.removeProjectHandler.bind(this);
+    this.toggleProjectComplete = this.toggleProjectComplete.bind(this)
   
   }
 
@@ -54,6 +55,7 @@ class WindowFrame extends React.Component {
       title: projectTitle,
       description: projectDescription,
       id: randomID(),
+      complete: false,
       tasks: []
     };
     const projects = [...this.state.data];
@@ -66,8 +68,15 @@ class WindowFrame extends React.Component {
     const projects = [...this.state.data];
     var index = projects.findIndex(project => project.title === projectTitle)
     projects[index] = projectDetails
+    saveCurrentProject(projectDetails) 
+  }
+
+  toggleProjectComplete =  (projectTitle, projectDetails) =>{
+    const projects = [...this.state.data];
+    var index = projects.findIndex(project => project.title === projectTitle)
+    projects[index] = projectDetails
     saveCurrentProject(projectDetails)
-    
+    this.setState({data:projects})
   }
   
   removeProjectHandler = (projectTitle) => {
@@ -95,6 +104,7 @@ class WindowFrame extends React.Component {
           addProjectHandler={this.addProjectHandler}
         />
         <ProjectDetail 
+          toggleProjectComplete = {this.toggleProjectComplete}
           selectedProject={this.state.selectedProject}
           selectedTasks={this.state.selectedTasks}
           addTaskToProjectHandler={this.addTaskToProjectHandler}

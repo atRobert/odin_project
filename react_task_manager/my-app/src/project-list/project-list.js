@@ -1,4 +1,5 @@
 import React from "react";
+import { getCurrentProject } from "../localStorageProjects";
 
 function removeProject(project) {
   window.localStorage.removeItem(project);
@@ -51,16 +52,22 @@ class ProjectListItem extends React.Component {
 
 
   render() {
-    
+
+    let projectStatus = "project-item"
+    if (this.props.selectedProject === this.props.project){
+      projectStatus +=" active-project"
+    } else if (getCurrentProject(this.props.project).complete){
+      projectStatus += " project-tab-complete"
+    }
+  
+  
     return (
       <div>
         
 
         <div
           className={
-            this.props.selectedProject === this.props.project
-              ? "project-item active-project"
-              : "project-item"
+            projectStatus
           }
         >
         <div

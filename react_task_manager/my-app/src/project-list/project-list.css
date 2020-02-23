@@ -145,3 +145,8 @@ form input[type=submit]:hover{
   display: flex;
   justify-content: center;
 }
+
+.project-tab-complete{
+  border: 1px green solid;
+  background-color: rgb(109, 201, 109);
+}

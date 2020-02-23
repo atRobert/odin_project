@@ -29,6 +29,10 @@
   margin-bottom:10px;
 }
 
+.complete-task{
+  background:green;
+}
+
 .task-container:hover{
   background: rgba(0, 0, 0, 0.575);
   color: rgb(0, 225, 255);
@@ -181,4 +185,28 @@ form input[type=submit]:hover{
 #submit-btn-container{
   display: flex;
   justify-content: center;
+}
+
+.project-complete-container{
+  width:40px;
+  height:40px;
+  position: absolute;
+  top:0;
+  left:0;
+  border-radius:10px 0px 5px 0px;
+  border:1px solid black;
+  border-left: 1px transparent;
+  border-top:1px transparent;
+}
+
+.projectDetailFrame{
+  position: relative;
+}
+
+.complete-project{
+  background:green;
+}
+
+.project-tab-complete{
+  border: 1px green solid;
 }

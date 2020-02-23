@@ -14,7 +14,7 @@ function getFirstProject(){
 }
 
 function buildWelcomeProject(){
-    let  projectDetail = '{"title":"Welcome","id":"SddsfdFds","active":false, "description":"Welcome to my React Task Manager!","tasks":[{"title":"Add a project!","description":"Click the add project button to add a project!","id":"addProjectID"},{"title":"Add Task","description":"To add a task to your project, click add task.","id":"addTaskID"}]}'
+    let  projectDetail = '{"title":"Welcome","id":"SddsfdFds","complete":false,"active":false, "description":"Welcome to my React Task Manager!","tasks":[{"title":"Add a project!","description":"Click the add project button to add a project!","id":"addProjectID"},{"title":"Add Task","description":"To add a task to your project, click add task.","id":"addTaskID"}]}'
     window.localStorage.setItem('Welcome', projectDetail)
     return getFirstProject()
 }
