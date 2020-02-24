@@ -1,3 +1,5 @@
+import {welcomeJSON} from './welcome.js'
+
 
 function getCurrentProject(projectTitle) {
 let currentProject = window.localStorage.getItem(projectTitle);
@@ -10,9 +12,8 @@ return window.localStorage.key(0);
 }
 
 function buildWelcomeProject() {
-let projectDetail =
-    '{"title":"Welcome","id":"SddsfdFds","complete":false,"active":false, "description":"Welcome to my React Task Manager!","tasks":[{"title":"Add a project!","description":"Click the add project button to add a project!","id":"addProjectID"},{"title":"Add Task","description":"To add a task to your project, click add task.","id":"addTaskID"}]}';
-window.localStorage.setItem("Welcome", projectDetail);
+let projectDetail = JSON.stringify(welcomeJSON)
+window.localStorage.setItem("Welcome!", projectDetail);
 return getFirstProject();
 }
 

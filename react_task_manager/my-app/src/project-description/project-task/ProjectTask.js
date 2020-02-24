@@ -34,7 +34,7 @@ class ProjectTask extends React.Component {
       const hovering = this.state.isHover;
       this.setState({ isHover: !hovering });
     }
-  
+
     mouseHoverTaskCheckHandler() {
       const hovering = this.state.isHoveringComplete;
       this.setState({ isHoveringComplete: !hovering });
