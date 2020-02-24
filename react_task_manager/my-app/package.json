@@ -1,4 +1,5 @@
 {
+  "homepage": "https://atrobert.github.io/odin_project/react_task_manager/my-app",
   "name": "my-app",
   "version": "0.1.0",
   "private": true,
@@ -42,6 +43,5 @@
   },
   "devDependencies": {
     "gh-pages": "^2.2.0"
-  },
-  "homepage": "https://atrobert.github.io/odin_project/react_task_manager/my-app"
+  }
 }
