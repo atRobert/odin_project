@@ -130,6 +130,7 @@ class ProjectTaskList extends React.Component {
           taskComplete={task.complete}
           addTaskToProjectHandler={this.props.addTaskToProjectHandler}
           key={task.id}
+          taskID = {task.id}
         />
       ));
     }

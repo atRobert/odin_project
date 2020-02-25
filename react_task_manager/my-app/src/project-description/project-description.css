@@ -23,6 +23,7 @@
 
 .task-container{
   width:80%;
+  height:auto;
   display: block;
   transition: .2s ease;
   margin-bottom:10px;
@@ -92,12 +93,9 @@
   position: relative;
   display:block;
   margin-left: 30px;
-  transition: scaleY .5s ease, height 1s ease;
   animation: scaleInAnimation ease .5s;
   transform-origin: top;
 }
-
-.task-container
 
 
 @keyframes scaleInAnimation { 
@@ -125,12 +123,13 @@
   .plusIcon{
     color:black;
     transition:.2s ease;
+    font-size: 30px;
   }
 
   .circleIcon{
     color: rgb(0, 225, 255);
     transition: .2s ease;
-    
+    font-size: 25px;
   }
 
   .add-task:hover .circleIcon{

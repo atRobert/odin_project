@@ -1,12 +1,12 @@
+@import url('https://fonts.googleapis.com/css?family=Oxygen&display=swap');
+
 :root{
   --main-bg-color: rgb(221, 221, 221);
 }
 
-@import url('https://fonts.googleapis.com/css?family=Saira+Semi+Condensed&display=swap');
-
 body{
   margin:0px;
-  font-family: 'Saira Semi Condensed', sans-serif;
+  font-family: 'Oxygen', raleway ;
   font-weight: 100;
 }
 
