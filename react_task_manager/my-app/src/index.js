@@ -135,6 +135,7 @@ class App extends React.Component {
   }
 }
 
+initiateFirstProject()
 ReactDOM.render(<App />, document.getElementById("root"));
 
 
