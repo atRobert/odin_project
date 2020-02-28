@@ -20,4 +20,4 @@
 
 - [ToDoManager](https://atRobert.github.io/ToDoList/) using React!
 
-- [Weather App](https://atRobert.github.io/weather-app/weather.html)
+- [Weather App](https://atRobert.github.io/odin_project/weather-app/weather.html)
