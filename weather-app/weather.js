@@ -4,7 +4,14 @@ const apiKey = 'fd44eb02e519e736eeb68874e1c597c9'
 function formatTime(hours, minutes){
     let meridium = hours >= 12 ? ' PM' : ' AM'
     twelveHour = hours % 12
-    let minutesFormatted = minutes == 0 ? '00' : minutes.toString()
+    let minutesFormatted
+    if (minutes == 0){
+        minutesFormatted = '00'
+    } else if (minutes < 10){
+        minutesFormatted = "0" + minutes.toString()
+    } else {
+        minutesFormatted = minutes.toString()
+    }
     return (twelveHour.toString() + ':' + minutesFormatted + meridium)
 }
 
