@@ -1,0 +1,37 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    
+    <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/css/bootstrap.min.css" integrity="sha384-Vkoo8x4CGsO3+Hhxv8T/Q5PaXtkKtu6ug5TOeNV6gBiFeWPGFN9MuhOf23Q9Ifjh" crossorigin="anonymous">
+    <script src="https://code.jquery.com/jquery-3.4.1.slim.min.js" integrity="sha384-J6qa4849blE2+poT4WnyKhv5vZF5SrPo0iEjwBvKU7imGFAV0wwj1yYfoRSJoZ+n" crossorigin="anonymous"></script>
+    <script src="https://cdn.jsdelivr.net/npm/popper.js@1.16.0/dist/umd/popper.min.js" integrity="sha384-Q6E9RHvbIyZFJoft+2mJbHaEWldlvI9IOYy5n3zV9zzTtmI3UksdQRVvoxMfooAo" crossorigin="anonymous"></script>
+    <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.4.1/js/bootstrap.min.js" integrity="sha384-wfSDF2E50Y2D1uUdj0O3uMBJnjuUD4Ih7YwaYd1iqfktj0Uod8GCExl3Og8ifwB6" crossorigin="anonymous"></script>
+    <link rel="stylesheet" href="./weather.css">
+    <script src="https://kit.fontawesome.com/e1b1731a15.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Noto+Sans&display=swap" rel="stylesheet">
+
+<title>Weather App</title>
+</head>
+<body>
+    <section id="cover" class="min-vh-100">
+        <div id='cover-caption' class='cover-caption col-xl-5 col-lg-6 col-md-8 col-sm-10 mx-auto text-center'>
+            <div class='jumbotron'>
+                <h3>Find a City's Weather:</h3>
+                <form action="" class='form-inline justify-content-center'>    
+                    <div class='form-group'>
+                        <input type="text" id='city-name' class='form-control' placeholder="City Name">
+                        <button id="search-city" class='btn btn-success'><i class="fas fa-search-location" ></i></button>
+                    </div>
+                </form>
+                <div id='city-results'>
+                    <div id='weather-text'>&nbsp;</div>
+                    <div id='time-text'>&nbsp;</div>
+                </div>
+            </div>
+        </div>
+    </section>
+    <script src='./weather.js'></script>
+</body>
+</html>

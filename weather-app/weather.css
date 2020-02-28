@@ -1,0 +1,46 @@
+@import url('https://fonts.googleapis.com/css?family=Spartan&display=swap');
+
+body{
+    font-family: 'Spartan', Arial;
+}
+
+#city-name{
+    border-top-right-radius: 0px;
+    border-bottom-right-radius: 0px;
+    border: 1px #28a745 solid
+}
+
+#search-city{
+    border-top-left-radius: 0px;
+    border-bottom-left-radius: 0px;
+}
+
+h3{
+    color:white;
+}
+
+#city-results{
+    margin-top:60px;
+    color:white;
+    font-size:30px;
+}
+
+#cover {
+    background: #222 url('https://unsplash.it/1920/1080/?random') center center no-repeat;
+    background-size: cover;
+    height: 100%;
+    text-align: center;
+    display: flex;
+    align-items: center;
+    position: relative;
+}
+
+#cover-caption {
+    width: 100%;
+    position: relative;
+    z-index: 1;
+}
+
+.jumbotron{
+    background-color:rgba(0, 0, 0, 0.555)
+}
