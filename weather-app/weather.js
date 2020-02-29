@@ -1,10 +1,24 @@
 const apiKey = 'fd44eb02e519e736eeb68874e1c597c9'
 
 
-function formatTime(hours, minutes){
+function formatTime(timeFormatted){
+    const dateTime = new Date(timeFormatted)
+    const hours = dateTime.getHours()
+    const minutes = dateTime.getMinutes()
+    hoursFormatted = formatHours(hours)
+    minutesFormatted = formatMinutes(minutes)
     let meridium = hours >= 12 ? ' PM' : ' AM'
+    
+    return (hoursFormatted + ':' + minutesFormatted + meridium)
+}
+
+function formatHours(hours){ 
     let twelveHour = hours % 12
     twelveHour == 0 ? twelveHour = 12 : {}
+    return twelveHour.toString()
+}
+
+function formatMinutes(minutes){
     let minutesFormatted
     if (minutes == 0){
         minutesFormatted = '00'
@@ -13,32 +27,36 @@ function formatTime(hours, minutes){
     } else {
         minutesFormatted = minutes.toString()
     }
-    return (twelveHour.toString() + ':' + minutesFormatted + meridium)
+    return minutesFormatted
 }
+
 
 function loadingCirlce(){
     const cityResults = document.getElementById('city-results')
-    cityResults.innerHTML = `
-        <div class="sk-chase">
-            <div class="sk-chase-dot"></div>
-            <div class="sk-chase-dot"></div>
-            <div class="sk-chase-dot"></div>
-            <div class="sk-chase-dot"></div>
-            <div class="sk-chase-dot"></div>
-            <div class="sk-chase-dot"></div>
-        </div>
-    `
+    const skChase = document.createElement('div')
+    skChase.classList.add('sk-chase')
+    for (let i = 0; i < 6; i++){
+        let skChaseDot = document.createElement('div')
+        skChaseDot.classList.add('sk-chase-dot')
+        skChase.appendChild(skChaseDot)
+    }
+    cityResults.appendChild(skChase)
 }
 
-function weatherData(){
+function removeLoadingCircle(){
     const cityResults = document.getElementById('city-results')
-    cityResults.innerHTML = `
-        <div id='weather-text'>&nbsp;</div>
-        <div id='time-text'>&nbsp;</div>
-        `
+    cityResults.removeChild(cityResults.childNodes[cityResults.childNodes.length-1])
+}
+
+
+function clearWeatherData(){
+    document.getElementById('weather-text').textContent = ' '
+    document.getElementById('time-text').textContent = ' '
 }
 
 async function getCityWeather(cityName){
+    const weatherText = document.getElementById('weather-text')
+    clearWeatherData()
     loadingCirlce()
     try{
         const weather = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&APPID=fd44eb02e519e736eeb68874e1c597c9`, {mode:'cors'})
@@ -47,24 +65,21 @@ async function getCityWeather(cityName){
         const lat = data.coord.lat
         const time = await fetch(`https://api.timezonedb.com/v2.1/get-time-zone?key=BX35L7KUUB8G&format=json&by=position&lat=${lat}&lng=${long}`, {mode:"cors"})
         const timeData = await time.json();
-        const timeFormatted = new Date(timeData.formatted) 
-        const timeDisplay = formatTime(timeFormatted.getHours(),timeFormatted.getMinutes())
-        weatherData()
-        document.getElementById('weather-text').textContent = (`It's currently ${(data.main.temp).toString()}  \xB0F in ${cityName}`)
+        const timeDisplay = formatTime(timeData.formatted)
+        removeLoadingCircle()
+        weatherText.textContent = (`It's currently ${(data.main.temp).toString()}  \xB0F in ${cityName}`)
         document.getElementById('time-text').textContent = (timeDisplay)
     }
     catch{
-        const cityResults = document.getElementById('city-results')
-        cityResults.textContent = `Couldn't find resultes for ${cityName}`
+        removeLoadingCircle()
+        weatherText.textContent = `Couldn't find resultes for ${cityName}`
     }
-
 }
 
 
 document.getElementById('search-city').addEventListener('click', function(e){
     event.preventDefault()
     const cityName = document.getElementById('city-name').value
-    console.log(cityName)
     getCityWeather(cityName)
 })
 
