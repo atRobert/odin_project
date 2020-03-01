@@ -37,6 +37,8 @@
       
 - [Rock Paper Scissors Game](https://atrobert.github.io/odin_project/RPS-game/index.html)
     * Basic rock paper scissors game gainst a computer. Involves basic JavaScript for Dom Manipulation.
+    
+    ![Image of RPS](https://imgur.com/CwS0oLD)
 
 - [Let's Draw!](https://atrobert.github.io/odin_project//draw/index.html)
     * Drawing pad generated from DIV elements with OnHover commands. Users can decide the resolution of
