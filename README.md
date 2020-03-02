@@ -17,7 +17,7 @@
    * Same Concept as the ToDoManager above, however with the implementation of React JavaScript front end framework.
       also set up with LocalStorage for users to Add, Remove or Edit existing information. 
       <p align="center">
-      <img src="https://github.com/atRobert/odin_project/blob/master/images/todolistreact.png" width="70%">
+      <img src="https://github.com/atRobert/odin_project/blob/master/images/todolistreact2.png" width="70%">
       </p>
       
 ## [Weather App](https://atRobert.github.io/odin_project/weather-app/weather.html)
