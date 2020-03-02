@@ -42,6 +42,10 @@
  
  * Book Storage allows users to add books (titles, authors, page count, and whether or not they've read them). 
    Not set up to use LocalStorage, so books added will be lost once use leaves the page.
+   
+   <p align="center">
+   <img src="https://github.com/atRobert/odin_project/blob/master/images/book.png" width="40%">
+   </p>
 
 ## [tictactoe](https://atrobert.github.io/odin_project/tictactoe/tictactoe.html)
  
@@ -59,7 +63,7 @@
    break in between. Users can switch between Productive and Break as needed.
    
    <p align="center">
-    <img src="https://github.com/atRobert/odin_project/blob/master/images/timer.png" width="40%">
+    <img src="https://github.com/atRobert/odin_project/blob/master/images/timer.png" width="80%">
     </p>
     
 ## [BigBurger Restaurant](https://atrobert.github.io/odin_project/restaurant/dist/index.html)
