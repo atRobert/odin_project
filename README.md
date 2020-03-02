@@ -47,6 +47,7 @@
  
  * Tic Tac Toe game where user can pick the size of the board up to 20 by 20. Ever play 20 by 20 Tic Tac Toe? 
    It's not fun, but hey, now you can!
+   
    <p align="center">
    <img src="https://github.com/atRobert/odin_project/blob/master/images/tictactoe3.png" width="40%">
    <img src="https://github.com/atRobert/odin_project/blob/master/images/tictactoe15.png" width="40%">
@@ -55,7 +56,11 @@
 ## [Pomodoro Timer](https://atrobert.github.io/odin_project/pomodoro-timer/timer.html)
  
  * Timer that helps with maximizing productivity. 25 minutes of no-distraction productivity with five minutes of 
-   break in between. Users can switch between Productive and Break as needed.    
+   break in between. Users can switch between Productive and Break as needed.
+   
+   <p align="center">
+    <img src="https://github.com/atRobert/odin_project/blob/master/images/timer.png" width="40%">
+    </p>
     
 ## [BigBurger Restaurant](https://atrobert.github.io/odin_project/restaurant/dist/index.html)
  
@@ -73,6 +78,7 @@
  
  * Drawing pad generated from DIV elements with OnHover commands. Users can decide the resolution of
    the drawing pad up to 100 by 100 "Pixels".
+   
    <p align="center">
    <img src="https://github.com/atRobert/odin_project/blob/master/images/paint.png" width="40%">
    </p>
