@@ -27,7 +27,7 @@
    city location. Introduces JavaScript Promises and Await.
 
    <p align="center">
-   <img src="https://github.com/atRobert/odin_project/blob/master/images/weathapp.png" width="50%">
+   <img src="https://github.com/atRobert/odin_project/blob/master/images/weatherapp2.png" width="50%">
    </p>
    
 ## [Calculator](https://atrobert.github.io/odin_project/calculator/calc.html)
