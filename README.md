@@ -9,7 +9,7 @@
    the page from the same browser and Add, Remove, or Edit existing information.
 
    <p align="center">
-   <img src="https://github.com/atRobert/odin_project/blob/master/images/todolist2.png" width="70%">
+   <img src="https://github.com/atRobert/odin_project/blob/master/images/todilist2.png" width="70%">
    </p>
    
 ## [ToDoManager](https://atRobert.github.io/ToDoList/) using React!
