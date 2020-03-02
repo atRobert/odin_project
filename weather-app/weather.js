@@ -1,4 +1,4 @@
-const apiKey = 'fd44eb02e519e736eeb68874e1c597c9'
+
 
 
 function formatTime(timeFormatted){
@@ -52,22 +52,38 @@ function removeLoadingCircle(){
 function clearWeatherData(){
     document.getElementById('weather-text').textContent = ' '
     document.getElementById('time-text').textContent = ' '
+    document.getElementById('weather-icon').src = ' '
+}
+
+function capital_letter(str){
+    str = str.split(" ");
+
+    for (var i = 0, x = str.length; i < x; i++) {
+        str[i] = str[i][0].toUpperCase() + str[i].substr(1);
+    }
+
+    return str.join(" ");
 }
 
 async function getCityWeather(cityName){
     const weatherText = document.getElementById('weather-text')
+    const weatherIcon = document.getElementById('weather-icon')
     clearWeatherData()
     loadingCirlce()
     try{
         const weather = await fetch(`https://api.openweathermap.org/data/2.5/weather?q=${cityName}&units=imperial&APPID=fd44eb02e519e736eeb68874e1c597c9`, {mode:'cors'})
         const data = await weather.json()
+        const description = data.weather[0]
+        console.log(description.description)
+        console.log(description.icon)
         const long = data.coord.lon
         const lat = data.coord.lat
         const time = await fetch(`https://api.timezonedb.com/v2.1/get-time-zone?key=BX35L7KUUB8G&format=json&by=position&lat=${lat}&lng=${long}`, {mode:"cors"})
         const timeData = await time.json();
         const timeDisplay = formatTime(timeData.formatted)
         removeLoadingCircle()
-        weatherText.textContent = (`It's currently ${(data.main.temp).toString()}  \xB0F in ${cityName}`)
+        weatherIcon.src = `http://openweathermap.org/img/wn/${description.icon}@2x.png`
+        weatherText.textContent = (`It's currently ${(data.main.temp).toString()}  \xB0F in ${capital_letter(cityName)}`)
         document.getElementById('time-text').textContent = (timeDisplay)
     }
     catch{

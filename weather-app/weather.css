@@ -43,8 +43,13 @@ h3{
 }
 
 .jumbotron{
-    background-color:rgba(0, 0, 0, 0.555)
+    background-color:rgba(136, 135, 135, 0.555)
 }
+
+#time-text{
+  display: inline;
+}
+
 
 
 .sk-chase {
