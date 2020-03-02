@@ -63,7 +63,7 @@
    break in between. Users can switch between Productive and Break as needed.
    
    <p align="center">
-    <img src="https://github.com/atRobert/odin_project/blob/master/images/timer.png" width="80%">
+    <img src="https://github.com/atRobert/odin_project/blob/master/images/timer.png" width="60%">
     </p>
     
 ## [BigBurger Restaurant](https://atrobert.github.io/odin_project/restaurant/dist/index.html)
