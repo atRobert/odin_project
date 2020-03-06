@@ -19,7 +19,11 @@
       <p align="center">
       <img src="https://github.com/atRobert/odin_project/blob/master/images/todolistreact2.png" width="70%">
       </p>
-      
+
+## [BattleShip](https://atrobert.github.io/odin_project/battleship/dist/index.html)
+
+   * Work in progress. Battleship game against a computer.
+        
 ## [Weather App](https://atRobert.github.io/odin_project/weather-app/weather.html)
  
  * Weather App used to find the current weather of a city location as well as the current time. Uses OpenWeatherMap Api
