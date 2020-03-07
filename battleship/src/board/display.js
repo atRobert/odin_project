@@ -31,7 +31,7 @@ const Display = () =>{
                 if (shipStats[0]){
                     col.classList.add('_'+shipStats[2])
                     col.style['background'] = 'rgb(17, 244, 0)';
-                    (shipStats[1]) ? sinkShip('_'+shipStats[3]) : {};
+                    (shipStats[1]) ? sinkShip('_'+shipStats[2]) : {};
                 } else{
                     col.style['background'] = 'red'
                 }
