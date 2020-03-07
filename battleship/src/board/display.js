@@ -6,6 +6,13 @@ console.log(game.bufferCoords)
 let boardDisplay = document.getElementById('board-display')
 
 const Display = () =>{
+    const sinkShip = (shipNumber) =>{
+        let shipSections = document.getElementsByClassName(shipNumber)
+        console.log(shipSections)
+        for (let i=0; i < shipSections.length; i++){
+            shipSections[i].style['background'] = 'rgb(17, 84, 0)';
+        }
+    }
     for (let rowNum = 0; rowNum < 11; rowNum++ ){
         let row = document.createElement('div')
         row.classList.add('row')
@@ -19,13 +26,13 @@ const Display = () =>{
                                     width:50px;
                                     border:1px solid black;
                                     display:inline-block`
-            col.textContent = `${rowNum},${colNum}`
             col.addEventListener('mouseenter', function(e){
-                if (game.receiveAttack(`${this.getAttribute('row')},${this.getAttribute('col')}`)[0]){
-                    col.textContent='X'
-                    col.style['background'] = 'green'
+                let shipStats = game.receiveAttack(`${this.getAttribute('row')},${this.getAttribute('col')}`)
+                if (shipStats[0]){
+                    col.classList.add('_'+shipStats[2])
+                    col.style['background'] = 'rgb(17, 244, 0)';
+                    (shipStats[1]) ? sinkShip('_'+shipStats[3]) : {};
                 } else{
-                    col.textContent='Miss'
                     col.style['background'] = 'red'
                 }
             })

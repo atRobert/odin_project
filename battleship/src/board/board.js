@@ -2,8 +2,8 @@ const Ship = require('../ship/ship.js')
 
 const Gameboard = () => {
     const placedShips = [];
-    const shipSizes = [3,3,2, 2, 2,1, 1];
-    const bufferCoords = []
+    const shipSizes = [4,3,3,2,2,2,1,1,1];
+    const bufferCoords = new Set()
     const getRandomInt = max => {
       return Math.floor(Math.random() * Math.floor(max));
     };
@@ -39,48 +39,42 @@ const Gameboard = () => {
   
     const checkCoordinates = array => {
       let stringArray = [...array].map(x => x.toString());
-      let spaceOccupied = placedShips.some(ship => {
-        return ship.shipCoords.some(x => {
-          return stringArray.includes(x);
-        });
-      });
-      let shipBuffer = bufferCoords.some(x => {
-          return stringArray.includes(x)
+      let spaceOccupied = stringArray.some(x => {
+        return bufferCoords.has(x)
       })
-      return spaceOccupied || shipBuffer;
+      return spaceOccupied;
     };
 
     const generateBuffer = (shipCoords) => {
       for (let coord = 0; coord < shipCoords.length; coord++){
         let row = shipCoords[coord][0]
         let col = shipCoords[coord][1]
-        bufferCoords.push([row+1,col+1].toString())
-        bufferCoords.push([row+1,col].toString())
-        bufferCoords.push([row+1,col-1].toString())
-        bufferCoords.push([row,col-1].toString())
-        bufferCoords.push([row,col+1].toString())
-        bufferCoords.push([row-1,col-1].toString())
-        bufferCoords.push([row-1,col+1].toString())
-        bufferCoords.push([row-1,col].toString())
+        bufferCoords.add([row, col].toString())
+        bufferCoords.add([row+1,col+1].toString())
+        bufferCoords.add([row+1,col].toString())
+        bufferCoords.add([row+1,col-1].toString())
+        bufferCoords.add([row,col-1].toString())
+        bufferCoords.add([row,col+1].toString())
+        bufferCoords.add([row-1,col-1].toString())
+        bufferCoords.add([row-1,col+1].toString())
+        bufferCoords.add([row-1,col].toString())
       }
     }
   
     const placeShip = (shipNumber, shipLength) => {
       let spaceOccupied = true;
-      let potentialShipSpot;
-      let orientation;
-      let breakfunction = 0;
-      let potentialOrientation = [
-        generateShipCoordinatesVertical(shipLength),
-        generateShipCoordinatesHorizontal(shipLength)
-      ];
-      while (spaceOccupied === true && breakfunction < 50) {
-        orientation = getRandomInt(2);
+      let potentialShipSpot
+      while (spaceOccupied === true) {
+        let orientation = getRandomInt(2);
+        let potentialOrientation = [
+          generateShipCoordinatesVertical(shipLength),
+          generateShipCoordinatesHorizontal(shipLength)
+        ];
+        
         potentialShipSpot = potentialOrientation[orientation];
         spaceOccupied = checkCoordinates(potentialShipSpot);
-        breakfunction++;
+        spaceOccupied == true ? potentialShipSpot = '' : {}
       }
-      console.log(potentialShipSpot)
       generateBuffer(potentialShipSpot)
       placedShips[shipNumber] = Ship(shipLength, potentialShipSpot);
     };
@@ -100,9 +94,9 @@ const Gameboard = () => {
       if (shipIndex != -1) {
         let shipSection = placedShips[shipIndex].shipCoords.indexOf(coordinates);
         placedShips[shipIndex].hit(shipSection);
-        return [true,(placedShips[shipIndex].getSunk()),'hit!'];
+        return [true,(placedShips[shipIndex].getSunk()),shipIndex];
       } else {
-        return [false, false,"You Missed!"];
+        return [false, false,-1];
       }
     };
   
