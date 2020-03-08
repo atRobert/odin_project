@@ -3,12 +3,9 @@ const Gameboard = require('./board.js')
 const Display = (player, computer) =>{
     let playerDisplay = document.getElementById('player-display')
     let computerDisplay = document.getElementById('computer-display')
-    let boardDisplay = document.getElementById('board-display')
-    boardDisplay.style.textAlign ='center'
-    playerDisplay.style['display'] = 'block'
-    computerDisplay.style['display'] = 'block'
     let playerTurn = true
-    let computerMoves = [] 
+    let computerMoves = []
+    let gameIsOver = false
 
     const getRandomInt = max => {
         return Math.floor(Math.random() * Math.floor(max));
@@ -29,6 +26,7 @@ const Display = (player, computer) =>{
     const gameOver = () => {
         let message = playerTurn == true ? 'YOU WIN!' : 'YOU LOSE!'
         document.getElementById('winner-display').textContent = message
+        gameIsOver = true
     }
 
     const getRandomCoords = () => {
@@ -89,8 +87,9 @@ const Display = (player, computer) =>{
                                     border:1px solid black;
                                     display:inline-block`
             col.addEventListener('click', function(e){
-                if (playerTurn){
+                if (playerTurn = true && !gameIsOver){
                     let shipStats = player.receiveAttack(`${this.getAttribute('row')},${this.getAttribute('col')}`)
+                    this.removeEventListener('click', arguments.callee)
                     checkAttack(shipStats, col, player, 'A')
                     computerMove()
                 }

@@ -1,0 +1,66 @@
+#mask{
+    position: absolute;
+    top:0;
+    left:0;
+    width:100vw;
+    height:100vh;
+    transition: 1s ease;
+    overflow: hidden;
+}
+
+
+
+
+#text {
+    color: white;
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    -webkit-transform: translate(-50%, -50%);
+    -ms-transform: translate(-50%, -50%);
+    transform: translate(-50%, -50%);
+    text-align: center;
+    transition: 2s ease;
+  }
+
+#board-display{
+    text-align: center;
+}
+
+#player-display, #computer-display{
+    display: block;
+}
+
+#door-bottom{
+    height:10vh;
+    background-color:#000080;
+    width:100vw;
+    position: absolute;
+    bottom:0;
+    left: 0;
+    transition: 1s;
+}
+
+#door-left{
+    height:100vh;
+    background-color:#000080;
+    width:50vw;
+    position: absolute;
+    bottom:0;
+    left: 0;
+    transition: 1s;
+}
+
+#door-right{
+    height:100vh;
+    background-color:#000080;
+    width:50vw;
+    position: absolute;
+    bottom:0;
+    right: 0;
+    transition: 1s;
+}
+
+#play{
+    transition: 1s ease;
+}
