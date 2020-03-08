@@ -2,14 +2,14 @@ const Ship = require('../ship/ship.js')
 
 const Gameboard = () => {
     const placedShips = [];
-    const shipSizes = [4,3,3,2,2,2,1,1,1];
+    const shipSizes = [4,3,2,2,1,1,1];
     const bufferCoords = new Set()
     const getRandomInt = max => {
       return Math.floor(Math.random() * Math.floor(max));
     };
   
     const generateShipCoordinatesVertical = shipLength => {
-      let shipOrigin = [getRandomInt(10), getRandomInt(10 - shipLength)];
+      let shipOrigin = [getRandomInt(8), getRandomInt(8 - shipLength)];
   
       let shipCoords = [shipOrigin];
   
@@ -23,7 +23,7 @@ const Gameboard = () => {
     };
   
     const generateShipCoordinatesHorizontal = shipLength => {
-      let shipOrigin = [getRandomInt(10 - shipLength), getRandomInt(10)];
+      let shipOrigin = [getRandomInt(7 - shipLength), getRandomInt(7)];
   
       let shipCoords = [shipOrigin];
       let i = shipOrigin[0];
@@ -36,6 +36,10 @@ const Gameboard = () => {
       }
       return shipCoords;
     };
+
+    const checkLost = () => {
+      return placedShips.every(x => x.getSunk() == true)
+    }
   
     const checkCoordinates = array => {
       let stringArray = [...array].map(x => x.toString());
@@ -104,7 +108,7 @@ const Gameboard = () => {
       placeShip(i, shipSizes[i]);
     }
   
-    return { placedShips, receiveAttack, bufferCoords };
+    return { placedShips, receiveAttack, bufferCoords, checkLost };
   };
 
 module.exports = Gameboard
