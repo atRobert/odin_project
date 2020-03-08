@@ -8,9 +8,6 @@
     overflow: hidden;
 }
 
-
-
-
 #text {
     color: white;
     position: absolute;
@@ -23,10 +20,25 @@
     transition: 2s ease;
   }
 
-#board-display{
+#board-display, #score-display{
+    display: inline-block;
     text-align: center;
+    border: 1px black solid;
+    border-radius: 4px;
+    padding:10px;
 }
 
+
+
+#score-display{
+    margin-top:10%;
+    max-height: 250px;
+}
+
+#game-container{
+    display:flex;
+    justify-content: space-around;
+}
 #player-display, #computer-display{
     display: block;
 }
@@ -43,7 +55,7 @@
 
 #door-left{
     height:100vh;
-    background-color:#000080;
+    background-color:#2828b3;
     width:50vw;
     position: absolute;
     bottom:0;
@@ -53,7 +65,7 @@
 
 #door-right{
     height:100vh;
-    background-color:#000080;
+    background-color:#2828b3;
     width:50vw;
     position: absolute;
     bottom:0;
@@ -63,4 +75,37 @@
 
 #play{
     transition: 1s ease;
+}
+
+#reset{
+    border: 2px solid black;
+    background: #fb6060;
+    border-radius:3px;
+    margin-top:10px;
+    height: 35px;
+    transition:.2s ease
+}
+
+#reset:hover{
+    border:black;
+    background: red;
+}
+
+h2{
+    margin-top:10px;
+    margin-bottom:10px;
+}
+
+#play{
+    border: 2px black solid;
+    background: rgb(116, 116, 128);
+    padding: 30px;
+    font-size:30px;
+    border-radius:3px;
+    transition: .3s ease;
+
+}
+
+#play:hover{
+    background: rgb(87, 87, 87);
 }

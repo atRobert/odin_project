@@ -21,6 +21,7 @@ const Gameboard = () => {
       }
       return shipCoords;
     };
+
   
     const generateShipCoordinatesHorizontal = shipLength => {
       let shipOrigin = [getRandomInt(7 - shipLength), getRandomInt(7)];
@@ -103,12 +104,13 @@ const Gameboard = () => {
         return [false, false,-1];
       }
     };
+
   
     for (let i = 0; i < shipSizes.length; i++) {
       placeShip(i, shipSizes[i]);
     }
   
-    return { placedShips, receiveAttack, bufferCoords, checkLost };
+    return { placedShips, receiveAttack, bufferCoords, checkLost};
   };
 
 module.exports = Gameboard

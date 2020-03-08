@@ -7,23 +7,24 @@
     <link rel="stylesheet" href="./bs.css">
 </head>
 <body>
-    
-    <div id=board-display>
-        <h1>BATTLESHIP</h1>
-        <div id='player-display'></div>
-        <div id='winner-display'>&nbsp</div>
-        <div id='computer-display'></div>
-        <button id='reset'>RESET</button>
+   
+    <div id='game-container'>
+        
+        <div id=board-display>
+            <div id='winner-display'></div>
+            <h2>Enemy Board</h2>
+            <div id='player-display'></div>
+            <hr>
+            <h2>Your Board</h2>
+            <div id='computer-display'></div>
+            <button id='reset'>RESET</button>
+        </div>
+        
     </div>
-
-   
-        <div id='door-left'></div> 
-        <div id='door-right'></div> 
-        <div id='text'><button id='play'>PLAY BATTLESHIP</button></div>  
-   
-
-    
-    
+    <div id='door-left'></div> 
+    <div id='door-right'></div> 
+    <div id='text'><button id='play'>PLAY BATTLESHIP</button></div>  
+       
     <script src="main.js"></script>
 </body>
 </html>
