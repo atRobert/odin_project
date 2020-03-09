@@ -120,52 +120,7 @@ const Display = (player, computer) => {
       for (let colNum = 0; colNum < 8; colNum++) {
         let col = generateCol(rowNum, colNum);
         col.setAttribute("owner", "computer");
-        col.setAttribute("boat","false")
-        col.addEventListener('mouseenter', function(e){
-            for (let z = colNum; z<colNum+3 && z<10; z++){
-                console.log(z)
-                console.log(document.querySelector(`[row="${rowNum}"][col="${z}"][boat="false"]`).style.background = 'rgba(115, 16, 16, 0.66)')
-            }
-        })
-        
-        col.addEventListener('mouseleave', function(e){
-            for (let z = colNum; z<colNum+3; z++){
-                console.log(z)
-                console.log(document.querySelector(`[row="${rowNum}"][col="${z}"][boat="false"]`).style.background = 'rgba(3, 223, 252, 0.31)')
-            }  
-        })
-        col.addEventListener('click', function(e){
-            let boatCoords = []
-            let spotsOfInterest = []
-            for (let z = colNum; z<colNum+3 && z<10; z++){
-                spotsOfInterest.push(document.querySelector(`[row="${rowNum}"][col="${z}"][owner="computer"]`))
-                boatCoords.push(`${rowNum},${z}`)
-            }
-            let spaceClear = spotsOfInterest.every(x => x.getAttribute('boat')=="false")
-            if (spaceClear){
-                for (let i = 0; i<spotsOfInterest.length; i++){
-                    spotsOfInterest[i].style.background = 'black'
-                    spotsOfInterest[i].setAttribute('boat','true')
-                    let box = spotsOfInterest[i]
-                    let boxClone = box.cloneNode(true)
-                    box.parentNode.replaceChild(boxClone,box)
-                }
-            }
-        })
-        
-        // col.addEventListener('mouseenter', function(e){
-        //     for (let z = rowNum; z<rowNum+3 && z<10; z++){
-        //         console.log(z)
-        //         console.log(document.querySelectorAll(`[row="${z}"][col="${colNum}"]`)[1].style.background = 'green')
-        //     }
-        // })
-        // col.addEventListener('mouseleave', function(e){
-        //     for (let z = rowNum; z<rowNum+3; z++){
-        //         console.log(z)
-        //         console.log(document.querySelectorAll(`[row="${z}"][col="${colNum}"]`)[1].style.background = 'rgba(3, 223, 252, 0.31)')
-        //     }  
-        // })
-            
+        col.setAttribute("boat","false")     
         row.appendChild(col);
       }
       computerDisplay.appendChild(row);

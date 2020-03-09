@@ -1,6 +1,6 @@
 const Ship = require('../ship/ship.js')
 
-const Gameboard = () => {
+const Gameboard = (determinedCoords) => {
     const placedShips = [];
     const shipSizes = [4,3,2,2,1,1,1];
     const bufferCoords = new Set()
@@ -8,9 +8,14 @@ const Gameboard = () => {
       return Math.floor(Math.random() * Math.floor(max));
     };
   
-    const generateShipCoordinatesVertical = shipLength => {
-      let shipOrigin = [getRandomInt(8), getRandomInt(8 - shipLength)];
-  
+    const generateShipCoordinatesVertical = (shipLength, determinedCoords) => {
+      let shipOrigin
+      if (determinedCoords){
+        shipOrigin = determinedCoords.split(',')
+      } else {
+        shipOrigin = [getRandomInt(8), getRandomInt(8 - shipLength)];
+      }
+
       let shipCoords = [shipOrigin];
   
       let i = shipOrigin[1];
@@ -23,12 +28,17 @@ const Gameboard = () => {
     };
 
   
-    const generateShipCoordinatesHorizontal = shipLength => {
-      let shipOrigin = [getRandomInt(7 - shipLength), getRandomInt(7)];
+    const generateShipCoordinatesHorizontal = (shipLength,determinedCoords) => {
+      let shipOrigin
+      if (determinedCoords){
+        shipOrigin = determinedCoords.split(',')
+      } else {
+        shipOrigin = [getRandomInt(7 - shipLength), getRandomInt(7)];
+      }
+      
   
       let shipCoords = [shipOrigin];
-      let i = shipOrigin[0];
-  
+      let i = shipOrigin[0];  
       while (shipCoords.length < shipLength) {
         let lastSection = shipCoords.slice(0, 1);
         lastSection = [++i, lastSection[0][1]];
@@ -66,22 +76,36 @@ const Gameboard = () => {
       }
     }
   
-    const placeShip = (shipNumber, shipLength) => {
+    const placeShip = (shipNumber, shipLength, shipInfo) => {  //This is where I need to put the player ship coords.
       let spaceOccupied = true;
       let potentialShipSpot
-      while (spaceOccupied === true) {
-        let orientation = getRandomInt(2);
-        let potentialOrientation = [
-          generateShipCoordinatesVertical(shipLength),
-          generateShipCoordinatesHorizontal(shipLength)
-        ];
-        
-        potentialShipSpot = potentialOrientation[orientation];
-        spaceOccupied = checkCoordinates(potentialShipSpot);
-        spaceOccupied == true ? potentialShipSpot = '' : {}
+      if (!shipInfo){
+        console.log('ship info not defined.')
+        while (spaceOccupied === true) {
+          let orientation = getRandomInt(2);
+          let potentialOrientation = [
+            generateShipCoordinatesVertical(shipLength),
+            generateShipCoordinatesHorizontal(shipLength)
+          ];
+          
+          potentialShipSpot = potentialOrientation[orientation];
+          spaceOccupied = checkCoordinates(potentialShipSpot);
+          spaceOccupied == true ? potentialShipSpot = '' : {}
+        }
+        generateBuffer(potentialShipSpot)
+        placedShips[shipNumber] = Ship(shipLength, potentialShipSpot);
+      } else {
+        console.log('ship info given')
+        if (shipInfo.horizontal){
+          console.log('ship is horizontal')
+          potentialShipSpot = generateShipCoordinatesVertical(shipLength, shipInfo.coord)
+          placedShips[shipNumber] = Ship(shipLength, potentialShipSpot);
+        } else{
+          console.log('ship is vertical')
+          potentialShipSpot = generateShipCoordinatesHorizontal(shipLength, shipInfo.coords)
+          placedShips[shipNumber] = Ship(shipLength, potentialShipSpot);
+        }
       }
-      generateBuffer(potentialShipSpot)
-      placedShips[shipNumber] = Ship(shipLength, potentialShipSpot);
     };
   
     const getShipIndex = (coordinates) => {
@@ -107,8 +131,16 @@ const Gameboard = () => {
 
   
     for (let i = 0; i < shipSizes.length; i++) {
-      placeShip(i, shipSizes[i]);
+      let determCoords 
+      try{
+        determCoords = determinedCoords[i]
+        console.log(determCoords)
+      }
+      catch{       
+      }
+      placeShip(i, shipSizes[i], determCoords);
     }
+    console.log(placedShips)
   
     return { placedShips, receiveAttack, bufferCoords, checkLost};
   };

@@ -1,16 +1,28 @@
 const Gameboard = require('./board/board.js')
 const Display = require('./board/display.js')
-// const test=Gameboard()
+const playerboard = require('./board/playerboard.js')
+
 let player
 let computer
 let playButton = document.getElementById('play')
-playButton.addEventListener('click', function(e){
+let playerCoords = playerboard()
+function buildEverything(){
+    document.getElementById('set-ship-display').innerHTML = ''
+    console.log(playerCoords.getShipPoints())
+        document.getElementById('text').style.visibility='hidden'
+        computerBoard=Gameboard(playerCoords.getShipPoints())
+        playerBoard=Gameboard()
+        Display(playerBoard,computerBoard)
+        document.getElementById('door-right').style.width = '0'
+        document.getElementById('door-left').style.width = '0'
+}
+
+
+playButton.addEventListener('click', function(e){  
+    document.getElementById('ships-placed').addEventListener('click',buildEverything)
     document.getElementById('text').style.visibility='hidden'
     this.style.visibility='hidden'
     this.style.opacity='0'
-    player=Gameboard()
-    computer=Gameboard()
-    Display(player,computer)
     document.getElementById('door-right').style.width = '0'
     document.getElementById('door-left').style.width = '0'
 })
