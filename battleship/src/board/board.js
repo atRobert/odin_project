@@ -35,14 +35,12 @@ const Gameboard = (determinedCoords) => {
       } else {
         shipOrigin = [getRandomInt(7 - shipLength), getRandomInt(7)];
       }
-      
   
       let shipCoords = [shipOrigin];
       let i = shipOrigin[0];  
       while (shipCoords.length < shipLength) {
         let lastSection = shipCoords.slice(0, 1);
         lastSection = [++i, lastSection[0][1]];
-  
         shipCoords.unshift(lastSection);
       }
       return shipCoords;
@@ -96,7 +94,7 @@ const Gameboard = (determinedCoords) => {
         placedShips[shipNumber] = Ship(shipLength, potentialShipSpot);
       } else {
         console.log('ship info given')
-        if (shipInfo.horizontal){
+        if (shipInfo.horizontal == true){
           console.log('ship is horizontal')
           potentialShipSpot = generateShipCoordinatesVertical(shipLength, shipInfo.coord)
           placedShips[shipNumber] = Ship(shipLength, potentialShipSpot);

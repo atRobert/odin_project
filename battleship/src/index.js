@@ -7,7 +7,9 @@ let computer
 let playButton = document.getElementById('play')
 let playerCoords = playerboard()
 function buildEverything(){
-    document.getElementById('set-ship-display').innerHTML = ''
+    document.getElementById('set-ship-board').innerHTML = ''
+    document.getElementById('set-ship-display').style['display'] = 'none'
+    document.getElementById('board-display').style['display'] = 'block'
     console.log(playerCoords.getShipPoints())
         document.getElementById('text').style.visibility='hidden'
         computerBoard=Gameboard(playerCoords.getShipPoints())
@@ -23,6 +25,7 @@ playButton.addEventListener('click', function(e){
     document.getElementById('text').style.visibility='hidden'
     this.style.visibility='hidden'
     this.style.opacity='0'
+    document.getElementById('board-display').style['display'] = 'none'
     document.getElementById('door-right').style.width = '0'
     document.getElementById('door-left').style.width = '0'
 })
