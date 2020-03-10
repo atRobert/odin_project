@@ -43,7 +43,7 @@ body{
     transition: 2s ease;
   }
 
-#board-display{
+#board-display, #set-ship-display{
     display: inline-block;
     text-align: center;
     border: 2px #FCA311 solid;
@@ -104,12 +104,19 @@ hr{
     width:100px;
 }
 
-
-
+h1{
+    color: #FCA311
+}
+ 
 h2{
     margin-top:10px;
     margin-bottom:10px;
 }
+
+.col{
+    transition:.2s ease;
+}
+
 .button{
     font-family: 'Fjalla One', sans-serif;
     border: 2px #FCA311 solid;

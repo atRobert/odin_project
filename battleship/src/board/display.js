@@ -80,7 +80,7 @@ const Display = (player, computer) => {
 
   const generateCol = (rowNum, colNum) => {
     let col = document.createElement("div");
-    col.classList.add("row");
+    col.classList.add("col");
     col.setAttribute("row", rowNum);
     col.setAttribute("col", colNum);
     col.style.cssText = `height:40px;
@@ -96,13 +96,25 @@ const Display = (player, computer) => {
       let row = generateRow(rowNum);
       for (let colNum = 0; colNum < 8; colNum++) {
         let col = generateCol(rowNum, colNum);
+        col.addEventListener('mouseenter',function(e){
+          this.style['background']='rgba(255, 0, 0, 0.336)'
+        })
+        col.addEventListener('mouseleave',function(e){
+          this.style['background']='rgba(3, 223, 252, 0.31)'
+        })
+        
+        
+
+
         col.addEventListener("click", function(e) {
           if ((playerTurn = true && !gameIsOver)) {
             let shipStats = player.receiveAttack(
               `${this.getAttribute("row")},${this.getAttribute("col")}`
             );
-            this.removeEventListener("click", arguments.callee);
             checkAttack(shipStats, col, player, "A");
+            let box = this;
+            let boxClone = this.cloneNode(true);
+            box.parentNode.replaceChild(boxClone,box)
             computerMove();      
           }
         
