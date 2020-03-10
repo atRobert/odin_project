@@ -15,7 +15,7 @@ const playerBoard = () =>{
 
     let getShipPoints = () => {
         if (!placingShips){
-            document.getElementById('set-ship-display').innerHTML = ''
+            document.getElementById('set-ship-board').innerHTML = ''
             return shipPoints
         }   
     }
