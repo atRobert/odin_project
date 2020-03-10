@@ -11,11 +11,13 @@ const Gameboard = (determinedCoords) => {
     const generateShipCoordinatesVertical = (shipLength, determinedCoords) => {
       let shipOrigin
       if (determinedCoords){
+        
         shipOrigin = determinedCoords.split(',')
       } else {
+        
         shipOrigin = [getRandomInt(8), getRandomInt(8 - shipLength)];
       }
-
+      
       let shipCoords = [shipOrigin];
   
       let i = shipOrigin[1];
@@ -31,11 +33,13 @@ const Gameboard = (determinedCoords) => {
     const generateShipCoordinatesHorizontal = (shipLength,determinedCoords) => {
       let shipOrigin
       if (determinedCoords){
+        console.log('Coords were defined')
         shipOrigin = determinedCoords.split(',')
       } else {
+        console.log('coords not defined')
         shipOrigin = [getRandomInt(7 - shipLength), getRandomInt(7)];
       }
-  
+      console.log('defined coords are' + shipOrigin)
       let shipCoords = [shipOrigin];
       let i = shipOrigin[0];  
       while (shipCoords.length < shipLength) {
@@ -94,13 +98,14 @@ const Gameboard = (determinedCoords) => {
         placedShips[shipNumber] = Ship(shipLength, potentialShipSpot);
       } else {
         console.log('ship info given')
+
         if (shipInfo.horizontal == true){
           console.log('ship is horizontal')
           potentialShipSpot = generateShipCoordinatesVertical(shipLength, shipInfo.coord)
           placedShips[shipNumber] = Ship(shipLength, potentialShipSpot);
         } else{
           console.log('ship is vertical')
-          potentialShipSpot = generateShipCoordinatesHorizontal(shipLength, shipInfo.coords)
+          potentialShipSpot = generateShipCoordinatesHorizontal(shipLength, shipInfo.coord)
           placedShips[shipNumber] = Ship(shipLength, potentialShipSpot);
         }
       }

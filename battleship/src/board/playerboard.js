@@ -9,7 +9,7 @@ const playerBoard = () =>{
     document.getElementById('flip').addEventListener('click',function(e){
         horizontal = !horizontal
         document.getElementById('set-ship-board').innerHTML = ''
-        console.log(shipsNeeded)
+        
         generateComputerBoard(shipsNeeded[shipNumber])
     })
 
@@ -33,15 +33,13 @@ const playerBoard = () =>{
         if (horizontal){
             col.addEventListener('mouseenter', function(e){
                 for (let z = colNum; z<colNum+shipSize && z<10; z++){
-                    console.log(z)
-                    console.log(document.querySelector(`[row="${rowNum}"][col="${z}"][boat="false"]`).style.background = 'rgba(115, 16, 16, 0.66)')
+                    document.querySelector(`[row="${rowNum}"][col="${z}"][boat="false"]`).style.background = 'rgba(115, 16, 16, 0.66)'
                 }
             })
             
             col.addEventListener('mouseleave', function(e){
                 for (let z = colNum; z<colNum+shipSize; z++){
-                    console.log(z)
-                    console.log(document.querySelector(`[row="${rowNum}"][col="${z}"][boat="false"]`).style.background = 'rgba(3, 223, 252, 0.31)')
+                    document.querySelector(`[row="${rowNum}"][col="${z}"][boat="false"]`).style.background = 'rgba(3, 223, 252, 0.31)'
                 }  
             })
             col.addEventListener('click', function(e){
@@ -63,8 +61,7 @@ const playerBoard = () =>{
                     boatCoords.every(x => placeCoords.push(x))
                     shipPoints.push({coord:`${rowNum},${colNum}`,horizontal:true})
                     document.getElementById('set-ship-board').innerHTML = ''
-                    console.log(shipsNeeded)
-                    console.log(shipPoints)
+                    
                     shipNumber == 6 ? placingShips = false : {}
                     generateComputerBoard(shipsNeeded[++shipNumber])
                 }
@@ -75,15 +72,15 @@ const playerBoard = () =>{
         } else{
             col.addEventListener('mouseenter', function(e){
                 for (let z = rowNum; z<rowNum+shipSize && z<10; z++){
-                    console.log(z)
-                    console.log(document.querySelector(`[row="${z}"][col="${colNum}"][boat="false"]`).style.background = 'rgba(115, 16, 16, 0.66)')
+                    
+                    document.querySelector(`[row="${z}"][col="${colNum}"][boat="false"]`).style.background = 'rgba(115, 16, 16, 0.66)'
                 }
             })
             
             col.addEventListener('mouseleave', function(e){
                 for (let z = rowNum; z<rowNum+shipSize && z<10; z++){
-                    console.log(z)
-                    console.log(document.querySelector(`[row="${z}"][col="${colNum}"][boat="false"]`).style.background = 'rgba(3, 223, 252, 0.31)')
+                    
+                    document.querySelector(`[row="${z}"][col="${colNum}"][boat="false"]`).style.background = 'rgba(3, 223, 252, 0.31)'
                 }  
             })
             col.addEventListener('click', function(e){
@@ -105,7 +102,7 @@ const playerBoard = () =>{
                     boatCoords.every(x => placeCoords.push(x))
                     shipPoints.push({coord:`${rowNum},${colNum}`,horizontal:false})
                     document.getElementById('set-ship-board').innerHTML = ''
-                    console.log(shipPoints)
+                    
                     shipNumber == 6 ? placingShips = false : {}
                     generateComputerBoard(shipsNeeded[++shipNumber])
                 }    

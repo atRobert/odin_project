@@ -1,5 +1,4 @@
 const Ship = (length, coords) => {
-    const getLength = () => length;
     let hitMarkers = [...Array(length)].map(x => false);
     let shipCoords = [...coords].map(x => x.toString())
     let _sunk = false;
@@ -18,7 +17,7 @@ const Ship = (length, coords) => {
     const getSunk = () => {
         return _sunk;
     }
-
+    console.log(shipCoords)
     return {getSunk, hit, shipCoords};
   };
 

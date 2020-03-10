@@ -11,12 +11,12 @@ function buildEverything(){
     document.getElementById('set-ship-display').style['display'] = 'none'
     document.getElementById('board-display').style['display'] = 'block'
     console.log(playerCoords.getShipPoints())
-        document.getElementById('text').style.visibility='hidden'
-        computerBoard=Gameboard(playerCoords.getShipPoints())
-        playerBoard=Gameboard()
-        Display(playerBoard,computerBoard)
-        document.getElementById('door-right').style.width = '0'
-        document.getElementById('door-left').style.width = '0'
+    document.getElementById('text').style.visibility='hidden'
+    computerBoard=Gameboard(playerCoords.getShipPoints())
+    playerBoard=Gameboard()
+    Display(playerBoard,computerBoard)
+    document.getElementById('door-right').style.width = '0'
+    document.getElementById('door-left').style.width = '0'
 }
 
 
