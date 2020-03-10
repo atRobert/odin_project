@@ -3,7 +3,8 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Document</title>
+    <title>BATTLESHIP</title>
+    
     <link rel="stylesheet" href="./bs.css">
 </head>
 <body>
@@ -11,9 +12,12 @@
     <div id='game-container'>
         
         <div id='set-ship-display'>
-            <button id='ships-placed'>START</button>
-            <button id='flip'>FLIP</button>
             <div id='set-ship-board'></div>
+            <div id='button-container'>
+                <button id='ships-placed' class = 'button'>START</button>
+                <button id='flip' class='button'>FLIP</button>
+            </div>
+            
         </div>
         <div id=board-display>
             <div id='winner-display'></div>
@@ -22,13 +26,13 @@
             <hr>
             <h2>Your Board</h2>
             <div id='computer-display'></div>
-            <button id='reset'>RESET</button>
+            <button id='reset' class='button'>RESET</button>
         </div>
         
     </div>
     <div id='door-left'></div> 
     <div id='door-right'></div> 
-    <div id='text'><button id='play'>PLAY BATTLESHIP</button></div>  
+    <div id='text'><button id='play' class ='button'>PLAY BATTLESHIP</button></div>  
        
     <script src="main.js"></script>
 </body>

@@ -15,8 +15,6 @@ function buildEverything(){
     let computerBoard=Gameboard(playerCoords.getShipPoints())
     let playerBoard=Gameboard()
     Display(playerBoard,computerBoard)
-    document.getElementById('door-right').style.width = '0'
-    document.getElementById('door-left').style.width = '0'
 }
 
 

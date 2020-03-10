@@ -15,7 +15,7 @@ const playerBoard = () =>{
 
     let getShipPoints = () => {
         if (!placingShips){
-            document.getElementById('set-ship-board').innerHTML = ''
+            document.getElementById('set-ship-display').innerHTML = ''
             return shipPoints
         }   
     }
@@ -52,7 +52,7 @@ const playerBoard = () =>{
                 let spaceClear = spotsOfInterest.every(x => x.getAttribute('boat')=="false")
                 if (spaceClear && placingShips){
                     for (let i = 0; i<spotsOfInterest.length; i++){
-                        spotsOfInterest[i].style.background = 'black'
+                        spotsOfInterest[i].style.background = 'grey'
                         spotsOfInterest[i].setAttribute('boat','true')
                         let box = spotsOfInterest[i]
                         let boxClone = box.cloneNode(true)
@@ -136,7 +136,7 @@ const playerBoard = () =>{
                 col.setAttribute("boat","false")
                 addListeners(col, shipsNeeded, rowNum, colNum, horizontal)
             } else {
-                col.style['background'] = 'black'
+                col.style['background'] = 'grey'
                 col.setAttribute('boat','true')
             }
 
