@@ -5,6 +5,7 @@ const playerBoard = () =>{
     let shipPoints = []
     let horizontal = true
     let placingShips = true
+    let shipCount = shipsNeeded.length
 
     document.getElementById('flip').addEventListener('click',function(e){
         horizontal = !horizontal
@@ -12,6 +13,11 @@ const playerBoard = () =>{
         
         generateComputerBoard(shipsNeeded[shipNumber])
     })
+
+    let shipCountDiv = document.getElementById('ship-count')
+    shipCountDiv.innerText = shipCount
+    let shipsPlacedButton = document.getElementById('ships-placed')
+    shipsPlacedButton.innerText = 'RANDOM'
 
     let getShipPoints = () => {
         if (!placingShips){
@@ -63,6 +69,8 @@ const playerBoard = () =>{
                     document.getElementById('set-ship-board').innerHTML = ''
                     
                     shipNumber == 6 ? placingShips = false : {}
+                    shipCountDiv.innerText = --shipCount
+                    shipCount == 0 ? shipsPlacedButton.innerText = 'READY' : {}
                     generateComputerBoard(shipsNeeded[++shipNumber])
                 }
                 
@@ -104,6 +112,8 @@ const playerBoard = () =>{
                     document.getElementById('set-ship-board').innerHTML = ''
                     
                     shipNumber == 6 ? placingShips = false : {}
+                    shipCountDiv.innerText = --shipCount
+                    shipCount == 0 ? shipsPlacedButton.innerText = 'READY' : {}
                     generateComputerBoard(shipsNeeded[++shipNumber])
                 }    
             })

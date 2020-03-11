@@ -96,8 +96,9 @@ const Display = (player, computer) => {
     if (shipStats[0]) {
       col.firstChild.innerHTML = `
         <i 
-        class="fas fa-crosshairs" 
-        style="transform:translateY(70%) translateX(70%)"
+        class="fas fa-fire-alt" 
+        style="transform:translateY(70%) translateX(70%);
+                color:red;"
         ></i>`
       col.classList.add(id + shipStats[2]);
       col.style["background"] = "rgb(10, 133, 161)";
@@ -154,10 +155,15 @@ const Display = (player, computer) => {
         let col = generateCol(rowNum, colNum);
         col.setAttribute('owner','player')
         col.addEventListener('mouseenter',function(e){
-          this.style['background']='rgba(255, 0, 0, 0.336)'
+          this.firstChild.innerHTML = `<i 
+          class="fas fa-crosshairs" 
+          style="transform:translateY(30%) translateX(30%);
+                  color:#FCA311;
+                  font-size:25px;"
+          ></i>`
         })
         col.addEventListener('mouseleave',function(e){
-          this.style['background']='rgb(10, 133, 161)'
+          this.firstChild.innerHTML = ''
         })
         col.addEventListener("click", function(e) {
           if ((playerTurn = true && !gameIsOver)) {
