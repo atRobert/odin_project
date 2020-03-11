@@ -33,13 +33,11 @@ const Gameboard = (determinedCoords) => {
     const generateShipCoordinatesHorizontal = (shipLength,determinedCoords) => {
       let shipOrigin
       if (determinedCoords){
-        console.log('Coords were defined')
+
         shipOrigin = determinedCoords.split(',')
       } else {
-        console.log('coords not defined')
         shipOrigin = [getRandomInt(7 - shipLength), getRandomInt(7)];
       }
-      console.log('defined coords are' + shipOrigin)
       let shipCoords = [shipOrigin];
       let i = shipOrigin[0];  
       while (shipCoords.length < shipLength) {
@@ -81,10 +79,11 @@ const Gameboard = (determinedCoords) => {
     const placeShip = (shipNumber, shipLength, shipInfo) => {  //This is where I need to put the player ship coords.
       let spaceOccupied = true;
       let potentialShipSpot
+      let horizontal
       if (!shipInfo){
-        console.log('ship info not defined.')
+        let orientation
         while (spaceOccupied === true) {
-          let orientation = getRandomInt(2);
+          orientation = getRandomInt(2);
           let potentialOrientation = [
             generateShipCoordinatesVertical(shipLength),
             generateShipCoordinatesHorizontal(shipLength)
@@ -94,19 +93,19 @@ const Gameboard = (determinedCoords) => {
           spaceOccupied = checkCoordinates(potentialShipSpot);
           spaceOccupied == true ? potentialShipSpot = '' : {}
         }
+        horizontal = orientation == 1? false : true
+        console.log('the ship is horizontal ' + horizontal)
         generateBuffer(potentialShipSpot)
-        placedShips[shipNumber] = Ship(shipLength, potentialShipSpot);
+        placedShips[shipNumber] = Ship(shipLength, potentialShipSpot, horizontal);
       } else {
-        console.log('ship info given')
+        
 
         if (shipInfo.horizontal == true){
-          console.log('ship is horizontal')
           potentialShipSpot = generateShipCoordinatesVertical(shipLength, shipInfo.coord)
-          placedShips[shipNumber] = Ship(shipLength, potentialShipSpot);
+          placedShips[shipNumber] = Ship(shipLength, potentialShipSpot, shipInfo.horizontal);
         } else{
-          console.log('ship is vertical')
           potentialShipSpot = generateShipCoordinatesHorizontal(shipLength, shipInfo.coord)
-          placedShips[shipNumber] = Ship(shipLength, potentialShipSpot);
+          placedShips[shipNumber] = Ship(shipLength, potentialShipSpot, shipInfo.horizontal);
         }
       }
     };
@@ -126,7 +125,8 @@ const Gameboard = (determinedCoords) => {
       if (shipIndex != -1) {
         let shipSection = placedShips[shipIndex].shipCoords.indexOf(coordinates);
         placedShips[shipIndex].hit(shipSection);
-        return [true,(placedShips[shipIndex].getSunk()),shipIndex];
+        
+        return [true,(placedShips[shipIndex].getSunk()),shipIndex,placedShips[shipIndex].getBow(), shipIndex,placedShips[shipIndex].horizontal];
       } else {
         return [false, false,-1];
       }
@@ -137,14 +137,12 @@ const Gameboard = (determinedCoords) => {
       let determCoords 
       try{
         determCoords = determinedCoords[i]
-        console.log(determCoords)
       }
       catch{       
       }
       placeShip(i, shipSizes[i], determCoords);
     }
     console.log(placedShips)
-  
     return { placedShips, receiveAttack, bufferCoords, checkLost};
   };
 

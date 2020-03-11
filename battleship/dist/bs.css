@@ -70,6 +70,7 @@ hr{
 }
 #player-display, #computer-display{
     display: block;
+    background:rgb(10, 133, 161)
 }
 
 #door-left, #door-right{
@@ -114,7 +115,7 @@ h2{
 }
 
 .col{
-    transition:.2s ease;
+    transition: background-color .2s ease;
 }
 
 .button{

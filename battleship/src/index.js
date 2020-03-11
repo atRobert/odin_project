@@ -7,14 +7,20 @@ let computer
 let playButton = document.getElementById('play')
 let playerCoords 
 function buildEverything(){
-    document.getElementById('set-ship-board').innerHTML = ''
-    document.getElementById('set-ship-display').style['display'] = 'none'
-    document.getElementById('board-display').style['display'] = 'block'
-    console.log(playerCoords.getShipPoints())
-    document.getElementById('text').style.visibility='hidden'
-    let computerBoard=Gameboard(playerCoords.getShipPoints())
-    let playerBoard=Gameboard()
-    Display(playerBoard,computerBoard)
+    document.getElementById('door-right').style.width = '50vw'
+    document.getElementById('door-left').style.width = '50vw'
+    setTimeout(function(){
+        document.getElementById('door-right').style.width = '0'
+        document.getElementById('door-left').style.width = '0' 
+        document.getElementById('set-ship-board').innerHTML = ''
+        document.getElementById('set-ship-display').style['display'] = 'none'
+        document.getElementById('board-display').style['display'] = 'block'
+        
+        document.getElementById('text').style.visibility='hidden'
+        let computerBoard=Gameboard(playerCoords.getShipPoints())
+        let playerBoard=Gameboard()
+        Display(playerBoard,computerBoard)
+    },1000)
 }
 
 

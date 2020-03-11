@@ -1,13 +1,20 @@
-const Ship = (length, coords) => {
+const Ship = (length, coords, horizontal) => {
     let hitMarkers = [...Array(length)].map(x => false);
     let shipCoords = [...coords].map(x => x.toString())
     let _sunk = false;
-  
     const isSunk = hitMarkers => {
       _sunk = hitMarkers.every(ele => {
         return ele === 'hit';
       });
     };
+
+    const getHorizontal = () =>{
+      return horizontal
+    }
+
+    const getBow = () => {
+      return shipCoords[0]
+    }
   
     const hit = location => {
       hitMarkers[location] = 'hit';
@@ -15,10 +22,10 @@ const Ship = (length, coords) => {
     };
     
     const getSunk = () => {
+        
         return _sunk;
     }
-    console.log(shipCoords)
-    return {getSunk, hit, shipCoords};
+    return {getSunk, hit, shipCoords, getBow, horizontal};
   };
 
 module.exports = Ship
