@@ -23,6 +23,10 @@
 ## [BattleShip](https://atrobert.github.io/odin_project/battleship/dist/index.html)
 
    * Work in progress. Battleship game against a computer.
+   <p align="center">
+   <img src="https://github.com/atRobert/odin_project/blob/master/images/placeShips.png" width="30%">
+   <img src="https://github.com/atRobert/odin_project/blob/master/images/enemyShips.png" width="40%">
+   </p>
         
 ## [Weather App](https://atRobert.github.io/odin_project/weather-app/weather.html)
  
