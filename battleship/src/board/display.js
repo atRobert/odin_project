@@ -5,8 +5,16 @@ const Display = (player, computer) => {
   let computerDisplay = document.getElementById("computer-display");
   let playerTurn = true;
   let computerMoves = [];
+  let playerShips = []
   let gameIsOver = false;
 
+  const compilePlayerShips = () =>{
+    for(let i=0; i<computer.placedShips.length;i++){
+      playerShips.push(computer.placedShips[i].shipCoords)
+    }
+    playerShips = playerShips.flat()
+  }
+  
   const getRandomInt = max => {
     return Math.floor(Math.random() * Math.floor(max));
   };
@@ -151,10 +159,6 @@ const Display = (player, computer) => {
         col.addEventListener('mouseleave',function(e){
           this.style['background']='rgb(10, 133, 161)'
         })
-        
-        
-
-
         col.addEventListener("click", function(e) {
           if ((playerTurn = true && !gameIsOver)) {
             let shipStats = player.receiveAttack(
@@ -179,7 +183,11 @@ const Display = (player, computer) => {
     for (let rowNum = 0; rowNum < 8; rowNum++) {
       let row = generateRow(rowNum);
       for (let colNum = 0; colNum < 8; colNum++) {
+        
         let col = generateCol(rowNum, colNum);
+        if (playerShips.includes(`${rowNum},${colNum}`)){
+          col.style['background'] = 'grey'
+        }
         col.setAttribute("owner", "computer");
         col.setAttribute("boat","false")     
         row.appendChild(col);
@@ -188,6 +196,8 @@ const Display = (player, computer) => {
     }
   };
 
+  compilePlayerShips();
+  console.log(playerShips)
   generatePlayerBoard();
   generateComputeBoard();
 };
