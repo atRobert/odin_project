@@ -1,8 +1,7 @@
 const Ship = require('../ship/ship.js')
 
-const Gameboard = (determinedCoords) => {
+const Gameboard = (shipSizes, determinedCoords) => {
     const placedShips = [];
-    const shipSizes = [4,3,2,2,1,1,1];
     const bufferCoords = new Set()
     const getRandomInt = max => {
       return Math.floor(Math.random() * Math.floor(max));
