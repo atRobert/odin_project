@@ -6,6 +6,7 @@ let player
 let computer
 let resetButton = document.getElementById('reset')
 let playButton = document.getElementById('play')
+let playAgainButton = document.getElementById('play-again')
 let playerCoords 
 let shipSizes = [4,3,2,2,1,1,1]
 
@@ -72,6 +73,25 @@ resetButton.addEventListener('click', function(e){
         showPlayButton()
         document.getElementById('set-ship-display').style['display'] = 'block' 
         },1200) 
+})
+
+resetButton.addEventListener('click', function(e){
+    clearGameBoard()
+    closeDoors()
+    setTimeout(function(){
+        showPlayButton()
+        document.getElementById('set-ship-display').style['display'] = 'block' 
+        },1200) 
+})
+
+playAgainButton.addEventListener('click', function(e){
+    clearGameBoard()
+    closeDoors()
+    setTimeout(function(){
+        showPlayButton()
+        document.getElementById('set-ship-display').style['display'] = 'block' 
+        },1200) 
+    document.getElementById('winner-mask').style.display = 'none'
 })
 
 
