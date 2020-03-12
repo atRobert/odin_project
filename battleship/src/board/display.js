@@ -1,6 +1,6 @@
 const Gameboard = require("./board.js");
 
-const Display = (player, computer) => {
+const Display = (playerBoard, computerBoard) => {
   let playerDisplay = document.getElementById("player-display");
   let computerDisplay = document.getElementById("computer-display");
   let playerTurn = true;
@@ -9,8 +9,8 @@ const Display = (player, computer) => {
   let gameIsOver = false;
 
   const compilePlayerShips = () =>{
-    for(let i=0; i<computer.placedShips.length;i++){
-      playerShips.push(computer.placedShips[i].shipCoords)
+    for(let i=0; i<computerBoard.placedShips.length;i++){
+      playerShips.push(computerBoard.placedShips[i].shipCoords)
     }
     playerShips = playerShips.flat()
   }
@@ -78,17 +78,19 @@ const Display = (player, computer) => {
     return coords;
   };
 
-  const computerMove = () => {
+  const computerMove = (time) => {
     if (!playerTurn) {
-      let computerCoordinates = getRandomCoords();
-      let shipStats = computer.receiveAttack(computerCoordinates);
-      let row = computerCoordinates.split(",")[0];
-      let column = computerCoordinates.split(",")[1];
-      let col = document.querySelector(
-        `[owner="computer"][row="${row}"][col="${column}"]`
-      );
-      checkAttack(shipStats, col, computer, "B");
-      !playerTurn ? computerMove() : {};
+      setTimeout(function(){
+        let computerCoordinates = getRandomCoords();
+        let shipStats = computerBoard.receiveAttack(computerCoordinates);
+        let row = computerCoordinates.split(",")[0];
+        let column = computerCoordinates.split(",")[1];
+        let col = document.querySelector(
+          `[owner="computer"][row="${row}"][col="${column}"]`
+        );
+        checkAttack(shipStats, col, computerBoard, "B");
+        !playerTurn ? computerMove(time+500) : {};
+      }, time)
     }
   };
 
@@ -166,15 +168,15 @@ const Display = (player, computer) => {
           this.firstChild.innerHTML = ''
         })
         col.addEventListener("click", function(e) {
-          if ((playerTurn = true && !gameIsOver)) {
-            let shipStats = player.receiveAttack(
+          if ((playerTurn && !gameIsOver)) {
+            let shipStats = playerBoard.receiveAttack(
               `${this.getAttribute("row")},${this.getAttribute("col")}`
             );
-            checkAttack(shipStats, col, player, "A");
+            checkAttack(shipStats, col, playerBoard, "A");
             let box = this;
             let boxClone = this.cloneNode(true);
             box.parentNode.replaceChild(boxClone,box)
-            computerMove();      
+            computerMove(500);      
           }
         
         });
