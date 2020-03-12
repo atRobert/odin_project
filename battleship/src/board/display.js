@@ -5,53 +5,54 @@ const Display = (playerBoard, computerBoard) => {
   let computerDisplay = document.getElementById("computer-display");
   let playerTurn = true;
   let computerMoves = [];
-  let playerShips = []
+  let playerShips = [];
   let gameIsOver = false;
 
-  const compilePlayerShips = () =>{
-    for(let i=0; i<computerBoard.placedShips.length;i++){
-      playerShips.push(computerBoard.placedShips[i].shipCoords)
+  const compilePlayerShips = () => {
+    for (let i = 0; i < computerBoard.placedShips.length; i++) {
+      playerShips.push(computerBoard.placedShips[i].shipCoords);
     }
-    playerShips = playerShips.flat()
-  }
-  
+    playerShips = playerShips.flat();
+  };
+
   const getRandomInt = max => {
     return Math.floor(Math.random() * Math.floor(max));
   };
 
-  const makeBow = (bowDiv, horizontal) =>{
-    let orientation = horizontal ?
-                    //Makes Down Arrow CSS
-                    `border-top: 21px solid rgba(17, 84, 0, 0);
+  const makeBow = (bowDiv, horizontal) => {
+    let orientation = horizontal
+      ? //Makes Down Arrow CSS
+        `border-top: 21px solid rgba(17, 84, 0, 0);
                       border-bottom: 21px solid rgba(17, 84, 0, 0);
                       border-left: 42px solid rgb(17, 84, 0);
-                      border-right-color: rgba(17, 84, 0, 0);`:
-                    //Makes Right Arrow CSS
-                    `border-left: 21px solid transparent;         
+                      border-right-color: rgba(17, 84, 0, 0);`
+      : //Makes Right Arrow CSS
+        `border-left: 21px solid transparent;         
                       border-right: 21px solid transparent;
                       border-top: 42px solid rgb(17, 84, 0);`;
-    
-    bowDiv.style.cssText =`width: 0px;
+
+    bowDiv.style.cssText = `width: 0px;
                             height: 0px;
                             margin: 0px;
                             display: inline-block;
-                            ${orientation}`
-  }
+                            ${orientation}`;
+  };
 
-  const sinkShip = (shipNumber,row,col, horizontal) => {
+  const sinkShip = (shipNumber, row, col, horizontal) => {
     let shipSections = document.getElementsByClassName(shipNumber);
-    let length = 0 
+    let length = 0;
     for (let i = 0; i < shipSections.length; i++) {
-      length++
+      length++;
       shipSections[i].style["background"] = "rgb(17, 84, 0)";
-      shipSections[i].style['border-color'] = 'rgb(17, 84, 0)'
-      shipSections[i].innerHTML = ''
+      shipSections[i].style["border-color"] = "rgb(17, 84, 0)";
+      shipSections[i].innerHTML = "";
     }
-    if (length > 1){
-      let owner = playerTurn ? 'player' : 'computer'
-      console.log(owner)
-      let bow = document.querySelector(`[row="${row}"][col="${col}"][owner="${owner}"]`)
-      makeBow(bow, horizontal)
+    if (length > 1) {
+      let owner = playerTurn ? "player" : "computer";
+      let bow = document.querySelector(
+        `[row="${row}"][col="${col}"][owner="${owner}"]`
+      );
+      makeBow(bow, horizontal);
     }
   };
 
@@ -60,8 +61,10 @@ const Display = (playerBoard, computerBoard) => {
   };
 
   const gameOver = () => {
+    document.getElementById('winner-mask').style.display = 'inline'
     let message = playerTurn == true ? "YOU WIN!" : "YOU LOSE!";
-    document.getElementById("winner-display").textContent = message;
+    document.getElementById("winner-text").textContent = message;
+    document.getElementById('winner-text-underlay').textContent = message;
     gameIsOver = true;
   };
 
@@ -77,9 +80,9 @@ const Display = (playerBoard, computerBoard) => {
     return coords;
   };
 
-  const computerMove = (time) => {
+  const computerMove = time => {
     if (!playerTurn) {
-      setTimeout(function(){
+      setTimeout(function() {
         let computerCoordinates = getRandomCoords();
         let shipStats = computerBoard.receiveAttack(computerCoordinates);
         let row = computerCoordinates.split(",")[0];
@@ -88,27 +91,31 @@ const Display = (playerBoard, computerBoard) => {
           `[owner="computer"][row="${row}"][col="${column}"]`
         );
         checkAttack(shipStats, col, computerBoard, "B");
-        !playerTurn ? computerMove(time+500) : {};
-      }, time)
+        !playerTurn ? computerMove(time + 500) : {};
+      }, time);
     }
   };
 
   const checkAttack = (shipStats, col, game, id) => {
-    if (shipStats[0]) {
+    if (shipStats.attackObj.shipHit) {
       col.firstChild.innerHTML = `
         <i 
         class="fas fa-fire-alt" 
         style="transform:translateY(70%) translateX(70%);
                 color:red;"
-        ></i>`
-      col.classList.add(id + shipStats[2]);
+        ></i>`;
+      col.classList.add(id + shipStats.attackObj.shipIndex);
       col.style["background"] = "rgb(10, 133, 161)";
-      if (shipStats[1]) {
-        let row = shipStats[3].split(',')[0]
-        let col = shipStats[3].split(',')[1]
-        sinkShip(id + shipStats[2],row,col,shipStats[5]);
-        
-        
+      if (shipStats.attackObj.sunkStatus) {
+        let row = shipStats.attackObj.shipBow.split(",")[0];
+        let col = shipStats.attackObj.shipBow.split(",")[1];
+        sinkShip(
+          id + shipStats.attackObj.shipIndex,
+          row,
+          col,
+          shipStats.attackObj.shipOrientation
+        );
+
         game.checkLost() ? gameOver() : {};
       }
       playerSwap();
@@ -120,7 +127,7 @@ const Display = (playerBoard, computerBoard) => {
         style="transform:translateY(90%) translateX(110%);
               color:black;
               font-size:13px;"
-        ></i>`
+        ></i>`;
     }
     playerSwap();
   };
@@ -143,9 +150,9 @@ const Display = (playerBoard, computerBoard) => {
                                     background:rgb(10, 133, 161);
                                     border:1px solid black;
                                     display:inline-block`;
-    let centeringCol = document.createElement('div')
-    centeringCol.style.cssText = 'position:absolute'
-    col.appendChild(centeringCol)
+    let centeringCol = document.createElement("div");
+    centeringCol.style.cssText = "position:absolute";
+    col.appendChild(centeringCol);
     return col;
   };
 
@@ -154,32 +161,31 @@ const Display = (playerBoard, computerBoard) => {
       let row = generateRow(rowNum);
       for (let colNum = 0; colNum < 8; colNum++) {
         let col = generateCol(rowNum, colNum);
-        col.setAttribute('owner','player')
-        col.addEventListener('mouseenter',function(e){
+        col.setAttribute("owner", "player");
+        col.addEventListener("mouseenter", function(e) {
           this.firstChild.innerHTML = `<i 
           class="fas fa-crosshairs" 
           style="transform:translateY(30%) translateX(30%);
                   color:#FCA311;
                   font-size:25px;"
-          ></i>`
-        })
-        col.addEventListener('mouseleave',function(e){
-          this.firstChild.innerHTML = ''
-        })
+          ></i>`;
+        });
+        col.addEventListener("mouseleave", function(e) {
+          this.firstChild.innerHTML = "";
+        });
         col.addEventListener("click", function(e) {
-          if ((playerTurn && !gameIsOver)) {
+          if (playerTurn && !gameIsOver) {
             let shipStats = playerBoard.receiveAttack(
               `${this.getAttribute("row")},${this.getAttribute("col")}`
             );
             checkAttack(shipStats, col, playerBoard, "A");
             let box = this;
             let boxClone = this.cloneNode(true);
-            box.parentNode.replaceChild(boxClone,box)
-            computerMove(500);      
+            box.parentNode.replaceChild(boxClone, box);
+            computerMove(500);
           }
-        
         });
-        
+
         row.appendChild(col);
         playerDisplay.appendChild(row);
       }
@@ -190,13 +196,12 @@ const Display = (playerBoard, computerBoard) => {
     for (let rowNum = 0; rowNum < 8; rowNum++) {
       let row = generateRow(rowNum);
       for (let colNum = 0; colNum < 8; colNum++) {
-        
         let col = generateCol(rowNum, colNum);
-        if (playerShips.includes(`${rowNum},${colNum}`)){
-          col.style['background'] = 'grey'
+        if (playerShips.includes(`${rowNum},${colNum}`)) {
+          col.style["background"] = "grey";
         }
         col.setAttribute("owner", "computer");
-        col.setAttribute("boat","false")     
+        col.setAttribute("boat", "false");
         row.appendChild(col);
       }
       computerDisplay.appendChild(row);

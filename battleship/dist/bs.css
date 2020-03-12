@@ -15,7 +15,7 @@ body{
     transform:scaleX(-1);
 } */
 
-#mask{
+#winner-mask{
     position: absolute;
     top:0;
     left:0;
@@ -23,6 +23,42 @@ body{
     height:100vh;
     transition: 1s ease;
     overflow: hidden;
+    background:#000000cf;
+    display:none;
+    text-align: center;
+}
+
+#winner-text{
+    margin-top: 20%;
+    font-size: 54px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    color:#2d4780;
+}
+
+#play-again{
+    margin-top: 26%;
+    font-size: 30px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+}
+
+#winner-text-underlay{
+    margin-top: 20%;
+    font-size: 54px;
+    position: absolute;
+    margin-left: auto;
+    margin-right: auto;
+    left: 0;
+    right: 0;
+    transform: translate(-3px,3px);
+    color: #FCA311;
 }
 
 #button-container{
