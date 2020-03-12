@@ -116,6 +116,7 @@ h2{
 
 .col{
     transition: background-color .2s ease;
+    cursor: crosshair;
 }
 
 .button{
