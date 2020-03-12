@@ -20,24 +20,22 @@ const Display = (playerBoard, computerBoard) => {
   };
 
   const makeBow = (bowDiv, horizontal) =>{
-    if (horizontal){
-      bowDiv.style.cssText = `width: 0px;
+    let orientation = horizontal ?
+                    //Makes Down Arrow CSS
+                    `border-top: 21px solid rgba(17, 84, 0, 0);
+                      border-bottom: 21px solid rgba(17, 84, 0, 0);
+                      border-left: 42px solid rgb(17, 84, 0);
+                      border-right-color: rgba(17, 84, 0, 0);`:
+                    //Makes Right Arrow CSS
+                    `border-left: 21px solid transparent;         
+                      border-right: 21px solid transparent;
+                      border-top: 42px solid rgb(17, 84, 0);`;
+    
+    bowDiv.style.cssText =`width: 0px;
                             height: 0px;
-                            border-top: 21px solid rgba(17, 84, 0, 0);
-                            border-bottom: 21px solid rgba(17, 84, 0, 0);
-                            border-left: 42px solid rgb(17, 84, 0);
-                            border-right-color: rgba(17, 84, 0, 0);
                             margin: 0px;
-                            display: inline-block;`;
-    } else {
-      bowDiv.style.cssText = `width: 0px;
-      height: 0px;
-      border-left: 21px solid transparent;
-      border-right: 21px solid transparent;
-      border-top: 42px solid rgb(17, 84, 0);
-      margin: 0px;
-      display: inline-block;`;
-    }
+                            display: inline-block;
+                            ${orientation}`
   }
 
   const sinkShip = (shipNumber,row,col, horizontal) => {
@@ -49,9 +47,10 @@ const Display = (playerBoard, computerBoard) => {
       shipSections[i].style['border-color'] = 'rgb(17, 84, 0)'
       shipSections[i].innerHTML = ''
     }
-    if (playerTurn && length > 1){
-      let bow = document.querySelector(`[row="${row}"][col="${col}"][owner='player']`)
-      console.log(bow)
+    if (length > 1){
+      let owner = playerTurn ? 'player' : 'computer'
+      console.log(owner)
+      let bow = document.querySelector(`[row="${row}"][col="${col}"][owner="${owner}"]`)
       makeBow(bow, horizontal)
     }
   };
@@ -205,7 +204,6 @@ const Display = (playerBoard, computerBoard) => {
   };
 
   compilePlayerShips();
-  console.log(playerShips)
   generatePlayerBoard();
   generateComputeBoard();
 };
