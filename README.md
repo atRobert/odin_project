@@ -3,20 +3,21 @@
 ## HTML Previews can be found here:
 
    
-## [ToDoManager using React!](https://atRobert.github.io/ToDoList/) 
+## [ToDoManager using React!](https://atRobert.github.io/ToDoList/)
 
-   * Same Concept as the ToDoManager above, however with the implementation of React JavaScript front end framework.
-      also set up with LocalStorage for users to Add, Remove or Edit existing information. 
+   * Web app that allows users to keep track of projects and tasks associated with those projects. Each project 
+      and task can have a description or notes for more detail. Set up for LocalStorage so users can return to 
+      the page from the same browser and Add, Remove, or Edit existing information.
+   
       <p align="center">
       <img src="https://github.com/atRobert/odin_project/blob/master/images/todolistreact2.png" width="70%">
       </p>
       
 ## ToDoManager
 
- * Web app that allows users to keep track of projects and tasks associated with those projects. Each project 
-   and task can have a description or notes for more detail. Set up for LocalStorage so users can return to 
-   the page from the same browser and Add, Remove, or Edit existing information.
-
+   * Same Concept as the ToDoManager above, however with the no implementation of React JavaScript front end framework.
+      also set up with LocalStorage for users to Add, Remove or Edit existing information. 
+ 
    <p align="center">
    <img src="https://github.com/atRobert/odin_project/blob/master/images/todilist2.png" width="70%">
    </p>
