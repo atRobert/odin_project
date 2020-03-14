@@ -22,7 +22,9 @@
 
 ## [BattleShip](https://atrobert.github.io/odin_project/battleship/dist/index.html)
 
-   * Work in progress. Battleship game against a computer.
+   * Play battleship against a computer! Click a cell to send an attack. If an attack hits or sinks a ship, the attacker
+      can attack again until missing. Once the attacker misses their turn is over. First player to sink all of the enemy 
+      ships wins!
    <p align="center">
    <img src="https://github.com/atRobert/odin_project/blob/master/images/placeShips.png" width="30%">
    <img src="https://github.com/atRobert/odin_project/blob/master/images/enemyShips.png" width="40%">
