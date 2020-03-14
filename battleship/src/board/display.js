@@ -82,6 +82,8 @@ const Display = (playerBoard, computerBoard) => {
 
   const computerMove = time => {
     if (!playerTurn) {
+      document.getElementsByClassName('board-mask')[0].style.display = 'inline'
+      document.getElementsByClassName('board-mask')[1].style.display = 'none'
       setTimeout(function() {
         let attackCoordinates = getRandomCoords();
         let shipStats = computerBoard.receiveAttack(attackCoordinates);
@@ -91,6 +93,8 @@ const Display = (playerBoard, computerBoard) => {
           `[owner="computer"][row="${row}"][col="${column}"]`
         );
         checkAttack(shipStats, col, computerBoard, "B");
+        document.getElementsByClassName('board-mask')[0].style.display = 'none'
+        document.getElementsByClassName('board-mask')[1].style.display = 'inline'
         !playerTurn ? computerMove(time + 500) : {};
       }, time);
     }
@@ -192,7 +196,15 @@ const Display = (playerBoard, computerBoard) => {
     return col;
   };
 
+  const createBoardMask = (display) => {
+    let mask = document.createElement('div')
+    mask.classList.add('board-mask')
+    display === playerDisplay ? mask.style.display = 'none' : {}
+    display.appendChild(mask)
+  }
+
   const generatePlayerBoard = () => {
+    createBoardMask(playerDisplay)
     for (let rowNum = 0; rowNum < 8; rowNum++) {
       let row = generateRow(rowNum);
       for (let colNum = 0; colNum < 8; colNum++) {
@@ -205,7 +217,10 @@ const Display = (playerBoard, computerBoard) => {
     }
   };
 
+
+
   const generateComputeBoard = () => {
+    createBoardMask(computerDisplay)
     for (let rowNum = 0; rowNum < 8; rowNum++) {
       let row = generateRow(rowNum);
       for (let colNum = 0; colNum < 8; colNum++) {

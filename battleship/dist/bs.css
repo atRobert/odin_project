@@ -27,6 +27,16 @@ body{
     text-align: center;
 }
 
+.board-mask{
+    width: 336px;
+    height: 322px;
+    background: #0000008a;
+    position: absolute;
+    overflow: hidden;
+    left: 0;
+    top: 0;
+}
+
 #winner-text{
     margin-top: 20%;
     font-size: 54px;
@@ -106,7 +116,8 @@ hr{
 }
 #player-display, #computer-display{
     display: block;
-    background:rgb(10, 133, 161)
+    background:rgb(10, 133, 161);
+    position: relative;
 }
 
 #door-left, #door-right{
