@@ -3,6 +3,7 @@ const Ship = require("../ship/ship.js");
 const Gameboard = (shipSizes, determinedCoords) => {
   const placedShips = [];
   const bufferCoords = new Set();
+
   const getRandomInt = max => {
     return Math.floor(Math.random() * Math.floor(max));
   };
@@ -29,7 +30,7 @@ const Gameboard = (shipSizes, determinedCoords) => {
     if (determinedCoords) {
       shipOrigin = determinedCoords.split(",");
     } else {
-      shipOrigin = [getRandomInt(7 - shipLength), getRandomInt(7)];
+      shipOrigin = [getRandomInt(8 - shipLength), getRandomInt(8)];
     }
     let shipCoords = [shipOrigin];
     let i = shipOrigin[0];
@@ -69,12 +70,8 @@ const Gameboard = (shipSizes, determinedCoords) => {
     }
   };
 
-  const placeShip = (shipNumber, shipLength, shipInfo) => {
-    //This is where I need to put the player ship coords.
-    let spaceOccupied = true;
-    let potentialShipSpot;
-    let horizontal;
-    if (!shipInfo) {
+  const placeShipRandomly = (shipNumber, shipLength) =>{
+      let spaceOccupied = true;
       let orientation;
       while (spaceOccupied === true) {
         orientation = getRandomInt(2);
@@ -90,28 +87,28 @@ const Gameboard = (shipSizes, determinedCoords) => {
       horizontal = orientation == 1 ? false : true;
       generateBuffer(potentialShipSpot);
       placedShips[shipNumber] = Ship(shipLength, potentialShipSpot, horizontal);
+  }
+
+  const placeShip = (shipNumber, shipLength, shipInfo) => {
+    //This is where I need to put the player ship coords.
+    let potentialShipSpot;
+    if (!shipInfo) {
+      placeShipRandomly(shipNumber, shipLength)
     } else {
-      if (shipInfo.horizontal == true) {
-        potentialShipSpot = generateShipCoordinatesVertical(
+      potentialShipSpot = shipInfo.horizontal == true ?
+        generateShipCoordinatesVertical(
           shipLength,
           shipInfo.coord
-        );
-        placedShips[shipNumber] = Ship(
-          shipLength,
-          potentialShipSpot,
-          shipInfo.horizontal
-        );
-      } else {
-        potentialShipSpot = generateShipCoordinatesHorizontal(
+        ) : 
+        generateShipCoordinatesHorizontal(
           shipLength,
           shipInfo.coord
-        );
-        placedShips[shipNumber] = Ship(
-          shipLength,
-          potentialShipSpot,
-          shipInfo.horizontal
-        );
-      }
+        ); 
+      placedShips[shipNumber] = Ship(
+        shipLength,
+        potentialShipSpot,
+        shipInfo.horizontal
+      );
     }
   };
 
@@ -126,24 +123,24 @@ const Gameboard = (shipSizes, determinedCoords) => {
   };
 
   const receiveAttack = coordinates => {
+    let attackObj
     const shipIndex = getShipIndex(coordinates);
     if (shipIndex != -1) {
       let shipSection = placedShips[shipIndex].shipCoords.indexOf(coordinates);
       placedShips[shipIndex].hit(shipSection);
-      const attackObj = {
+      attackObj = {
         shipHit: true,
         sunkStatus: placedShips[shipIndex].getSunk(),
         shipIndex,
         shipBow: placedShips[shipIndex].getBow(),
         shipOrientation: placedShips[shipIndex].horizontal
       };
-      return { attackObj };
     } else {
-      const attackObj = {
+      attackObj = {
         shipHit: false
       };
-      return { attackObj };
     }
+    return { attackObj };
   };
 
   for (let i = 0; i < shipSizes.length; i++) {

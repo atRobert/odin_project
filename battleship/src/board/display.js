@@ -83,10 +83,10 @@ const Display = (playerBoard, computerBoard) => {
   const computerMove = time => {
     if (!playerTurn) {
       setTimeout(function() {
-        let computerCoordinates = getRandomCoords();
-        let shipStats = computerBoard.receiveAttack(computerCoordinates);
-        let row = computerCoordinates.split(",")[0];
-        let column = computerCoordinates.split(",")[1];
+        let attackCoordinates = getRandomCoords();
+        let shipStats = computerBoard.receiveAttack(attackCoordinates);
+        let row = attackCoordinates.split(",")[0];
+        let column = attackCoordinates.split(",")[1];
         let col = document.querySelector(
           `[owner="computer"][row="${row}"][col="${column}"]`
         );
@@ -96,16 +96,31 @@ const Display = (playerBoard, computerBoard) => {
     }
   };
 
+  const markHit = (shipStats, col, id) =>{
+    col.firstChild.innerHTML = `
+      <i 
+      class="fas fa-fire-alt" 
+      style="transform:translateY(70%) translateX(70%);
+              color:red;"
+      ></i>`;
+    col.classList.add(id + shipStats.attackObj.shipIndex);
+    col.style["background"] = "rgb(10, 133, 161)";
+  }
+
+  const markMiss = col =>{
+    col.style["background"] = "rgb(10, 133, 161)";
+    col.firstChild.innerHTML = `
+      <i 
+      class="fas fa-circle" 
+      style="transform:translateY(90%) translateX(110%);
+            color:black;
+            font-size:13px;"
+      ></i>`;
+  }
+
   const checkAttack = (shipStats, col, game, id) => {
     if (shipStats.attackObj.shipHit) {
-      col.firstChild.innerHTML = `
-        <i 
-        class="fas fa-fire-alt" 
-        style="transform:translateY(70%) translateX(70%);
-                color:red;"
-        ></i>`;
-      col.classList.add(id + shipStats.attackObj.shipIndex);
-      col.style["background"] = "rgb(10, 133, 161)";
+      markHit(shipStats, col, id)
       if (shipStats.attackObj.sunkStatus) {
         let row = shipStats.attackObj.shipBow.split(",")[0];
         let col = shipStats.attackObj.shipBow.split(",")[1];
@@ -120,17 +135,36 @@ const Display = (playerBoard, computerBoard) => {
       }
       playerSwap();
     } else {
-      col.style["background"] = "rgb(10, 133, 161)";
-      col.firstChild.innerHTML = `
-        <i 
-        class="fas fa-circle" 
-        style="transform:translateY(90%) translateX(110%);
-              color:black;
-              font-size:13px;"
-        ></i>`;
+      markMiss(col)
     }
     playerSwap();
   };
+
+  const addListeners = col =>{
+    col.addEventListener("mouseenter", function(e) {
+      this.firstChild.innerHTML = `<i 
+      class="fas fa-crosshairs" 
+      style="transform:translateY(30%) translateX(30%);
+              color:#FCA311;
+              font-size:25px;"
+      ></i>`;
+    });
+    col.addEventListener("mouseleave", function(e) {
+      this.firstChild.innerHTML = "";
+    });
+    col.addEventListener("click", function(e) {
+      if (playerTurn && !gameIsOver) {
+        let shipStats = playerBoard.receiveAttack(
+          `${this.getAttribute("row")},${this.getAttribute("col")}`
+        );
+        checkAttack(shipStats, col, playerBoard, "A");
+        let box = this;
+        let boxClone = this.cloneNode(true);
+        box.parentNode.replaceChild(boxClone, box);
+        computerMove(500);
+      }
+    });
+  }
 
   const generateRow = rowNum => {
     let row = document.createElement("div");
@@ -140,11 +174,12 @@ const Display = (playerBoard, computerBoard) => {
     return row;
   };
 
-  const generateCol = (rowNum, colNum) => {
+  const generateCol = (rowNum, colNum, owner) => {
     let col = document.createElement("div");
     col.classList.add("col");
     col.setAttribute("row", rowNum);
     col.setAttribute("col", colNum);
+    col.setAttribute("owner", owner);
     col.style.cssText = `height:40px;
                                     width:40px;
                                     background:rgb(10, 133, 161);
@@ -153,6 +188,7 @@ const Display = (playerBoard, computerBoard) => {
     let centeringCol = document.createElement("div");
     centeringCol.style.cssText = "position:absolute";
     col.appendChild(centeringCol);
+    owner == 'player' ? addListeners(col) : {}
     return col;
   };
 
@@ -160,31 +196,8 @@ const Display = (playerBoard, computerBoard) => {
     for (let rowNum = 0; rowNum < 8; rowNum++) {
       let row = generateRow(rowNum);
       for (let colNum = 0; colNum < 8; colNum++) {
-        let col = generateCol(rowNum, colNum);
-        col.setAttribute("owner", "player");
-        col.addEventListener("mouseenter", function(e) {
-          this.firstChild.innerHTML = `<i 
-          class="fas fa-crosshairs" 
-          style="transform:translateY(30%) translateX(30%);
-                  color:#FCA311;
-                  font-size:25px;"
-          ></i>`;
-        });
-        col.addEventListener("mouseleave", function(e) {
-          this.firstChild.innerHTML = "";
-        });
-        col.addEventListener("click", function(e) {
-          if (playerTurn && !gameIsOver) {
-            let shipStats = playerBoard.receiveAttack(
-              `${this.getAttribute("row")},${this.getAttribute("col")}`
-            );
-            checkAttack(shipStats, col, playerBoard, "A");
-            let box = this;
-            let boxClone = this.cloneNode(true);
-            box.parentNode.replaceChild(boxClone, box);
-            computerMove(500);
-          }
-        });
+        let col = generateCol(rowNum, colNum, "player");
+        
 
         row.appendChild(col);
         playerDisplay.appendChild(row);
@@ -196,11 +209,10 @@ const Display = (playerBoard, computerBoard) => {
     for (let rowNum = 0; rowNum < 8; rowNum++) {
       let row = generateRow(rowNum);
       for (let colNum = 0; colNum < 8; colNum++) {
-        let col = generateCol(rowNum, colNum);
+        let col = generateCol(rowNum, colNum, "computer");
         if (playerShips.includes(`${rowNum},${colNum}`)) {
           col.style["background"] = "grey";
         }
-        col.setAttribute("owner", "computer");
         col.setAttribute("boat", "false");
         row.appendChild(col);
       }
