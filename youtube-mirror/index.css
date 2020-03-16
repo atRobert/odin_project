@@ -4,12 +4,13 @@ body{
 }
 
 #hamburger-container{
-    display:inline-block
+    display:inline-block;
+    transform: translate(0, -5px)
 }
 .hamburger-dash{
-  margin: 6px 0;
+  margin: 4px 0;
   width: 25px;
-  height: 3px;
+  height: 2px;
   background-color: #333;  
   border-radius: 5px;
 }
@@ -26,7 +27,7 @@ body{
 
 #hamburger-container:hover .dash-3{
     transition:.25s cubic-bezier(0.25, 0.1, 0.63, 1.76);
-    transform: rotate(45deg) translate(-8px, -8px);
+    transform: rotate(45deg) translate(-1px, -1px);
 }
 
 ul {
