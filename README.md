@@ -52,7 +52,7 @@
 
 ## [YouTube Video Mirrror](https://atrobert.github.io/odin_project/youtube-mirror/index.html)
 
-   * Work in progress.
+   * Work in progress. NOT Tested for mobile. Building better understanding of  Media elements in html.
 
 ## [Books](https://atrobert.github.io/odin_project//books/library.html)
  
