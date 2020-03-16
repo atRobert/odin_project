@@ -175,3 +175,31 @@ aside{
 #likes-container{
     margin-right:20px;
 }
+
+
+#vid-comments{
+    margin-top:20px;
+}
+.comment-card{
+    display: flex;
+    margin-bottom:20px;
+}
+
+.comment-card i{
+    margin-right:10px;
+    font-size:25px
+}
+
+.comment-info div{
+    margin-bottom:5px;
+}
+
+.comment-stats{
+    display:flex;
+    font-size: 14px;
+}
+
+.comment-stats i{
+    font-size: 14px;
+    margin-right:10px;
+}
