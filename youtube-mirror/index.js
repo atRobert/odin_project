@@ -24,7 +24,7 @@ const makeVideoCard = (videoObj) =>{
     
 }
 
-fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=VRwPYlNAGzg&key=${apiKey}`)
+fetch('https://www.googleapis.com/youtube/v3/videos?part=snippet&id=VRwPYlNAGzg&key=' + apiKey)
     .then((response) => {
         return response.json();
     })
@@ -46,7 +46,7 @@ fetch(`https://www.googleapis.com/youtube/v3/videos?part=snippet&id=VRwPYlNAGzg&
         document.getElementById('publish-date').innerText = (newdate);
     });
 
-fetch(`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=VRwPYlNAGzg&key=${apiKey}`)
+fetch('https://www.googleapis.com/youtube/v3/videos?part=statistics&id=VRwPYlNAGzg&key=' + apiKey)
     .then((response) => {
         return response.json();
     })
@@ -57,7 +57,7 @@ fetch(`https://www.googleapis.com/youtube/v3/videos?part=statistics&id=VRwPYlNAG
         document.getElementById('dislikes').innerText = data.items[0].statistics.dislikeCount
     });
 
-fetch(`https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=VRwPYlNAGzg&type=video&key=${apiKey}`)
+fetch('https://www.googleapis.com/youtube/v3/search?part=snippet&relatedToVideoId=VRwPYlNAGzg&type=video&key=' + apiKey)
     .then((response) => {
         return response.json();
     })
