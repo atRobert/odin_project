@@ -1,0 +1,74 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="./index.css">
+    <script src="https://kit.fontawesome.com/e1b1731a15.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Inter:700&display=swap" rel="stylesheet">
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <title>YouTube Mirror</title>
+</head>
+<body>
+    <nav id="navbar">
+        <ul>
+            <li id='youtube-icon'>
+                
+                <div id='hamburger-container'>
+                    <div class="hamburger-dash dash-1"></div>
+                    <div class="hamburger-dash dash-2"></div>
+                    <div class="hamburger-dash dash-3"></div>
+                </div>
+                <i class="fab fa-youtube"></i> <span>YouTube</span>
+            </li>
+            <li id="search-container">
+                <input type="text" placeholder="Search">
+                <button id="search-button" class="button"><i class="fas fa-search"></i></button>
+            </li>
+            <li id='account-buttons'>
+                <i class="fas fa-video"></i>
+                <i class="fas fa-th"></i>
+                <i class="fas fa-bell"></i>
+                <i class="fas fa-user"></i>    
+            </li>
+            
+        </li>
+        </ul>
+    </nav>
+    <div>
+        <div id='video'>
+            <div class='iframe-container'>
+            <iframe width="560" height="315" src="https://www.youtube.com/embed/VRwPYlNAGzg?autoplay=1" frameborder="0"  allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </div>
+            <div id='vid-title'></div>
+            <ul id='vid-info'>
+                
+                <li class='float-left'>
+                    <div ><span id='view-count'></span> Views - </div> 
+                    <div id='publish-date'></div>
+                </li>
+                <li>
+                    
+                </li>
+                <li class='float-right'>
+                    <div id='likes-container'>
+                        <i class="fas fa-thumbs-up"> </i> 
+                        <div id='likes'></div> 
+                        <i class="fas fa-thumbs-down"> </i>
+                        <div id='dislikes'></div>
+                    </div>
+                    <i class="fas fa-share"></i> Share
+                    <i class="far fa-clock"></i> Save
+                    <i class="fas fa-ellipsis-h"></i>
+                </li>
+        
+            </ul>
+            <hr> 
+        </div>
+        <div id='other-vids'>
+            <p>Similar Videos:</div>
+        </div>
+    </div>
+    <script src="./index.js"></script>
+</body>
+</html>
