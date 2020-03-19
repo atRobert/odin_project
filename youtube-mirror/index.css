@@ -44,6 +44,15 @@ li{
 
 nav{
     background:white;
+    position: fixed;
+    top: 0;
+    width:100%;
+    z-indeX:100;
+    height:70px
+}
+
+#page-content{
+    margin-top:85px;
 }
 
 #youtube-icon{
@@ -70,6 +79,17 @@ nav{
 #account-buttons .fas{
     margin-left:15px;
     font-size:20px;
+}
+
+#sub-count{
+    color:#909090;
+    font-size:12px;
+}
+
+#publisher-text{
+    font-size:15px;
+    margin-top:20px;
+    max-width:600px;
 }
 
 #search-container input{
@@ -101,13 +121,13 @@ nav{
     float:left;
 }
 
-.iframe-container{
+#iframe-container{
     position: relative;
     width: 100%;
     padding-bottom: 56.25%; 
     height: 0;
   }
-  .iframe-container iframe{
+  #iframe-container iframe{
     position: absolute;
     top:0;
     left: 0;
@@ -127,13 +147,51 @@ aside{
 #vid-info{
     padding:0px;
     font-family: 'Roboto', sans-serif;
-    color:#606060
+    color:#909090
+}
+
+#vid-description{
+    display: flex;
+    justify-content: space-between;
+}
+
+#publisher-details{
+    margin-top:20px;
+}
+
+
+#publisher-image{
+    transform: scale(.6);
+    height:52.8px;
+}
+
+
+#publisher-image img{
+    border-radius: 50%;
+    
+}
+
+hr{
+    background: rgba(0, 0, 0, 0.1);
+    height:1px;
+    border:none
+}
+
+#publisher-information{
+    display:flex;
+}
+
+#publisher-buttons{
+    text-align: right;
+    margin-top:17px;
 }
 
 .float-left div{
     display:inline;
     
 }
+
+
 
 #other-vids{
     width:20vw;
@@ -162,6 +220,7 @@ aside{
 .video-card img{
     float:left;
     margin-right:5px;
+    height:94px;
 }
 
 #other-vids p{
@@ -197,10 +256,85 @@ aside{
 
 .comment-stats{
     display:flex;
-    font-size: 14px;
+    font-size: 10px;
+    color:#909090;
+    margin: 10px 0;
+   
 }
 
 .comment-stats i{
     font-size: 14px;
     margin-right:10px;
+}
+
+#bottom-of-page{
+    height:30px;
+}
+
+#comment-controls{
+    display: flex;
+    margin: 40px 0;
+}
+
+#comment-controls div{
+    margin-right:20px;
+}
+
+.like-button:hover,
+.dislike-button:hover,
+#later-button,
+#share-button,
+.reply-button,
+.fa-ellipsis-h,
+#notification-bell,
+#subscribe-button,
+#join-button,
+#show-more-button,
+.video-card,
+#comment-sort{
+    cursor: pointer;
+}
+
+.comment-dislike{
+    margin: 0 20px;
+}
+
+.user-profile-image{
+    transform: scale(.9);
+    transform-origin: top;
+    border-radius: 50%;
+    margin-right:10px;
+}
+
+#join-button{
+    border: 1px solid #065fd4;
+    background: white;
+    color: #065fd4;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    padding: 5px 10px;
+    border-radius:2px;
+}
+
+#subscribe-button{
+    color: white;
+    border: #c00 solid 1px;
+    background: #c00;
+    font-family: 'Inter', sans-serif;
+    font-size: 15px;
+    padding: 5px 10px;
+    margin:5px 5px;
+    border-radius:2px;
+}
+
+#notification-bell{
+    margin: 5px 10px;
+}
+
+#show-more-button{
+    color:#909090;
+    background:transparent;
+    border: 1px solid transparent;
+    margin:10px 0;
+    padding:0
 }

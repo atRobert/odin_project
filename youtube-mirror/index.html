@@ -1,83 +1,99 @@
 <!DOCTYPE html>
 <html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <link rel="stylesheet" href="./index.css">
-    <script src="https://kit.fontawesome.com/e1b1731a15.js" crossorigin="anonymous"></script>
-    <link href="https://fonts.googleapis.com/css?family=Inter:700&display=swap" rel="stylesheet">
-    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
-    <title>YouTube Mirror</title>
-</head>
-<body>
-    <nav id="navbar">
-        <ul>
+   <head>
+      <meta charset="UTF-8">
+      <meta name="viewport" content="width=device-width, initial-scale=1.0">
+      <link rel="stylesheet" href="./index.css">
+      <script src="https://kit.fontawesome.com/e1b1731a15.js" crossorigin="anonymous"></script>
+      <link href="https://fonts.googleapis.com/css?family=Inter:400,700&display=swap" rel="stylesheet">
+      <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+      <title>YouTube Mirror</title>
+   </head>
+   <body>
+      <nav id="navbar">
+         <ul>
             <li id='youtube-icon'>
-                
-                <div id='hamburger-container'>
-                    <div class="hamburger-dash dash-1"></div>
-                    <div class="hamburger-dash dash-2"></div>
-                    <div class="hamburger-dash dash-3"></div>
-                </div>
-                <img src="./logo.jpg" style='height:30px;margin-left:20px;' alt="">
+               <div id='hamburger-container'>
+                  <div class="hamburger-dash dash-1"></div>
+                  <div class="hamburger-dash dash-2"></div>
+                  <div class="hamburger-dash dash-3"></div>
+               </div>
+               <img src="./logo.jpg" style='height:30px;margin-left:20px;' alt="">
             </li>
             <li id="search-container">
-                <input type="text" placeholder="Search">
-                <button id="search-button" class="button"><i class="fas fa-search"></i></button>
+               <input type="text" placeholder="Search">
+               <button id="search-button" class="button"><i class="fas fa-search"></i></button>
             </li>
             <li id='account-buttons'>
-                <i class="fas fa-video"></i>
-                <i class="fas fa-th"></i>
-                <i class="fas fa-bell"></i>
-                <i class="fas fa-user"></i>    
+               <i class="fas fa-video"></i>
+               <i class="fas fa-th"></i>
+               <i class="fas fa-bell"></i>
+               <i class="fas fa-user"></i>    
             </li>
-            
-        </li>
-        </ul>
-    </nav>
-    <div>
-        <div id='video'>
-            <div class='iframe-container'>
-                <iframe width="560" height="315" src="https://www.youtube.com/embed/NIGv5FFl4PQ?autoplay=1" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
+            </li>
+         </ul>
+      </nav>
+      <div id='page-content'>
+         <div id='video'>
+            <div id='iframe-container'>
+               <iframe id='current-video' width="560" height="315" src="" frameborder="0" allow="accelerometer; autoplay; encrypted-media; gyroscope; picture-in-picture" allowfullscreen></iframe>
             </div>
             <div id='vid-title'></div>
             <ul id='vid-info'>
-                
-                <li class='float-left'>
-                    <div ><span id='view-count'></span> Views - </div> 
-                    <div id='publish-date'></div>
-                </li>
-                <li>
-                    
-                </li>
-                <li class='float-right'>
-                    <div id='likes-container'>
+               <li class='float-left'>
+                  <div ><span id='view-count'></span> &#183; </div>
+                  <div id='publish-date'></div>
+               </li>
+               <li>
+               </li>
+               <li class='float-right'>
+                  <div id='likes-container'>
+                     <div class='like-button'>
                         <i class="fas fa-thumbs-up"> </i> 
-                        <div id='likes'></div> 
+                        <div id='likes'></div>
+                     </div>
+                     <div class='dislike-button'>
                         <i class="fas fa-thumbs-down"> </i>
                         <div id='dislikes'></div>
-                    </div>
-                    <i class="fas fa-share"></i> Share
-                    <i class="far fa-clock"></i> Save
-                    <i class="fas fa-ellipsis-h"></i>
-                </li>
-        
+                     </div>
+                  </div>
+                  <div id='share-button'><i class="fas fa-share"></i> Share</div>
+                  <div id='later-button'><i class="far fa-clock"></i> Save</div>
+                  <i class="fas fa-ellipsis-h"></i>
+               </li>
             </ul>
             <hr>
             <div id='vid-description'>
-                Hello
+               <div id='publisher-information'>
+                  <div id='publisher-image'></div>
+                  <div id='publisher-details'>
+                     <div id='publisher-name'></div>
+                     <div id='sub-count'></div>
+                     <div id='publisher-text'></div>
+                     <button id='show-more-button'>SHOW MORE</button>
+                  </div>
+               </div>
+               <div id='publisher-buttons'>
+                  <button id='join-button'>JOIN</button>
+                  <button id='subscribe-button'>SUBSCRIBE</button>
+                  <i id='notification-bell' class="far fa-bell"></i>
+               </div>
             </div>
             <hr>
+            <div id='comment-controls'>
+               <div id='comment-count'></div>
+               <div id='comment-sort'><i class="fas fa-sort-amount-up"> </i> SORT BY</div>
+            </div>
             <div id='vid-comments'>
             </div>
+            <div id='infinite-page-trigger'></div>
             <div id='bottom-of-page'></div>
-        </div>
-        <div id='other-vids'>
-            <p>Similar Videos:</div>
-        </div>
-        
-    </div>
-    
-    <script src="./index.js"></script>
-</body>
+         </div>
+         <div id='other-vids'>
+            <p>Similar Videos:
+         </div>
+      </div>
+      </div>
+      <script src="./index.js"></script>
+   </body>
 </html>
