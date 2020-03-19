@@ -53,7 +53,7 @@ const makeVideoCard = videoObj => {
                 allowfullscreen>
                 </iframe>`;
     getVidInfo();
-    getData();
+    getData(20, 10);
   });
   let img = document.createElement("img");
   let src = videoObj.snippet.thumbnails.medium.url;

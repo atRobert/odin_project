@@ -52,8 +52,8 @@
 
 ## [YouTube Video Mirrror](https://atrobert.github.io/odin_project/youtube-mirror/index.html)
 
-   * Work in progress. NOT Tested for mobile. Building better understanding of  Media elements in html. Will not function
-   100% due to no API key.
+   * Requires YouTube V3 API Key to function. Webpage functions and looks like YouTube video player. Features infinite 
+   scroll to display more comments and similar videos when scrolling to bottom of page. 
 
 ## [Books](https://atrobert.github.io/odin_project//books/library.html)
  
