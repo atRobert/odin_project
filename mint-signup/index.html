@@ -1,0 +1,121 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <script src="https://kit.fontawesome.com/e1b1731a15.js" crossorigin="anonymous"></script>
+    <link href="https://fonts.googleapis.com/css?family=Roboto&display=swap" rel="stylesheet">
+    <link rel="stylesheet" href="./index.css">
+    <title>Intuit Signup Mirror</title>
+</head>
+<body>
+    <section id='account-controls'>
+        <ul>
+            <li>
+                <p>Already have an Intuit account?</p>
+                <a href="">I forgot my User ID or Password</a>
+            </li>
+            <li>
+                <button class='btn'>
+                    <i class="fas fa-lock"></i> Sign In
+                </button>
+            </li>
+        </ul>
+    </section>
+    <div id='logos'>
+        <a href="https://www.intuit.com/">
+            <img id='int-logo' src="./images/logo-intuit.png" alt="">
+        </a>
+        <ul id='services'>
+            <li>
+                <a href="https://www.mint.com/" target='_blank'>
+                    <div class='box'>
+                        <img src="./images/mint.png" alt="">
+                        <span> mint</span>
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://quickbooks.intuit.com/" target='_blank'>
+                    <div class='box'>
+
+                        <img src="./images/qb.png" alt="">
+                        <span> quickbooks</span> 
+                    </div>
+                </a>
+            </li>
+            <li>
+                <a href="https://turbotax.intuit.com/">
+                    <div class='box'>
+                        <img src="./images/tt.png" alt="" target='_blank'>
+                        <span> turbotax</span>  
+                    </div>  
+                </a>
+            </li>
+        </ul>
+    </div>
+    <section id='sign-up-form'>
+        <div id='sign-up-main'>
+            <p id='header'>Create an Intuit account</p>
+            <p id='sub-header'>One account for everything Intuit, including Mind.</p>
+            <a href="https://accounts-help.lc.intuit.com/questions/1582580-creating-an-account">Learn more</a>
+            <section > 
+                <ul id='form'>
+                    <li>
+                        <label for="email">Email Address</label>
+                        <br>
+                        <input type="email" name='email'>
+                    </li>
+                    <li>
+                        <label for="phone"'>Phone (recommended)</label>
+                        <br>
+                        <input type="tel" name='phone'>
+                        <p>Standard call, messaging or data rates may apply</p>
+                    </li>
+                    <li>
+                        <label for="password-1">Password</label>
+                        <br>
+                        <input type="password" name='password-1'>
+                    </li>
+                    <li>
+                        <label for="password-2">Confirm Password</label>
+                        <br>
+                        <input type="password" name='password-2'>
+                    </li>
+                    
+                </ul>    
+                <br>
+                <button class='btn account-create'>
+                    <i class="fas fa-lock"></i> Create Account
+                </button>      
+            </section>
+            
+            <div id='agreement'>
+                By clicking Create account, you agree to our
+                <a href="https://www.mint.com/terms">Terms</a>
+                and have read and acknowledge our <a href="https://www.intuit.com/privacy/">
+                Privacy Statement.</a> 
+            </div>
+        
+        </div>
+        <div id='sign-up-foot'>
+            <p>Invisible reCAPTCHA by Google <a href="">Privacy Policy</a> and <a href="">Terms of Use.</a></p>
+        </div>
+    </section>
+    <footer id='legal'>
+        <ul>
+            <li>
+                <a href="https://www.intuit.com/company/" target="_blank">Legal</a>
+            </li>
+            <li>
+                <a href="https://www.intuit.com/privacy/" target="_blank">Privacy</a>
+            </li>
+            <li>
+                <a href="https://security.intuit.com/" target="_blank">Security</a>
+            </li>
+        </ul>
+        <p>© 2020 Intuit, Inc. All rights reserved. Intuit, QuickBooks, QB, TurboTax, ProConnect and Mint are registered trademarks of Intuit Inc.</p>
+        <p>Terms and conditions, features, support, pricing, and service options subject to change without notice.</p>
+    </footer>
+</body>
+</html>

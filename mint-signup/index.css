@@ -1,0 +1,174 @@
+body{
+    background-color: rgb(236, 238, 241);
+    font-family: 'Roboto', sans-serif;
+}
+
+.btn{
+    color: white;
+    background-color: #0077C5;
+    border: 1px #4c4c4c solid;
+    border-radius: 4px;
+    cursor: pointer;
+}
+#account-controls button{
+    height:34px;
+    font-size: 1.125em;
+    
+    margin-left:5px;
+    
+    padding:0 20px;
+
+}
+
+#account-controls{
+    text-align: right;
+}
+
+#account-controls ul:first-child{
+    
+    color: #505050
+}
+
+ul{
+    list-style: none;
+    font-size: 12px;
+    padding:0px;
+}
+
+li {
+    display: inline-block;
+    font-family: 'Roboto', sans-serif;
+}
+
+li p{
+    margin: 0;
+}
+
+#int-logo{
+    height:35px;
+}
+
+.box{
+    display: flex;
+    align-items: center;
+    color:#6c6d72
+}
+
+#logos{
+    text-align: center;
+}
+
+#services{
+    font-size: 20px;
+    color: #6c6d72;
+    text-align: center;
+    margin:15px 0;
+    padding:0px;
+}
+
+#services li{
+    margin: 0 3px;
+}
+#services img{
+    height:23px;
+    margin-right:3px;
+}
+
+a{
+   color: #0077C5;
+   text-decoration: none;
+}
+/* signup form */
+#sign-up-main li{
+    display:block;
+}
+#sign-up-form{
+    margin:auto;
+    width:318px;
+    border:1px rgb(199, 199, 199) solid;
+}
+
+#sign-up-main{
+    
+    background:white;
+    width:100%;
+    text-align: center;
+}
+
+#sign-up-foot{
+    font-size:10px;
+    text-align: center;
+    background: #ECEEF1;
+    color: #8d9096;
+}
+
+#sign-up-main p{
+    margin: 0;
+}
+
+#form{
+    text-align: left;
+}
+
+#form input{
+    width:100%;
+    border-radius:4px;
+    border:1px rgb(199, 199, 199) solid;
+}
+
+#form li{
+    padding-top:30px;
+}
+
+#header{
+    font-weight: 400;
+    color: #4C4C4C;
+    font-size: 24px;
+    padding-bottom:20px;
+}
+
+#sub-header{
+    color: #4C4C4C;
+    font-size: 14px;
+    font-weight: 100;
+    margin:0;
+}
+
+#sign-up-main a{
+    font-size: 13px;
+}
+
+.account-create{
+    margin-bottom:30px;
+}
+
+#agreement{
+    color:#505050;
+    font-size:12px;
+    font-style: italic;
+    
+}
+
+/* LEGAL */
+
+#legal{
+    text-align: center;
+    
+    font-size: 12px;
+}
+
+#legal a{
+    margin:0 5px;
+    color:#505050;   
+}
+
+
+#legal p{
+    margin: 2px 0;
+    color:#505050;
+}
+
+
+
+
+
