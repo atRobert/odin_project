@@ -30,27 +30,35 @@
             <li>
                 <a href="https://www.mint.com/" target='_blank'>
                     <div class='box'>
-                        <img src="./images/mint.png" alt="">
-                        <span> mint</span>
+                        <div class='animation-wrapper'>
+                        <img class='pulse-animation' src="./images/mint.png" alt="">
+                        </div>
+                        <div class='hide-animation'>
+                        <span >mint</span>
+                        </div>
                     </div>
                 </a>
             </li>
-            <li>
-                <a href="https://quickbooks.intuit.com/" target='_blank'>
-                    <div class='box'>
+            <li >
+                <div class='hide-animation'>
+                    <a href="https://quickbooks.intuit.com/" target='_blank'>
+                        <div class='box'>
 
-                        <img src="./images/qb.png" alt="">
-                        <span> quickbooks</span> 
-                    </div>
-                </a>
+                            <img src="./images/qb.png" alt="">
+                            <span> quickbooks</span> 
+                        </div>
+                    </a>
+                </div>
             </li>
             <li>
-                <a href="https://turbotax.intuit.com/">
-                    <div class='box'>
-                        <img src="./images/tt.png" alt="" target='_blank'>
-                        <span> turbotax</span>  
-                    </div>  
-                </a>
+                <div class='hide-animation'>
+                    <a href="https://turbotax.intuit.com/">
+                        <div class='box'>
+                            <img src="./images/tt.png" alt="" target='_blank'>
+                            <span> turbotax</span>  
+                        </div>  
+                    </a>
+                </div>
             </li>
         </ul>
     </div>
@@ -70,7 +78,7 @@
                         <label for="phone"'>Phone (recommended)</label>
                         <br>
                         <input type="tel" name='phone'>
-                        <p>Standard call, messaging or data rates may apply</p>
+                        <p class='text-disclaimer'>Standard call, messaging or data rates may apply</p>
                     </li>
                     <li>
                         <label for="password-1">Password</label>
@@ -117,5 +125,6 @@
         <p>© 2020 Intuit, Inc. All rights reserved. Intuit, QuickBooks, QB, TurboTax, ProConnect and Mint are registered trademarks of Intuit Inc.</p>
         <p>Terms and conditions, features, support, pricing, and service options subject to change without notice.</p>
     </footer>
+    <script src='./index.js'></script>
 </body>
 </html>
