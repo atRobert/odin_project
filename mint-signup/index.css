@@ -111,6 +111,8 @@ a{
     border-top: none;
 }
 
+
+
 #sign-up-main p{
     margin: 0;
 }
@@ -126,8 +128,7 @@ a{
     padding-bottom: 6px;
 
 }
-
-#form input{
+input{
     width:100%;
     height:34px;
     padding-left:6px;
@@ -135,9 +136,42 @@ a{
     border:1px rgb(199, 199, 199) solid;
 }
 
+#password-req{
+    display: none;
+}
+
+#password-req p{
+    margin: 6px 0;
+    color: #7c7c7c;
+}
+
+#password-good{
+    display:none;
+    color:green;
+    margin-top:5px;
+}
+
+.warning-message{
+    padding-top:5px;
+    color:red;
+    visibility: hidden;
+}
+
+.phone-message{
+    color:#EA7F00;
+    display: none;
+    padding-top:5px
+}
+
 #form li{
     padding-top:30px;
 }
+
+#hidden-password{
+    overflow: hidden;
+    height:0
+}
+
 
 #header{
     font-weight: 400;
@@ -163,11 +197,13 @@ a{
     padding:5px 0;
 }
 
-.account-create{
+#account-create{
     margin-bottom: 30px;
     width: 100%;
     height: 50px;
     font-size: 15px;
+    transition:1s cubic-bezier(0.25, 0.1, 0.51, 1.1);
+    transform: translate(0, -30px);
 }
 
 #agreement{
@@ -210,6 +246,10 @@ a{
     opacity: 0;
     
     transform:translate(15px, 0)
+}
+
+.error{
+    border: 1px red solid
 }
 
 

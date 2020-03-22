@@ -67,35 +67,50 @@
             <p id='header'>Create an Intuit account</p>
             <p id='sub-header'>One account for everything Intuit, including Mind.</p>
             <a href="https://accounts-help.lc.intuit.com/questions/1582580-creating-an-account">Learn more</a>
-            <section > 
+            <section >
+                <form action="" id='signup'>
                 <ul id='form'>
                     <li>
                         <label for="email">Email Address</label>
                         <br>
-                        <input type="email" name='email'>
+                        <input id='email-input' type="email" name='email' required>
+                        <p class='warning-message'>Please enter a valid email address.</p>
                     </li>
                     <li>
-                        <label for="phone"'>Phone (recommended)</label>
+                        <label for="phone">Phone (recommended)</label>
                         <br>
-                        <input type="tel" name='phone'>
+                        <input id='phone-input' type="tel" name='phone' pattern="[(][0-9]{3}[)]-[0-9]{3}-[0-9]{4}" onkeypress="return isNumber(event)">
+                        <p class='phone-message'>We strongly recommend adding a phone number. This will help verify your account and keep it safe.</p>
                         <p class='text-disclaimer'>Standard call, messaging or data rates may apply</p>
+                        <p class='warning-message'>Please enter a valid phone number including area code</p>
                     </li>
-                    <li>
+                    <li id='new-password'>
                         <label for="password-1">Password</label>
                         <br>
-                        <input type="password" name='password-1'>
+                        <input id='password-input' type="password" name='password-1' required>
+                        <div id='password-req'>
+                            <p id="length"><i class="fas fa-times"> </i> Use 8 or more characters</p>
+                            <p id="capital"><i class="fas fa-times"> </i> Use upper and lower case letters (e.g. Aa)</p>
+                            <p id="number"><i class="fas fa-times"> </i> Use a number (e.g. 1234)</p>
+                            <p id="special"><i class="fas fa-times"> </i> Use a symbol (e.g. !@#$)</p>
+                        </div>
+                        <p id='password-good'>Your password is strong.</p>
                     </li>
-                    <li>
+                    <li id='hidden-password'>
+                        
                         <label for="password-2">Confirm Password</label>
                         <br>
-                        <input type="password" name='password-2'>
+                        <input id='password-confirm' type="password" name='password-2' required>
+                        <p class='warning-message'>Confirm password field does not match the password field.</p>
                     </li>
                     
                 </ul>    
                 <br>
-                <button class='btn account-create'>
+                
+                <button id='account-create' class='btn'>
                     <i class="fas fa-lock"></i> Create Account
-                </button>      
+                </button>   
+                </form>
             </section>
             
             <div id='agreement'>
