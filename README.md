@@ -50,10 +50,16 @@
    <img src="https://github.com/atRobert/odin_project/blob/master/images/calc.png" width="40%">
    </p>
 
-## [YouTube Video Mirrror](https://atrobert.github.io/odin_project/youtube-mirror/index.html)
+## [YouTube Video Mirrror](https://atrobert.github.io/odin_project/mirror-pages/youtube-mirror/index.html)
 
    * Requires YouTube V3 API Key to function. Webpage functions and looks like YouTube video player. Features infinite 
    scroll to display more comments and similar videos when scrolling to bottom of page. 
+
+
+## [Mint Signup Mirror](https://atrobert.github.io/odin_project/mirror-pages/mint-signup/index.html)
+
+   * Sign up page meant to mirror [Mint's actual sign up page](https://accounts.intuit.com/signup.html?offering_id=Intuit.ifs.mint&namespace_id=50000026&redirect_url=https%3A%2F%2Fmint.intuit.com%2Foverview.event%3Futm_medium%3Ddirect%26cta%3Dhero_sign_up_free_ProspectWeb%26ivid%3D3819cfa1-88f5-452c-9485-8650f404bf58%26adobe_mc%3DMCMID%253D49514995336551232818363781419363564074%257CMCORGID%253D969430F0543F253D0A4C98C6%252540AdobeOrg%257CTS%253D1585904903%26ivid%3D3819cfa1-88f5-452c-9485-8650f404bf58) DOES NOT ACTUALLY CREATE A MINT ACCOUNT.
+
 
 ## [Books](https://atrobert.github.io/odin_project//books/library.html)
  
