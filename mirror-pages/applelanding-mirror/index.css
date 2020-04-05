@@ -1,0 +1,125 @@
+@import url('https://fonts.googleapis.com/css2?family=Roboto:wght@300&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Montserrat:wght@100&display=swap');
+
+body {
+    margin: 0;
+    font-family: 'Roboto', sans-serif;
+}
+
+ul {
+    list-style-type: none;
+    padding:0;
+}
+
+a{
+    text-decoration: none;
+}
+a:hover{
+    text-decoration: underline ;
+}
+.page-container{
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+}
+
+.banner-text{
+    margin-top:80px;
+    font-family: 'Montserrat', sans-serif;
+    text-align: center;
+    color:white;
+    
+}
+
+.banner-text h1{
+    font-size:50px;
+    font-weight:200;
+}
+
+.banner-text h2{
+    font-size:30px;
+    font-weight:200;
+}
+
+.banner-text h4{
+    font-size:25px;
+    font-weight:200;
+}
+
+.hero-img{
+    background: url("hero.jpg") no-repeat;
+    background-size: 1464px;
+    background-position: center top;
+    display: flex;
+    justify-content: center;
+}
+
+.hero-img img{
+    visibility: hidden;
+}
+
+.banner-container{
+    position: absolute;
+    top:60px;}
+
+.nav-container{
+    width:980px;  
+    display:grid;
+    grid-template-columns: repeat(9, 1fr);
+    margin:0;
+    text-align: center;
+    background-image: linear-gradient(#797979, #606060);
+    border-radius: 5px;
+    font-size: 20px;
+    padding:6px 2px;
+}
+
+.nav-container input{
+    width:80%;
+    border:0px;
+    border-radius:0 20px 20px 0;
+    height:16px;
+}
+
+.fa-search{
+    padding:3px;
+    font-size:12px;
+    background-color: white;
+    border-radius: 20px 0 0 20px;
+}
+
+
+.nav-container:last-child {
+    height: 21px;
+    line-height: 21px;
+    padding-left: 3px;
+}
+
+
+
+.promo-container {
+    display:flex;
+    margin:0;
+    justify-content: center;
+}
+
+.about-container,
+.footer-container {
+    display: flex;
+}
+
+.footer-container{
+    justify-content: center;
+    align-items: flex-start;
+    font-size:10px;
+    
+    color:#6e6e6e;
+}
+
+.legal-container li{
+    margin-bottom:10px;
+}
+
+.promo-container li{
+    margin: 1px;
+}
