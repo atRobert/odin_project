@@ -86,16 +86,17 @@ a:hover {
 .nav-container li {
 	flex: 1;
 	border: 1px solid rgb(84, 84, 84);
-	
+	line-height: 18px;
 	padding: 6px 2px;
 }
 
-.nav-container li:hover{
+.lnk:hover{
     background:radial-gradient(rgba(0, 0, 0, 0.5), rgba(0, 0, 0, 0.3));
 }
 
-.search-container:hover{
-    background: none
+
+.lnk img{
+	height:15px;
 }
 
 .search-container:focus-within{
@@ -163,6 +164,13 @@ a:hover {
 	display: flex;
 }
 
+.about-container {
+	line-height: 15px;
+}
+
+.about-container img {
+	height: 15px;
+}
 .footer-container {
 	justify-content: space-around;
 	align-items: flex-start;
