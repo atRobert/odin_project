@@ -1,0 +1,271 @@
+body {
+    margin: 0;
+    background:rgb(121, 121, 238)
+}
+
+#mini-nav {
+    display: flex;
+    justify-content: space-between;
+    background-color: #131313;
+}
+
+.small-nav {
+    display:flex;
+    color:hsl(0, 0%, 63%);
+    font-size: 13px;
+}
+
+.small-nav li {
+    margin-right: 10px;
+}
+
+.small-nav li:hover {
+    color:white;
+    cursor: pointer;
+}
+
+.small-nav .active {
+    color: white;
+}
+
+ul {
+    padding:0px;
+    list-style-type: none;
+}
+
+/*  */
+
+#main-nav {
+    display: flex;
+    justify-content: space-between;
+    background:white;
+    color: hsl(0, 0%, 63%);
+}
+
+.big-nav {
+    display: flex;
+    margin-right:15px;
+}
+
+.big-nav li {
+    text-transform: uppercase;
+    margin-right:10px;
+    font-size: 14px;
+}
+
+.big-nav li:hover{
+    color :black;
+    cursor :pointer;
+}
+
+#tech-festival-ad{
+    background-color: #fd3;
+    padding:5px 0;
+}
+
+#tech-festival-ad a {
+    text-decoration: none;
+    color: black;
+}
+
+/* BANNER */
+#banner {
+    margin:3px 10px;
+}
+.banner-wrapper {
+    display: grid;
+    grid-template-columns: 3fr 1.5fr;
+    grid-template-rows: repeat(6, 85px);
+    grid-gap:10px;
+}
+
+.grid-item {
+    background: transparent;
+    display: flex;
+    flex-direction: column;
+    justify-content: flex-end;
+}
+
+.banner-wrapper article{
+    padding: 15px 15px;
+}
+
+.banner-wrapper h5 {
+    text-transform: uppercase;
+}
+
+.col1-1 {
+    grid-row: 1 / span 6;
+    grid-column: 1;
+    background: url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/04/kayleighmcenany-796x419.jpg");
+    background-size: 100% 100%;
+}
+
+.col1-1-overlay {
+    grid-row: 1 / span 6;
+    grid-column: 1;
+    background: linear-gradient(to bottom right, #ff430a88, rgba(0, 0, 0, 0.795));
+    opacity: 1;
+    transition: .3s ease;
+}
+
+.col1-1-overlay:hover {
+    opacity:.5;
+}
+
+.col2-1 {
+    grid-row: 1 / span 3;
+    grid-column:2;
+    background: url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/04/psychedelic-796x419.png");
+    object-fit: cover;
+    background-position: center ;
+}
+
+.col2-1-overlay {
+    grid-row: 1 / span 3;
+    grid-column:2;
+    background: rgba(0, 0, 0, 0.527);
+    opacity: 1;
+    transition: .3s ease;
+}
+
+.col2-1-overlay:hover {
+    opacity:.5;
+}
+
+.col2-2 {
+    grid-row: 4 / span 3;
+    grid-column:2;
+    background: url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/04/PlayStation-5-DualSense-796x417.jpg"); 
+    object-fit: cover;
+    background-position: center ;
+}
+
+.col2-2-overlay {
+    grid-row: 4 / span 3;
+    grid-column:2;
+    background: rgba(0, 0, 0, 0.527);
+    opacity: 1;
+    transition: .3s ease;
+}
+
+.col2-2-overlay:hover {
+    opacity:.5;
+}
+
+
+/* NEWS */
+#news {
+    max-width: 1280px;
+    margin:auto;
+}
+.news-wrapper ul {
+    padding:10px;
+    display: flex;
+    justify-content: space-between;
+    flex-wrap: wrap;
+    
+}
+
+.news-wrapper li {
+    flex-basis: 24%;
+}
+
+.news-wrapper img {
+    width: 100%
+}
+
+@media (max-width: 1020px) {
+    .news-wrapper li {
+        flex-basis: 33%;
+    }
+}
+
+@media (max-width: 750px) {
+    .news-wrapper li {
+        flex-basis: 100%;
+    }
+}
+
+
+/* FUNDING */
+#funding {
+    max-width: 1280px;
+    margin:auto;
+}
+.funding-wrapper ul {
+    display:flex;
+    justify-content: space-between
+}
+
+.funding-wrapper li {
+    flex-basis: 24%;
+}
+
+.fund-card-wrapper {
+    background-color: #fff9f8;
+}
+.fund-card-wrapper img {
+    height:60px;
+    width:60px;
+    margin:10px;
+    float: left;
+}
+
+.fund-card-wrapper h4,
+.money-backer {
+    margin: 0;
+    padding: 10px 0 10px 84px;
+}
+
+.money-backer h4,
+.money-backer h5 {
+    padding: 0;
+    margin: 0;
+    text-transform: uppercase;
+}
+
+.company {
+    background-color: #f42;
+}
+
+.money-backer {
+    background: rgba(255,68,34,.08);
+}
+
+.business-type {
+    padding: 10px;
+}
+
+.description {
+    border-top: #ffccc3 1px solid;
+    padding: 10px;
+}
+
+.description span {
+    color:#acacac
+}
+
+@media (max-width: 990px) {
+    .hidden{
+        display: none;
+    }
+
+    .funding-wrapper li {
+        flex-basis: 33%;
+    }
+}
+
+
+
+@media (max-width: 1210px) {
+    .hide-1200 {
+        display: none;
+    }
+}
+
+@media (max-width: 790px) {
+    .hide-750 {
+        display: none;
+    }
+}
