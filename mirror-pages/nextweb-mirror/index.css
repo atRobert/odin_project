@@ -192,6 +192,7 @@ ul {
 #funding {
     max-width: 1280px;
     margin:auto;
+    padding:10px
 }
 .funding-wrapper ul {
     display:flex;
@@ -257,6 +258,160 @@ ul {
 }
 
 
+/* OTHER TOPICS */
+#other-topics {
+    text-align: center;
+    margin: auto;
+    max-width: 1280px;
+    padding:10px;
+}
+.other-topics-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: space-between;
+    
+}
+.topic-img-container {
+    position: relative;
+    text-align: left;
+    height:300px;
+}
+
+.topic-img-container ul {
+    position: absolute;
+    bottom: 8px;
+    left: 16px;
+}
+
+.topic-img-container img {
+  display: block;
+  position:relative;
+  height:100%;
+
+}
+
+.topic-img-container h2 {
+    margin: 0;
+  }
+
+.other-topics-wrapper article{
+    flex:0 1 31%;
+    text-align: left;
+    overflow: hidden;
+}
+
+
+@media (max-width: 1020px) {
+    .other-topics-wrapper article{
+        flex-basis: 48%;
+        text-align: left;
+    }
+}
+
+
+
+
+/* DEALS */
+
+#deals{
+    text-align: center;
+    margin: auto;
+    max-width: 1280px;
+    padding:10px;
+}
+.deals-wrapper {
+    display: flex;
+    flex-wrap: wrap;
+    justify-content: start;
+}
+
+.deals-wrapper article {
+    flex-basis: 24%;
+    text-align: left;
+    margin: 0 5px;
+    margin-bottom: 30px;
+}
+
+.deals-wrapper img {
+    width: 100%;
+}
+
+.deals-wrapper h4 {
+    margin: 5px 0;
+}
+
+.deals-wrapper span {
+    margin-right: 10px;
+}
+
+.old-price {
+    color:#aaa;
+    text-decoration:line-through;
+    font-size:12px;
+}
+
+@media (max-width:1020px) {
+    .deals-wrapper article {
+        flex-basis: 32%;
+        text-align: left;
+        margin-bottom: 30px;
+    }
+}
+
+
+/* footer */
+
+#page-footer-one ul {
+    display: flex;
+    justify-content: center;
+}
+
+#page-footer-one li {
+    margin: 5px;
+} 
+
+#page-footer-one span {
+    font-size: 20px;
+}
+
+#page-footer-one footer {
+    background-color: #131313;
+    padding: 15px;
+}
+
+.fa-circle {
+    color: #333;
+}
+
+.fa-stack-1x {
+    color: white;
+}
+
+.footer-links {
+    display: flex;
+    justify-content: center;
+}
+
+.footer-links li {
+    margin: 5px;
+    text-transform: uppercase;
+    color: #aaa;
+    font-size: 13px;
+}
+
+.footer-links li:hover{
+    color:white;
+    cursor: pointer;
+}
+
+/* footer-legal */
+
+#page-footer-legal div {
+    text-align: center;
+    padding: 15px;
+    background-color: black;
+    color: white;
+}
 
 @media (max-width: 1210px) {
     .hide-1200 {
