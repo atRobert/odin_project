@@ -271,6 +271,7 @@ ul {
     justify-content: space-between;
     
 }
+
 .topic-img-container {
     position: relative;
     text-align: left;
@@ -308,17 +309,25 @@ ul {
     }
 }
 
+@media (max-width: 770px) {
+    .other-topics-wrapper article{
+        flex-basis: 90%;
+        text-align: left;
+    }
+}
+
 
 
 
 /* DEALS */
 
-#deals{
+#deals {
     text-align: center;
     margin: auto;
     max-width: 1280px;
     padding:10px;
 }
+
 .deals-wrapper {
     display: flex;
     flex-wrap: wrap;
@@ -356,6 +365,25 @@ ul {
         text-align: left;
         margin-bottom: 30px;
     }
+}
+
+@media (max-width:790px) {
+    .deals-wrapper article {
+        flex-basis: 90% ;
+        display: flex;
+    }
+
+    .deals-wrapper img {
+        height: 75px;
+        width: auto;
+    }
+
+    .deals-wrapper div {
+        display: flex;
+        flex-direction: column;
+        margin-left: 10px;
+    }
+    
 }
 
 
