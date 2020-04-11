@@ -1,12 +1,25 @@
+@import url('https://fonts.googleapis.com/css2?family=Exo:wght@500&family=Montserrat&display=swap');
+@import url('https://fonts.googleapis.com/css2?family=Josefin+Sans:wght@700&display=swap');
+
 body {
+    font-family: 'Josefin Sans', sans-serif;
     margin: 0;
-    background:rgb(121, 121, 238)
+    background:white;
+}
+
+h2 {
+    color:rgb(255, 68, 34)
+}
+
+.fa-greater-than {
+    font-size:15px;
 }
 
 #mini-nav {
     display: flex;
     justify-content: space-between;
     background-color: #131313;
+    padding-left:15px;
 }
 
 .small-nav {
@@ -34,17 +47,36 @@ ul {
 }
 
 /*  */
-
+#sticky-nav {
+    position:sticky;
+    top:0;
+    z-index:1000;
+}
 #main-nav {
     display: flex;
     justify-content: space-between;
     background:white;
     color: hsl(0, 0%, 63%);
+    padding-left:15px
+}
+
+#main-nav button {
+    background: white;
+    border: none;
+    border-left: 1px solid rgba(170, 170, 170, 0.582);
+    color: rgba(170, 170, 170, 0.582);
+    width:60px;
+}
+
+#main-nav button:hover{
+    color:#aaa;
+    cursor: pointer;
 }
 
 .big-nav {
     display: flex;
     margin-right:15px;
+    font-family: 'Exo', sans-serif;
 }
 
 .big-nav li {
@@ -61,6 +93,7 @@ ul {
 #tech-festival-ad{
     background-color: #fd3;
     padding:5px 0;
+    padding-left: 15px;
 }
 
 #tech-festival-ad a {
@@ -71,6 +104,7 @@ ul {
 /* BANNER */
 #banner {
     margin:3px 10px;
+    color:white;
 }
 .banner-wrapper {
     display: grid;
@@ -99,6 +133,10 @@ ul {
     grid-column: 1;
     background: url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/04/kayleighmcenany-796x419.jpg");
     background-size: 100% 100%;
+}
+
+.col1-1 h2 {
+    font-size: 30px;
 }
 
 .col1-1-overlay {
@@ -169,10 +207,25 @@ ul {
 
 .news-wrapper li {
     flex-basis: 24%;
+    margin-bottom:40px;
 }
 
 .news-wrapper img {
     width: 100%
+}
+
+.news-author { 
+    color:#aaa;
+    font-size:10px;
+}
+
+.news-author:hover {
+    color:black;
+    cursor: pointer
+}
+
+.news-wrapper h4 {
+    margin: 5px 0;
 }
 
 @media (max-width: 1020px) {
@@ -288,7 +341,7 @@ ul {
   display: block;
   position:relative;
   height:100%;
-
+  transform: translate(-25%);
 }
 
 .topic-img-container h2 {
@@ -301,6 +354,34 @@ ul {
     overflow: hidden;
 }
 
+.news-img {
+    object-fit: cover;
+    width: 96px;
+    height: 96px;
+}
+
+.hidden-news-img {
+    object-fit: cover;
+}
+
+.new-topics-list {
+    display: flex;
+    justify-content: space-between;
+    margin: 2px 0;
+    align-items: flex-start;
+    background-color: #fff4f2;
+    height:96px;
+    padding-left:10px;
+}
+
+.new-topics-list h5 {
+    margin:0;
+    margin-top:5px;
+}
+
+.new-topics-list h4 {
+    margin: 2px;
+}
 
 @media (max-width: 1020px) {
     .other-topics-wrapper article{
@@ -322,7 +403,7 @@ ul {
 /* DEALS */
 
 #deals {
-    text-align: center;
+    text-align: left;
     margin: auto;
     max-width: 1280px;
     padding:10px;
@@ -418,6 +499,7 @@ ul {
 .footer-links {
     display: flex;
     justify-content: center;
+    font-family: 'Exo', sans-serif;
 }
 
 .footer-links li {
@@ -439,6 +521,8 @@ ul {
     padding: 15px;
     background-color: black;
     color: white;
+    font-family: 'Monsterrat',sans-serif;
+    font-size: 14px;
 }
 
 @media (max-width: 1210px) {
