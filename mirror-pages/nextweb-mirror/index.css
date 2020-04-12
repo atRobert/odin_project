@@ -58,12 +58,29 @@ ul {
     padding-left:15px
 }
 
+.button-container {
+    display: flex;
+    justify-content: flex-end;
+}
+
 #main-nav button {
     background: white;
     border: none;
     border-left: 1px solid rgba(170, 170, 170, 0.582);
     color: rgba(170, 170, 170, 0.582);
     width:60px;
+}
+
+
+.hamburger-icon {
+    display: none;
+}
+
+.hamburger-icon div {
+    width: 17px;
+    height: 3px;
+    background-color: #ff4422;
+    margin: 3px auto;
 }
 
 #main-nav button:hover{
@@ -103,6 +120,19 @@ ul {
     #mini-nav {
         display: none;
     }
+
+    .hamburger-icon {
+        display:inline;
+    }
+
+    .big-nav {
+        height:19px;
+    }
+    .big-nav li {
+        display:none;
+    }
+    
+    
 }
 
 /* BANNER */
@@ -155,26 +185,15 @@ ul {
 }
 
 .col1-1-overlay {
-    grid-row: 1 / span 6;
-    grid-column: 1;
     background: linear-gradient(to bottom right, #ff430a8c, rgba(0, 0, 0, 0.795));
     transition: .3s ease;
     justify-content: space-between;
-    padding:15px;
+    height:100%
 }
-
-/* .col1-1-overlay article {
-    display:flex;
-    flex-direction: column;
-    justify-content: space-between;
-    padding: 0px;
-} */
-
-
 
 .col1-1-overlay img {
     max-width:40%;
-    
+    padding: 15px;
 }
 
 .col1-1-overlay:hover {
@@ -190,8 +209,7 @@ ul {
 }
 
 .col2-1-overlay {
-    grid-row: 1 / span 3;
-    grid-column:2;
+    height:100%;
     background: rgba(0, 0, 0, 0.527);
    
     transition: .3s ease;
@@ -210,11 +228,9 @@ ul {
 }
 
 .col2-2-overlay {
-    grid-row: 4 / span 3;
-    grid-column:2;
+    height:100%;
     background: rgba(0, 0, 0, 0.527);
     transition: .3s ease;
-    
 }
 
 .col2-2-overlay:hover {
@@ -237,7 +253,7 @@ ul {
         flex-direction: column;
     }
 
-    .grid-item {
+    .grid-box {
         margin: 3px 0;
     }
 }
