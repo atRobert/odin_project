@@ -178,7 +178,7 @@ ul {
 .col1-1 {
     grid-row: 1 / span 6;
     grid-column: 1;
-    background: url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/04/kayleighmcenany-796x419.jpg");
+    background: url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2017/09/multiplayer-gaming-796x398.jpg");
     background-size: 100% 100%;
 }
 
@@ -186,11 +186,18 @@ ul {
     font-size: 30px;
 }
 
+.pink-overlay {
+    background:linear-gradient(to top left,rgba(204, 0, 153, 0.534),rgba(255, 67, 34, 0.63) 85%);
+    height:100%;
+    opacity: 1
+    
+}
 .col1-1-overlay {
-    background: linear-gradient(to bottom right, #ff430a8c, rgba(0, 0, 0, 0.795));
     transition: .3s ease;
     justify-content: space-between;
-    height:100%
+    height:100%;
+    opacity:1;
+    background: rgba(0, 0, 0, 0.527);
 }
 
 .col1-1-overlay img {
@@ -198,9 +205,7 @@ ul {
     padding: 15px;
 }
 
-.col1-1-overlay:hover {
-    background: linear-gradient(to bottom right, #ff430a2c, rgba(0, 0, 0, 0.24));
-}
+
 
 .col2-1 {
     grid-row: 1 / span 3;
@@ -208,6 +213,10 @@ ul {
     background: url("https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/04/psychedelic-796x419.png");
     object-fit: cover;
     background-position: center ;
+}
+
+.col1-1-overlay:hover {
+    background: rgba(0, 0, 0, 0.342)
 }
 
 .col2-1-overlay {
@@ -244,6 +253,10 @@ ul {
         visibility: hidden;
     }
 
+    .pink-overlay{
+        background: transparent;
+    }
+
     .banner-wrapper h2 {
         font-size: 25px;
     }
@@ -278,6 +291,10 @@ ul {
 .news-wrapper li {
     flex-basis: 24%;
     margin-bottom:40px;
+}
+
+.news-wrapper li:hover{
+    cursor: pointer;
 }
 
 .news-wrapper img {
@@ -337,6 +354,11 @@ ul {
     margin:auto;
     padding:10px
 }
+
+.funding-card:hover {
+    cursor: pointer;
+}
+
 .funding-wrapper ul {
     display:flex;
     justify-content: space-between;
@@ -425,10 +447,33 @@ ul {
     
 }
 
+.card div:hover {
+    cursor: pointer;
+}
+
 .topic-img-container {
     position: relative;
     text-align: left;
     /* height:300px; */
+}
+
+.black-gradient {
+    background: linear-gradient(to top, black, transparent 50%);
+    color:white;
+}
+
+.black-gradient h2 {
+    color: white;
+    margin:5px 0;
+}
+
+.most-popular {
+    font-family: 'Exo', sans-serif;
+}
+
+.topic-author {
+    font-family: 'Monsterrat',sans-serif;
+    color: #aaa
 }
 
 .topic-img-container ul {
@@ -436,17 +481,6 @@ ul {
     bottom: 8px;
     left: 16px;
 }
-
-.topic-img-container img {
-  /* display: block;
-  position:relative;
-  height:100%;
-  transform: translate(-25%); */
-}
-
-.topic-img-container h2 {
-    margin: 0;
-  }
 
 .other-topics-wrapper article{
     flex:0 1 31%;
@@ -475,6 +509,10 @@ ul {
     color: #555555;
 }
 
+.article-list li:hover {
+    color:black;
+}
+
 .bullet {
     color:#f42;
 }
@@ -487,6 +525,7 @@ ul {
     background-color: #fff4f2;
     height:96px;
     padding-left:10px;
+    color: #f42
 }
 
 .new-topics-list h5 {
@@ -537,12 +576,20 @@ ul {
     margin-bottom: 30px;
 }
 
+.deals-wrapper article:hover {
+    cursor: pointer;
+}
+
 .deals-wrapper img {
     width: 100%;
 }
 
 .deals-wrapper h4 {
     margin: 5px 0;
+}
+
+.deals-wrapper h4:hover{
+    color:#f42;
 }
 
 .deals-wrapper span {
@@ -609,6 +656,10 @@ ul {
 
 .fa-stack-1x {
     color: white;
+}
+
+.fa-stack:hover {
+    cursor:pointer;
 }
 
 .footer-links {
