@@ -18,6 +18,7 @@ h2 {
     justify-content: space-between;
     background-color: #131313;
     padding-left:15px;
+    font-family: 'Monsterrat',sans-serif;
 }
 
 .small-nav {
@@ -108,7 +109,8 @@ ul {
 #tech-festival-ad{
     background-color: #fd3;
     padding:5px 0;
-    padding-left: 15px;
+    padding-left: 14px;
+    font-family: 'Monsterrat',sans-serif;
 }
 
 #tech-festival-ad a {
@@ -307,11 +309,20 @@ ul {
         flex-basis: 100%;
         display:flex;
         justify-content: flex-start;
+        margin-bottom:10px;
     }
 
     .news-wrapper img {
-        height:75px;
-        width:75px;
+        visibility:hidden;
+    }
+
+    .mini-img {
+        display:inline;
+        height: 75px;
+        min-width: 75px;
+        max-width: 75px;
+        background-size: cover;
+        background-position: center; 
     }
 
     .news-wrapper li div {
@@ -374,6 +385,7 @@ ul {
 .description {
     border-top: #ffccc3 1px solid;
     padding: 10px;
+    font-family: 'Monsterrat',sans-serif;
 }
 
 .description span {
@@ -416,7 +428,7 @@ ul {
 .topic-img-container {
     position: relative;
     text-align: left;
-    height:300px;
+    /* height:300px; */
 }
 
 .topic-img-container ul {
@@ -426,10 +438,10 @@ ul {
 }
 
 .topic-img-container img {
-  display: block;
+  /* display: block;
   position:relative;
   height:100%;
-  transform: translate(-25%);
+  transform: translate(-25%); */
 }
 
 .topic-img-container h2 {
@@ -458,7 +470,13 @@ ul {
 
 .article-list li {
     margin: 15px 0;
-    border-bottom: 1px solid rgb(207, 207, 207)
+    border-bottom: 1px solid rgb(207, 207, 207);
+    font-family: 'Monsterrat',sans-serif;
+    color: #555555;
+}
+
+.bullet {
+    color:#f42;
 }
 
 .new-topics-list {
@@ -489,7 +507,7 @@ ul {
 
 @media (max-width: 770px) {
     .other-topics-wrapper article{
-        flex-basis: 90%;
+        flex-basis: 100%;
         text-align: left;
     }
 }

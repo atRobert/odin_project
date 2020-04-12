@@ -1,0 +1,83 @@
+
+.news-1 {
+    background: url('https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/03/examine-study-516x270.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.news-2 {
+    background: url('https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/04/Artboard-2@2x-100-498x270.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.news-3 {
+    background: url('https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/04/Tuned-Facebook-515x270.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.news-4 {
+    background: url('https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/04/newborn-513x270.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.news-5 {
+    background: url('https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/04/robot_bible-516x270.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.news-6 {
+    background: url('https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/04/Facebook-Gaming-Tournaments-516x270.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.news-7 {
+    background: url('https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/04/Untitled-design54-516x270.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.news-8 {
+    background: url('https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/03/corona_news-6_blue-540x270.gif');
+    background-size: cover;
+    background-position: center;
+}
+
+
+.topic-1 {
+    background: url('https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/04/blogpost-header-v02-796x341.gif');
+    background-size: cover;
+    background-position: center;
+}
+
+.topic-img-container img {
+    visibility:hidden;
+}
+
+.topic-2 {
+    background: url('https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2019/10/instaDMs1-796x417.png');
+    background-size: cover;
+    background-position: center;
+}
+
+.topic-3 {
+    background: url('https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/04/Apple-Google-796x417.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.topic-4 {
+    background: url('https://cdn0.tnwcdn.com/wp-content/blogs.dir/1/files/2020/04/1-16-796x417.jpg');
+    background-size: cover;
+    background-position: center;
+}
+
+.topic-5 {
+    background:  url('https://img-cdn.tnwcdn.com/image?fit=1280%2C720&url=https%3A%2F%2Fcdn0.tnwcdn.com%2Fwp-content%2Fblogs.dir%2F1%2Ffiles%2F2018%2F07%2FBezos.png&signature=48d8ce5d7a56ed41f137b4b6736f0f84');
+    background-size: cover;
+    background-position: center;
+}
