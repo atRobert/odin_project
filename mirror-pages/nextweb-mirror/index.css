@@ -328,7 +328,8 @@ ul {
 }
 .funding-wrapper ul {
     display:flex;
-    justify-content: space-between
+    justify-content: space-between;
+    flex-wrap: wrap;
 }
 
 .funding-wrapper li {
@@ -388,6 +389,14 @@ ul {
         flex-basis: 33%;
     }
 }
+
+@media (max-width: 760px) {
+    .funding-wrapper li {
+        flex-basis: 100%;
+    }
+}
+
+
 
 
 /* OTHER TOPICS */
