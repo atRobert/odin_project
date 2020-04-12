@@ -64,6 +64,10 @@
 
    * Mirror of older Apple.com [landing page](https://web.archive.org/web/20140301004610/http://www.apple.com/)
 
+## [The Next Web mirror](https://atrobert.github.io/odin_project/mirror-pages/nextweb-mirror/index.html)
+
+   * Mirror of The Next Web [landing page](https://thenextweb.com/). Project was done to help get a better grasp on responsive design. Flexbox, grid, media queries. 
+
 
 ## [Books](https://atrobert.github.io/odin_project//books/library.html)
  
