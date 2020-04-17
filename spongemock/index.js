@@ -8,7 +8,7 @@ mockButton.addEventListener('click', function(e){
     for (let i = 0; i < sentence.length; i++){
         i % 2 == 0 ? result += sentence[i].toUpperCase() : result += sentence[i].toLowerCase()
     }
-    console.log(result)
+    
     document.getElementById('mock-results').innerText = result
     document.getElementById('copy-button').style['display'] = 'block'
     document.getElementById('copy-button').innerText = 'Copy'
