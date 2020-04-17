@@ -10,7 +10,6 @@ mockButton.addEventListener('click', function(e){
     }
     console.log(result)
     document.getElementById('mock-results').innerText = result
-    document.getElementById('copy-input').value = result
     document.getElementById('copy-button').style['display'] = 'block'
     document.getElementById('copy-button').innerText = 'Copy'
 })
