@@ -37,7 +37,8 @@ h3{
 }
 
 .jumbotron{
-    background-color:rgba(136, 135, 135, 0.555)
+    background-color:rgba(136, 135, 135, 0.555);
+    color:black;
 }
 
 #time-text{
