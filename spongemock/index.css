@@ -20,9 +20,20 @@ h3{
 }
 
 #mock-results {
-    margin-top: 20px;
+    margin: 20px 0;
+
 }
 
+#copy-input {
+   visibility: hidden;
+   position: absolute;
+}
+
+
+#copy-button {
+    display: none;
+    margin: auto;
+}
 
 #cover {
     height: 100%;

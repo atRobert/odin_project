@@ -1,4 +1,5 @@
 mockButton = document.getElementById('make-mock');
+copyButton = document.getElementById('copy-button');
 
 mockButton.addEventListener('click', function(e){
     e.preventDefault()
@@ -9,4 +10,22 @@ mockButton.addEventListener('click', function(e){
     }
     console.log(result)
     document.getElementById('mock-results').innerText = result
+    document.getElementById('copy-input').value = result
+    document.getElementById('copy-button').style['display'] = 'block'
+    document.getElementById('copy-button').innerText = 'Copy'
 })
+
+
+copyButton.addEventListener('click', function(e){
+    let range = document.createRange();
+    range.selectNode(document.getElementById("mock-results"));
+    window.getSelection().removeAllRanges(); // clear current selection
+    window.getSelection().addRange(range); // to select text
+    document.execCommand("copy");
+    window.getSelection().removeAllRanges();// to deselect
+    document.getElementById('copy-button').innerText = 'Copied!'
+})
+
+
+
+
