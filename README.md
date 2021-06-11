@@ -97,23 +97,3 @@
     <img src="https://github.com/atRobert/odin_project/blob/master/images/timer.png" width="60%">
     </p>
     
-## [BigBurger Restaurant](https://atrobert.github.io/odin_project/restaurant/dist/index.html)
- 
- * Mock website for fake food restaurant. Introduction to generating JavaScript quick responsive "multi-page"
-   website on a single page.
-      
-## [Rock Paper Scissors Game](https://atrobert.github.io/odin_project/RPS-game/index.html)
- 
- * Basic rock paper scissors game gainst a computer. Involves basic JavaScript for Dom Manipulation.
- <p align="center">
- <img src="https://github.com/atRobert/odin_project/blob/master/images/rps.png" width="40%">
- </p>
- 
-## [Let's Draw!](https://atrobert.github.io/odin_project//draw/index.html)
- 
- * Drawing pad generated from DIV elements with OnHover commands. Users can decide the resolution of
-   the drawing pad up to 100 by 100 "Pixels".
-   
-   <p align="center">
-   <img src="https://github.com/atRobert/odin_project/blob/master/images/paint.png" width="40%">
-   </p>
